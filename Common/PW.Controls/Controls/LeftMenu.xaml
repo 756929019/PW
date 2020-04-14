@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="PW.Controls.Controls.LeftMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PW.Controls.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" x:Name="LeftMenuUC">
+    <!--定义动画-->
+
+    <UserControl.Resources>
+        <Style x:Key="LeftMenuTextDetail" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="30,0"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+        <!--左边菜单的动画-->
+        <Storyboard x:Key="SlideOut" x:Name="SlideOut">
+            <DoubleAnimation Storyboard.TargetName="Slide" Storyboard.TargetProperty="Width" Duration="00:00:00.50" To="200"/>
+        </Storyboard>
+        <Storyboard x:Key="SlideIn" x:Name="SlideIn">
+            <DoubleAnimation Storyboard.TargetName="Slide" Storyboard.TargetProperty="Width" Duration="00:00:00.50" To="30"/>
+        </Storyboard>
+        <!--上下的动画-->
+        <Storyboard x:Key="ListBoxIn" x:Name="ListBoxIn">
+            <DoubleAnimation Storyboard.TargetName="ListBox" Storyboard.TargetProperty="Height" Duration="00:00:00.50" To="0"/>
+        </Storyboard>
+        <Storyboard x:Key="ListBoxOut" x:Name="ListBoxOut">
+            <DoubleAnimation Storyboard.TargetName="ListBox" Storyboard.TargetProperty="Height" Duration="00:00:00.50" To="{Binding ItemActualHeight}"/>
+        </Storyboard>
+    </UserControl.Resources>
+
+    <StackPanel Orientation="Horizontal" x:Name="Slide" Height="Auto" Style="{Binding LeftMenuBg}" Width="200" MaxWidth="200">
+        <!--左边菜单，左边显示部分-->
+        <StackPanel Width="200" x:Name="LeftMenuLeft">
+            <!--左边显示部分的头条-->
+            <StackPanel x:Name="RootPanel"  Loaded="StackPanel_Loaded">
+                <!--根目录那边的-->
+                <Grid x:Name="Grid" Style="{Binding RootStyle}">
+                    <StackPanel Orientation="Horizontal">
+                        <Grid Tag="0" MinWidth="169" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+                            <TextBlock x:Name="root" Text="{Binding RootName}" Style="{Binding LeftMenuText}"/>
+                        </Grid>
+                        <Rectangle Width="1" Fill="#3B342C"/>
+                        <Grid Width="30">
+                            <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Text="&lt;&lt;" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
+                        </Grid>
+                    </StackPanel>
+                    <!--根目录那边的-->
+                </Grid>
+                <!--左边显示部分的头条-->
+                <ListBox Height="0" x:Name="ListBox" ItemsSource="{Binding IResource}" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" BorderBrush="Transparent">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" Style="{StaticResource LeftMenuTextDetail}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+            <local:TabDetail TRootStyle="{Binding RootStyle,ElementName=LeftMenuUC}" TTabDetailText="{Binding LeftMenuText,ElementName=LeftMenuUC}" TRootName="{Binding RootName,ElementName=LeftMenuUC}" TIResource="{Binding IResource,ElementName=LeftMenuUC}" TItemActualHeight="{Binding ItemActualHeight,ElementName=LeftMenuUC}"></local:TabDetail>
+        </StackPanel>
+        <!--左边菜单，左边显示部分-->
+        <!--左边菜单，右边的箭头部分-->
+        <StackPanel Width="30" x:Name="LeftMenuRight">
+            <StackPanel>
+                <Grid Height="30" Style="{Binding RootStyle}">
+                    <TextBlock Text="&gt;&gt;" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</UserControl>
+
+

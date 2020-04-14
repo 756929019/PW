@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="PW.Controls.Controls.TabDetail"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PW.Controls.Controls"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style x:Key="LeftMenuTextDetail" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="30,0"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+        <!--上下的动画-->
+        <Storyboard x:Key="TListBoxIn" x:Name="TListBoxIn">
+            <DoubleAnimation Storyboard.TargetName="TListBox" Storyboard.TargetProperty="Height" Duration="00:00:00.50" To="0"/>
+        </Storyboard>
+        <Storyboard x:Key="TListBoxOut"  x:Name="TListBoxOut">
+            <DoubleAnimation Storyboard.TargetName="TListBox" Storyboard.TargetProperty="Height" Duration="00:00:00.50" To="{Binding TItemActualHeight}"/>
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Width="200">
+        <StackPanel>
+            <!--根目录-->
+            <Grid Style="{Binding TRootStyle}" Tag="0" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+                <TextBlock x:Name="root" Text="{Binding TRootName}" Style="{Binding TTabDetailText}"/>
+            </Grid>
+            <!--左边显示部分的头条-->
+            <ListBox x:Name="TListBox" Height="0" ItemsSource="{Binding TIResource}" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" BorderBrush="Transparent">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" Style="{StaticResource LeftMenuTextDetail}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

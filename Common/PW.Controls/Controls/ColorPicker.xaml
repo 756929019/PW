@@ -1,0 +1,80 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:PW.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/PW.Controls;component/Controls/ColorPickerStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <Style TargetType="{x:Type local:ColorPicker}">
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+            Padding="{TemplateBinding Padding}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            Background="{TemplateBinding Background}">
+                        <Grid Height="80" Width="270">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="110" />
+                                <ColumnDefinition Width="40" />
+                            </Grid.ColumnDefinitions>
+                            <local:HsvControl 
+                x:Name="PART_HsvControl"
+                Grid.Row="0" Grid.Column="0" Grid.RowSpan="4"/>
+                            <local:SpectrumSlider 
+                x:Name="PART_SpectrumSlider1" 
+                Grid.Column="1" Grid.RowSpan="4"
+                BorderBrush="Black" BorderThickness="1" 
+                LargeChange="30" SmallChange="10" Hue="0" />
+                            <TextBlock Text="R" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="0"/>
+                            <TextBlock Text="G" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="1"/>
+                            <TextBlock Text="B" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="2"/>
+                            <TextBlock Text="A" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="3"/>
+                            <local:BindOnEnterTextBox 
+                Style="{StaticResource ColorPickerTextBox}"
+                Grid.Column="4" Grid.Row="0" 
+                Text="{Binding Path=Value, ElementName=PART_RedColorSlider, Mode=TwoWay, Converter={StaticResource DoubleToIntegerStringConverter}}"/>
+                            <local:BindOnEnterTextBox
+                Style="{StaticResource ColorPickerTextBox}"
+                Grid.Column="4" Grid.Row="1" 
+                Text="{Binding Path=Value, ElementName=PART_GreenColorSlider, Mode=TwoWay, Converter={StaticResource DoubleToIntegerStringConverter}}"/>
+                            <local:BindOnEnterTextBox
+                Style="{StaticResource ColorPickerTextBox}"
+                Grid.Column="4" Grid.Row="2" 
+                Text="{Binding Path=Value, ElementName=PART_BlueColorSlider, Mode=TwoWay, Converter={StaticResource DoubleToIntegerStringConverter}}"/>
+                            <local:BindOnEnterTextBox
+                Style="{StaticResource ColorPickerTextBox}"
+                Grid.Column="4" Grid.Row="3" 
+                Text="{Binding Path=Value, ElementName=PART_AlphaColorSlider, Mode=TwoWay, Converter={StaticResource DoubleToIntegerStringConverter}}"/>
+                            <local:ColorSlider 
+                x:Name="PART_RedColorSlider" Grid.Column="3" Grid.Row="0"
+                BorderBrush="Black" BorderThickness="1"/>
+                            <local:ColorSlider 
+                x:Name="PART_GreenColorSlider" Grid.Column="3" Grid.Row="1"
+                BorderBrush="Black" BorderThickness="1"/>
+                            <local:ColorSlider 
+                x:Name="PART_BlueColorSlider" Grid.Column="3" Grid.Row="2"
+                BorderBrush="Black" BorderThickness="1"/>
+                            <local:ColorSlider 
+                x:Name="PART_AlphaColorSlider" Grid.Column="3" Grid.Row="3"
+                Background="{StaticResource CheckersBrush}"
+                BorderBrush="Black" BorderThickness="1" 
+                LeftColor="#00000000" RightColor="#FF000000"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

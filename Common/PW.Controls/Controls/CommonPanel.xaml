@@ -1,0 +1,47 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	                mc:Ignorable="d"
+                    xmlns:local="clr-namespace:PW.Controls"
+                    >
+    <Style TargetType="local:CommonPanel">
+        <Setter Property="Background" Value="{DynamicResource ModuleControl.Panel.BackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ModuleControl.Panel.BorderBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ModuleControl.TextBlock.Foreground}"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:CommonPanel">
+                    <Grid x:Name="LayoutRoot">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Rectangle x:Name="background" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1" Grid.RowSpan="2" Stretch="Fill"/>
+                        <Grid x:Name="header" Visibility="{TemplateBinding HeaderVisibility}" Height="32" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Path x:Name="Flexible_30"  Margin="40,0" Stretch="Fill" Data="F1 M 716.526,0.975342L 718.44,0.975342L 718.445,0.975342L 744.698,0.975342C 742.35,1.61951 740.002,2.26355 737.807,4.03833C 735.613,5.81311 733.572,8.71863 732.079,10.213C 730.587,11.7074 729.642,11.7908 728.698,11.8741L 718.445,11.8741L 718.44,11.8741L 716.526,11.874L 710.776,11.874L 703.067,11.874L 703.057,11.874L 690.872,11.8739L 685.049,11.8739L 683.208,11.8739L 683.203,11.8739L 672.95,11.8739C 672.006,11.7906 671.061,11.7073 669.569,10.2129C 668.076,8.71851 666.035,5.81299 663.841,4.03821C 661.647,2.26355 659.299,1.61951 656.951,0.975342L 656.95,0.97522L 656.951,0.975342L 683.203,0.97522L 683.208,0.97522L 690.872,0.97522L 703.057,0.97522L 703.067,0.97522L 710.776,0.975342L 716.526,0.975342 Z ">
+                                <Path.Fill>
+                                    <LinearGradientBrush StartPoint="0.499995,-1.64417" EndPoint="0.499995,2.56027">
+                                        <LinearGradientBrush.GradientStops>
+                                            <GradientStop Color="#305EB2F8" Offset="0.239394"/>
+                                            <GradientStop Color="#634179C2" Offset="0.525252"/>
+                                            <GradientStop Color="#6325418D" Offset="0.691919"/>
+                                        </LinearGradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Path.Fill>
+                            </Path>
+                            <TextBlock x:Name="title" Text="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" TextAlignment="Center" FontSize="16"  HorizontalAlignment="Center" Margin="0,3,0,6" d:LayoutOverrides="Height"/>
+                        </Grid>
+                        <ContentPresenter  
+								x:Name="contentPresenter"
+								Content="{TemplateBinding Content}"
+								ContentTemplate="{TemplateBinding ContentTemplate}"
+								VerticalAlignment="Stretch"
+								HorizontalAlignment="Stretch" Grid.Row="1" Margin="{TemplateBinding Padding}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

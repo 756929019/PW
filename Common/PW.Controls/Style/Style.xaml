@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/PW.Controls;component/Style/Colors.xaml"/>
+        <ResourceDictionary Source="/PW.Controls;component/Style/Themes/FIcon.xaml"/>
+        <ResourceDictionary Source="/PW.Controls;component/Style/Themes/ToggleButton.xaml"/>
+        <ResourceDictionary Source="/PW.Controls;component/Style/Themes/TextBox.xaml"/>
+        <ResourceDictionary Source="/PW.Controls;component/Style/Themes/ListBox.xaml"/>
+        <ResourceDictionary Source="/PW.Controls;component/Style/Themes/ScrollViewer.xaml"/>
+        <ResourceDictionary Source="/PW.Controls;component/Style/Themes/LoopProcessBar.xaml"/>
+        <ResourceDictionary Source="/PW.Controls;component/Style/Themes/ProgressBar.xaml"/>
+        <ResourceDictionary Source="/PW.Controls;component/Style/Themes/Window.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

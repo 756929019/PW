@@ -1,0 +1,617 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{126959E4-AAD5-41A0-8245-907582364C59}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PW.Controls</RootNamespace>
+    <AssemblyName>PW.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Controls, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Effects, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Prototyping.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Windows.Shell">
+      <HintPath>..\..\lib\Microsoft.Windows.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Utility">
+      <HintPath>..\..\lib\System.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ColorUtils.cs" />
+    <Compile Include="Controls\ALoading.xaml.cs">
+      <DependentUpon>ALoading.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BindableRichTextBox.cs" />
+    <Compile Include="Controls\BindOnEnterTextBox.cs" />
+    <Compile Include="Controls\BusyBox.xaml.cs">
+      <DependentUpon>BusyBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ColorComboBox.xaml.cs">
+      <DependentUpon>ColorComboBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ColorPicker.xaml.cs">
+      <DependentUpon>ColorPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ColorSlider.xaml.cs">
+      <DependentUpon>ColorSlider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CommonPanel.xaml.cs">
+      <DependentUpon>CommonPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FiconButton.xaml.cs">
+      <DependentUpon>FiconButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Gauge.xaml.cs">
+      <DependentUpon>Gauge.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HsvControl.xaml.cs">
+      <DependentUpon>HsvControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LeftMenu.xaml.cs">
+      <DependentUpon>LeftMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Loading.xaml.cs">
+      <DependentUpon>Loading.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MessageBoxX.xaml.cs">
+      <DependentUpon>MessageBoxX.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MultiComboBox.xaml.cs">
+      <DependentUpon>MultiComboBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NavigateDetail.cs" />
+    <Compile Include="Controls\NavigateRoot.cs" />
+    <Compile Include="Controls\ProgressRing.xaml.cs">
+      <DependentUpon>ProgressRing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PWMap.xaml.cs">
+      <DependentUpon>PWMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ScrollingListBox.cs" />
+    <Compile Include="Controls\SpectrumSlider.xaml.cs">
+      <DependentUpon>SpectrumSlider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SwitchButton.xaml.cs">
+      <DependentUpon>SwitchButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TabDetail.xaml.cs">
+      <DependentUpon>TabDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TagCloud.cs" />
+    <Compile Include="Controls\TagCloudItem.cs" />
+    <Compile Include="Controls\TagCloudItemSize.cs" />
+    <Compile Include="Controls\TagRotationType.cs" />
+    <Compile Include="Controls\WaitingBox.xaml.cs">
+      <DependentUpon>WaitingBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WindowBase.xaml.cs">
+      <DependentUpon>WindowBase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WindowCopy.xaml.cs">
+      <DependentUpon>WindowCopy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converter\BackgroundToForegroundConverter.cs" />
+    <Compile Include="Converter\ColorToStringConverter.cs" />
+    <Compile Include="Converter\DoubleToIntegerStringConverter.cs" />
+    <Compile Include="Converter\HueToColorConverter.cs" />
+    <Compile Include="Converter\ModelConvertVisibility.cs" />
+    <Compile Include="Converter\CountConvertVisibility.cs" />
+    <Compile Include="Converter\ObjectConvertColor.cs" />
+    <Compile Include="Converter\ObjectConvertHeight.cs" />
+    <Compile Include="Converter\BoolConvertVisibility.cs" />
+    <Compile Include="Converter\Converters.cs" />
+    <Compile Include="Converter\PercentToAngleConverter.cs" />
+    <Compile Include="Converter\ThicknessToDoubleConverter.cs" />
+    <Compile Include="Converter\TreeViewMarginConverter.cs" />
+    <Compile Include="Converter\TrueToFalseConverter.cs" />
+    <Compile Include="Converter\TypeConverters.cs" />
+    <Compile Include="CopyHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="VirtualControl.cs" />
+    <Compile Include="{Core}\ControlAttachProperty.cs" />
+    <Compile Include="{Core}\ControlExtession.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="fonts\fontawesome-webfont.eot" />
+    <Resource Include="fonts\fontawesome-webfont.ttf" />
+    <None Include="fonts\fontawesome-webfont.woff" />
+    <None Include="fonts\fontawesome-webfont.woff2" />
+    <Resource Include="fonts\FontAwesome.otf" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\iconfont.ttf" />
+    <Resource Include="Resources\Quartz Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\ALoading.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\BusyBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ColorComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ColorPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ColorPickerStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ColorSlider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\CommonPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\FiconButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Gauge.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\HsvControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\LeftMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Loading.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MessageBoxX.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MultiComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProgressRing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PWMap.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SpectrumSlider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SwitchButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TabDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WaitingBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WindowBase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Resource Include="Style\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Page Include="Controls\WindowCopy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\Global.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\Themes\FIcon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\Themes\ListBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\Themes\LoopProcessBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\Themes\ProgressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\Themes\ScrollViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\Themes\Share.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\Themes\TextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\Themes\ToggleButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\Themes\TreeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\Themes\Window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\css\font-awesome.css" />
+    <EmbeddedResource Include="Maps\Afghanistan.xml" />
+    <EmbeddedResource Include="Maps\Akrotiri_Sovereign_Base_Area.xml" />
+    <EmbeddedResource Include="Maps\Aland.xml" />
+    <EmbeddedResource Include="Maps\Albania.xml" />
+    <EmbeddedResource Include="Maps\Algeria.xml" />
+    <EmbeddedResource Include="Maps\American_Samoa.xml" />
+    <EmbeddedResource Include="Maps\Andorra.xml" />
+    <EmbeddedResource Include="Maps\Angola.xml" />
+    <EmbeddedResource Include="Maps\Anguilla.xml" />
+    <EmbeddedResource Include="Maps\Antarctica.xml" />
+    <EmbeddedResource Include="Maps\Antigua_and_Barbuda.xml" />
+    <EmbeddedResource Include="Maps\Argentina.xml" />
+    <EmbeddedResource Include="Maps\Armenia.xml" />
+    <EmbeddedResource Include="Maps\Aruba.xml" />
+    <EmbeddedResource Include="Maps\Ashmore_and_Cartier_Islands.xml" />
+    <EmbeddedResource Include="Maps\Australia.xml" />
+    <EmbeddedResource Include="Maps\Austria.xml" />
+    <EmbeddedResource Include="Maps\Azerbaijan.xml" />
+    <EmbeddedResource Include="Maps\Bahrain.xml" />
+    <EmbeddedResource Include="Maps\Bajo_Nuevo_Bank_Petrel_Is.xml" />
+    <EmbeddedResource Include="Maps\Bangladesh.xml" />
+    <EmbeddedResource Include="Maps\Barbados.xml" />
+    <EmbeddedResource Include="Maps\Baykonur_Cosmodrome.xml" />
+    <EmbeddedResource Include="Maps\Belarus.xml" />
+    <EmbeddedResource Include="Maps\Belgium.xml" />
+    <EmbeddedResource Include="Maps\Belize.xml" />
+    <EmbeddedResource Include="Maps\Benin.xml" />
+    <EmbeddedResource Include="Maps\Bermuda.xml" />
+    <EmbeddedResource Include="Maps\Bhutan.xml" />
+    <EmbeddedResource Include="Maps\Bolivia.xml" />
+    <EmbeddedResource Include="Maps\Bosnia_and_Herzegovina.xml" />
+    <EmbeddedResource Include="Maps\Botswana.xml" />
+    <EmbeddedResource Include="Maps\Brazil.xml" />
+    <EmbeddedResource Include="Maps\British_Indian_Ocean_Territory.xml" />
+    <EmbeddedResource Include="Maps\British_Virgin_Islands.xml" />
+    <EmbeddedResource Include="Maps\Brunei.xml" />
+    <EmbeddedResource Include="Maps\Bulgaria.xml" />
+    <EmbeddedResource Include="Maps\Burkina_Faso.xml" />
+    <EmbeddedResource Include="Maps\Burundi.xml" />
+    <EmbeddedResource Include="Maps\Cambodia.xml" />
+    <EmbeddedResource Include="Maps\Cameroon.xml" />
+    <EmbeddedResource Include="Maps\Canada.xml" />
+    <EmbeddedResource Include="Maps\Cape_Verde.xml" />
+    <EmbeddedResource Include="Maps\Caribbean_Netherlands.xml" />
+    <EmbeddedResource Include="Maps\Cayman_Islands.xml" />
+    <EmbeddedResource Include="Maps\Central_African_Republic.xml" />
+    <EmbeddedResource Include="Maps\Chad.xml" />
+    <EmbeddedResource Include="Maps\Chile.xml" />
+    <EmbeddedResource Include="Maps\China.xml" />
+    <EmbeddedResource Include="Maps\Clipperton_Island.xml" />
+    <EmbeddedResource Include="Maps\Colombia.xml" />
+    <EmbeddedResource Include="Maps\Comoros.xml" />
+    <EmbeddedResource Include="Maps\Cook_Islands.xml" />
+    <EmbeddedResource Include="Maps\Coral_Sea_Islands.xml" />
+    <EmbeddedResource Include="Maps\Costa_Rica.xml" />
+    <EmbeddedResource Include="Maps\Croatia.xml" />
+    <EmbeddedResource Include="Maps\Cuba.xml" />
+    <EmbeddedResource Include="Maps\Curaçao.xml" />
+    <EmbeddedResource Include="Maps\Cyprus.xml" />
+    <EmbeddedResource Include="Maps\Czech_Republic.xml" />
+    <EmbeddedResource Include="Maps\Democratic_Republic_of_the_Congo.xml" />
+    <EmbeddedResource Include="Maps\Denmark.xml" />
+    <EmbeddedResource Include="Maps\Dhekelia_Soverign_Base_Area.xml" />
+    <EmbeddedResource Include="Maps\Djibouti.xml" />
+    <EmbeddedResource Include="Maps\Dominica.xml" />
+    <EmbeddedResource Include="Maps\Dominican_Republic.xml" />
+    <EmbeddedResource Include="Maps\East_Timor.xml" />
+    <EmbeddedResource Include="Maps\Ecuador.xml" />
+    <EmbeddedResource Include="Maps\Egypt.xml" />
+    <EmbeddedResource Include="Maps\El_Salvador.xml" />
+    <EmbeddedResource Include="Maps\Equatorial_Guinea.xml" />
+    <EmbeddedResource Include="Maps\Eritrea.xml" />
+    <EmbeddedResource Include="Maps\Estonia.xml" />
+    <EmbeddedResource Include="Maps\Ethiopia.xml" />
+    <EmbeddedResource Include="Maps\Falkland_Islands.xml" />
+    <EmbeddedResource Include="Maps\Faroe_Islands.xml" />
+    <EmbeddedResource Include="Maps\Federated_States_of_Micronesia.xml" />
+    <EmbeddedResource Include="Maps\Fiji.xml" />
+    <EmbeddedResource Include="Maps\Finland.xml" />
+    <EmbeddedResource Include="Maps\France.xml" />
+    <EmbeddedResource Include="Maps\French_Polynesia.xml" />
+    <EmbeddedResource Include="Maps\French_Southern_and_Antarctic_Lands.xml" />
+    <EmbeddedResource Include="Maps\Gabon.xml" />
+    <EmbeddedResource Include="Maps\Gambia.xml" />
+    <EmbeddedResource Include="Maps\Gaza_Strip.xml" />
+    <EmbeddedResource Include="Maps\Georgia.xml" />
+    <EmbeddedResource Include="Maps\Germany.xml" />
+    <EmbeddedResource Include="Maps\Ghana.xml" />
+    <EmbeddedResource Include="Maps\Gibraltar.xml" />
+    <EmbeddedResource Include="Maps\Greece.xml" />
+    <EmbeddedResource Include="Maps\Greenland.xml" />
+    <EmbeddedResource Include="Maps\Grenada.xml" />
+    <EmbeddedResource Include="Maps\Guam.xml" />
+    <EmbeddedResource Include="Maps\Guatemala.xml" />
+    <EmbeddedResource Include="Maps\Guernsey.xml" />
+    <EmbeddedResource Include="Maps\Guinea.xml" />
+    <EmbeddedResource Include="Maps\Guinea_Bissau.xml" />
+    <EmbeddedResource Include="Maps\Guyana.xml" />
+    <EmbeddedResource Include="Maps\Haiti.xml" />
+    <EmbeddedResource Include="Maps\Heard_Island_and_McDonald_Islands.xml" />
+    <EmbeddedResource Include="Maps\Honduras.xml" />
+    <EmbeddedResource Include="Maps\Hong_Kong_S_A_R.xml" />
+    <EmbeddedResource Include="Maps\Hungary.xml" />
+    <EmbeddedResource Include="Maps\Iceland.xml" />
+    <EmbeddedResource Include="Maps\India.xml" />
+    <EmbeddedResource Include="Maps\Indian_Ocean_Territories.xml" />
+    <EmbeddedResource Include="Maps\Indonesia.xml" />
+    <EmbeddedResource Include="Maps\Iran.xml" />
+    <EmbeddedResource Include="Maps\Iraq.xml" />
+    <EmbeddedResource Include="Maps\Ireland.xml" />
+    <EmbeddedResource Include="Maps\Isle_of_Man.xml" />
+    <EmbeddedResource Include="Maps\Israel.xml" />
+    <EmbeddedResource Include="Maps\Italy.xml" />
+    <EmbeddedResource Include="Maps\Ivory_Coast.xml" />
+    <EmbeddedResource Include="Maps\Jamaica.xml" />
+    <EmbeddedResource Include="Maps\Japan.xml" />
+    <EmbeddedResource Include="Maps\Jersey.xml" />
+    <EmbeddedResource Include="Maps\Jordan.xml" />
+    <EmbeddedResource Include="Maps\Kazakhstan.xml" />
+    <EmbeddedResource Include="Maps\Kenya.xml" />
+    <EmbeddedResource Include="Maps\Kiribati.xml" />
+    <EmbeddedResource Include="Maps\Kosovo.xml" />
+    <EmbeddedResource Include="Maps\Kuwait.xml" />
+    <EmbeddedResource Include="Maps\Kyrgyzstan.xml" />
+    <EmbeddedResource Include="Maps\Laos.xml" />
+    <EmbeddedResource Include="Maps\Latvia.xml" />
+    <EmbeddedResource Include="Maps\Lebanon.xml" />
+    <EmbeddedResource Include="Maps\Lesotho.xml" />
+    <EmbeddedResource Include="Maps\Liberia.xml" />
+    <EmbeddedResource Include="Maps\Libya.xml" />
+    <EmbeddedResource Include="Maps\Liechtenstein.xml" />
+    <EmbeddedResource Include="Maps\Lithuania.xml" />
+    <EmbeddedResource Include="Maps\Luxembourg.xml" />
+    <EmbeddedResource Include="Maps\Macau_S_A_R.xml" />
+    <EmbeddedResource Include="Maps\Macedonia.xml" />
+    <EmbeddedResource Include="Maps\Madagascar.xml" />
+    <EmbeddedResource Include="Maps\Malawi.xml" />
+    <EmbeddedResource Include="Maps\Malaysia.xml" />
+    <EmbeddedResource Include="Maps\Maldives.xml" />
+    <EmbeddedResource Include="Maps\Mali.xml" />
+    <EmbeddedResource Include="Maps\Malta.xml" />
+    <EmbeddedResource Include="Maps\Marshall_Islands.xml" />
+    <EmbeddedResource Include="Maps\Mauritania.xml" />
+    <EmbeddedResource Include="Maps\Mauritius.xml" />
+    <EmbeddedResource Include="Maps\Mexico.xml" />
+    <EmbeddedResource Include="Maps\Moldova.xml" />
+    <EmbeddedResource Include="Maps\Monaco.xml" />
+    <EmbeddedResource Include="Maps\Mongolia.xml" />
+    <EmbeddedResource Include="Maps\Montenegro.xml" />
+    <EmbeddedResource Include="Maps\Montserrat.xml" />
+    <EmbeddedResource Include="Maps\Morocco.xml" />
+    <EmbeddedResource Include="Maps\Mozambique.xml" />
+    <EmbeddedResource Include="Maps\Myanmar.xml" />
+    <EmbeddedResource Include="Maps\Namibia.xml" />
+    <EmbeddedResource Include="Maps\Nauru.xml" />
+    <EmbeddedResource Include="Maps\Nepal.xml" />
+    <EmbeddedResource Include="Maps\Netherlands.xml" />
+    <EmbeddedResource Include="Maps\New_Caledonia.xml" />
+    <EmbeddedResource Include="Maps\New_Zealand.xml" />
+    <EmbeddedResource Include="Maps\Nicaragua.xml" />
+    <EmbeddedResource Include="Maps\Niger.xml" />
+    <EmbeddedResource Include="Maps\Nigeria.xml" />
+    <EmbeddedResource Include="Maps\Niue.xml" />
+    <EmbeddedResource Include="Maps\Norfolk_Island.xml" />
+    <EmbeddedResource Include="Maps\Northern_Cyprus.xml" />
+    <EmbeddedResource Include="Maps\Northern_Mariana_Islands.xml" />
+    <EmbeddedResource Include="Maps\North_Korea.xml" />
+    <EmbeddedResource Include="Maps\Norway.xml" />
+    <EmbeddedResource Include="Maps\Null_Island.xml" />
+    <EmbeddedResource Include="Maps\Oman.xml" />
+    <EmbeddedResource Include="Maps\Pakistan.xml" />
+    <EmbeddedResource Include="Maps\Palau.xml" />
+    <EmbeddedResource Include="Maps\Panama.xml" />
+    <EmbeddedResource Include="Maps\Papua_New_Guinea.xml" />
+    <EmbeddedResource Include="Maps\Paraguay.xml" />
+    <EmbeddedResource Include="Maps\Peru.xml" />
+    <EmbeddedResource Include="Maps\Philippines.xml" />
+    <EmbeddedResource Include="Maps\Pitcairn_Islands.xml" />
+    <EmbeddedResource Include="Maps\Poland.xml" />
+    <EmbeddedResource Include="Maps\Portugal.xml" />
+    <EmbeddedResource Include="Maps\Puerto_Rico.xml" />
+    <EmbeddedResource Include="Maps\Qatar.xml" />
+    <EmbeddedResource Include="Maps\Republic_of_Serbia.xml" />
+    <EmbeddedResource Include="Maps\Republic_of_the_Congo.xml" />
+    <EmbeddedResource Include="Maps\Romania.xml" />
+    <EmbeddedResource Include="Maps\Russia.xml" />
+    <EmbeddedResource Include="Maps\Rwanda.xml" />
+    <EmbeddedResource Include="Maps\Saint_Barthelemy.xml" />
+    <EmbeddedResource Include="Maps\Saint_Helena.xml" />
+    <EmbeddedResource Include="Maps\Saint_Kitts_and_Nevis.xml" />
+    <EmbeddedResource Include="Maps\Saint_Lucia.xml" />
+    <EmbeddedResource Include="Maps\Saint_Martin.xml" />
+    <EmbeddedResource Include="Maps\Saint_Pierre_and_Miquelon.xml" />
+    <EmbeddedResource Include="Maps\Saint_Vincent_and_the_Grenadines.xml" />
+    <EmbeddedResource Include="Maps\Samoa.xml" />
+    <EmbeddedResource Include="Maps\San_Marino.xml" />
+    <EmbeddedResource Include="Maps\Sao_Tome_and_Principe.xml" />
+    <EmbeddedResource Include="Maps\Saudi_Arabia.xml" />
+    <EmbeddedResource Include="Maps\Scarborough_Reef.xml" />
+    <EmbeddedResource Include="Maps\Senegal.xml" />
+    <EmbeddedResource Include="Maps\Serranilla_Bank.xml" />
+    <EmbeddedResource Include="Maps\Seychelles.xml" />
+    <EmbeddedResource Include="Maps\Siachen_Glacier.xml" />
+    <EmbeddedResource Include="Maps\Sierra_Leone.xml" />
+    <EmbeddedResource Include="Maps\Singapore.xml" />
+    <EmbeddedResource Include="Maps\Sint_Maarten.xml" />
+    <EmbeddedResource Include="Maps\Slovakia.xml" />
+    <EmbeddedResource Include="Maps\Slovenia.xml" />
+    <EmbeddedResource Include="Maps\Solomon_Islands.xml" />
+    <EmbeddedResource Include="Maps\Somalia.xml" />
+    <EmbeddedResource Include="Maps\Somaliland.xml" />
+    <EmbeddedResource Include="Maps\South_Africa.xml" />
+    <EmbeddedResource Include="Maps\South_Georgia_and_the_Islands.xml" />
+    <EmbeddedResource Include="Maps\South_Korea.xml" />
+    <EmbeddedResource Include="Maps\Spain.xml" />
+    <EmbeddedResource Include="Maps\Spratly_Is.xml" />
+    <EmbeddedResource Include="Maps\Sri_Lanka.xml" />
+    <EmbeddedResource Include="Maps\Sudan.xml" />
+    <EmbeddedResource Include="Maps\Suriname.xml" />
+    <EmbeddedResource Include="Maps\Swaziland.xml" />
+    <EmbeddedResource Include="Maps\Sweden.xml" />
+    <EmbeddedResource Include="Maps\Switzerland.xml" />
+    <EmbeddedResource Include="Maps\Syria.xml" />
+    <EmbeddedResource Include="Maps\S_Sudan.xml" />
+    <EmbeddedResource Include="Maps\Taiwan.xml" />
+    <EmbeddedResource Include="Maps\Tajikistan.xml" />
+    <EmbeddedResource Include="Maps\Thailand.xml" />
+    <EmbeddedResource Include="Maps\The_Bahamas.xml" />
+    <EmbeddedResource Include="Maps\Togo.xml" />
+    <EmbeddedResource Include="Maps\Tonga.xml" />
+    <EmbeddedResource Include="Maps\Trinidad_and_Tobago.xml" />
+    <EmbeddedResource Include="Maps\Tunisia.xml" />
+    <EmbeddedResource Include="Maps\Turkey.xml" />
+    <EmbeddedResource Include="Maps\Turkmenistan.xml" />
+    <EmbeddedResource Include="Maps\Turks_and_Caicos_Islands.xml" />
+    <EmbeddedResource Include="Maps\Tuvalu.xml" />
+    <EmbeddedResource Include="Maps\Uganda.xml" />
+    <EmbeddedResource Include="Maps\Ukraine.xml" />
+    <EmbeddedResource Include="Maps\United_Arab_Emirates.xml" />
+    <EmbeddedResource Include="Maps\United_Kingdom.xml" />
+    <EmbeddedResource Include="Maps\United_Republic_of_Tanzania.xml" />
+    <EmbeddedResource Include="Maps\United_States_Minor_Outlying_Islands.xml" />
+    <EmbeddedResource Include="Maps\United_States_of_America.xml" />
+    <EmbeddedResource Include="Maps\United_States_Virgin_Islands.xml" />
+    <EmbeddedResource Include="Maps\Uruguay.xml" />
+    <EmbeddedResource Include="Maps\US_Naval_Base_Guantanamo_Bay.xml" />
+    <EmbeddedResource Include="Maps\Uzbekistan.xml" />
+    <EmbeddedResource Include="Maps\Vanuatu.xml" />
+    <EmbeddedResource Include="Maps\Vatican.xml" />
+    <EmbeddedResource Include="Maps\Venezuela.xml" />
+    <EmbeddedResource Include="Maps\Vietnam.xml" />
+    <EmbeddedResource Include="Maps\Wallis_and_Futuna.xml" />
+    <EmbeddedResource Include="Maps\Western_Sahara.xml" />
+    <EmbeddedResource Include="Maps\West_Bank.xml" />
+    <EmbeddedResource Include="Maps\World.xml" />
+    <EmbeddedResource Include="Maps\Yemen.xml" />
+    <EmbeddedResource Include="Maps\Zambia.xml" />
+    <EmbeddedResource Include="Maps\Zimbabwe.xml" />
+    <Resource Include="fonts\css\Unicode编码.txt" />
+    <Resource Include="fonts\css\UTF-8编码.txt" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Resource Include="Resources\logo.ico" />
+    <Resource Include="Resources\logo.png" />
+    <Resource Include="Resources\windowsLogo.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

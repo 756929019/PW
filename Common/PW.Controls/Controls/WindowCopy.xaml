@@ -1,0 +1,176 @@
+﻿<Window x:Class="PW.Controls.WindowCopy"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PW.Controls"
+        mc:Ignorable="d"
+        Title="WindowCopy" Height="300" Width="300"
+        WindowState="Maximized" WindowStyle="None" 
+    ResizeMode="NoResize" Topmost="False" Loaded="Window_Loaded" 
+    ShowInTaskbar="False" MouseDown="Window_MouseDown" MouseMove="Window_MouseMove" MouseUp="Window_MouseUp" MouseDoubleClick="Window_MouseDoubleClick">
+    <Window.Resources>
+        <Style x:Key="ButtonFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="#885794AF" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ToolBtnStyle" TargetType="{x:Type RadioButton}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+            <Setter Property="Background" Value="#FF0BEC0B"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Width" Value="25"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Margin" Value="3,1"/>
+        </Style>
+        <Style x:Key="OkStyle" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ToolBtnStyle}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid Background="{TemplateBinding BorderBrush}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                            <Viewbox FlowDirection="LeftToRight" Margin="0,3,0,3" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Path Data="M392.533333 806.4L85.333333 503.466667l59.733334-59.733334 247.466666 247.466667L866.133333 213.333333l59.733334 59.733334L392.533333 806.4z" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
+                            </Viewbox>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="BorderBrush" Value="#AA808080"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" Value="#AA808080"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="CancelStyle" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ToolBtnStyle}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid Background="{TemplateBinding BorderBrush}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                            <Viewbox FlowDirection="LeftToRight" Margin="3,0,0,3" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Path Data="M576 512l277.333333 277.333333-64 64-277.333333-277.333333L234.666667 853.333333 170.666667 789.333333l277.333333-277.333333L170.666667 234.666667 234.666667 170.666667l277.333333 277.333333L789.333333 170.666667 853.333333 234.666667 576 512z" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
+                            </Viewbox>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="BorderBrush" Value="#AA808080"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" Value="#AA808080"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SaveStyle" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ToolBtnStyle}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid Background="{TemplateBinding BorderBrush}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                            <Viewbox FlowDirection="LeftToRight" Margin="3,3,0,3" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Path Data="M112 111.5v685.7c0 62.9 51.4 114.3 114.3 114.3H912v-800H112z m628.6 742.9H512V740.1H397.7v114.3H283.4V625.8h457.1v228.6z m57.1-400c0 28.6-28.6 57.1-57.1 57.1H283.4c-28.6 0-57.1-28.6-57.1-57.1V168.6h571.4v285.8z m0 0" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
+                            </Viewbox>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="BorderBrush" Value="#AA808080"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" Value="#AA808080"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="BoxStyle" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ToolBtnStyle}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid Background="{TemplateBinding BorderBrush}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                            <Viewbox FlowDirection="LeftToRight" Margin="3,3,0,3" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Path Data="M951.5 315.2v-240h-240v95h-399v-95h-240v240h95v393.6h-95v240h240v-95h399v95h240v-240h-95V315.2h95z m-190-190h140v140h-140v-140z m-639 140v-140h140v140h-140z m140 633.6h-140v-140h140v140z m639-140v140h-140v-140h140z m-95-50h-95v95h-399v-95h-95V315.2h95v-95h399v95h95v393.6z" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
+                            </Viewbox>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="BorderBrush" Value="#AA808080"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" Value="#AA808080"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="LineStyle" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ToolBtnStyle}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid Background="{TemplateBinding BorderBrush}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                            <Viewbox FlowDirection="LeftToRight" Margin="3,3,0,3" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Path Data="M947.958628 66.690912l12.21009 12.212136L79.309812 959.762977l-12.211113-12.213159L947.958628 66.690912z" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
+                            </Viewbox>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="BorderBrush" Value="#AA808080"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" Value="#AA808080"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Canvas>
+        <Polygon Name="polygonCopy"></Polygon>
+        <Rectangle Name="rectangleCopy" Cursor="SizeAll" Stroke="Red" StrokeThickness="1" Width="0" Height="0" MouseDown="rectangleCopy_MouseDown" MouseMove="rectangleCopy_MouseMove" MouseUp="rectangleCopy_MouseUp">
+            <Rectangle.Fill>
+                <SolidColorBrush>
+                    <SolidColorBrush.Color>
+                        <Color A="1"></Color>
+                    </SolidColorBrush.Color>
+                </SolidColorBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Canvas Name="myCanvas" Width="{Binding ElementName=rectangleCopy,Path=Width }" Height="{Binding ElementName=rectangleCopy,Path=Height }" Margin="{Binding ElementName=rectangleCopy,Path=Margin }" HorizontalAlignment="Left" VerticalAlignment="Top"></Canvas>
+        <Rectangle Name="rectLT" Cursor="SizeNWSE" Visibility="Hidden"  StrokeThickness="1" Width="5" Height="5" Fill="Red"></Rectangle>
+        <Rectangle Name="rectT" Cursor="SizeNS" Visibility="Hidden" StrokeThickness="1" Width="5" Height="5" Fill="Red"></Rectangle>
+        <Rectangle Name="rectTR" Cursor="SizeNESW" Visibility="Hidden" StrokeThickness="1" Width="5" Height="5" Fill="Red"></Rectangle>
+        <Rectangle Name="rectR" Cursor="SizeWE"  Visibility="Hidden" StrokeThickness="1" Width="5" Height="5" Fill="Red"></Rectangle>
+        <Rectangle Name="rectRB" Cursor="SizeNWSE"  Visibility="Hidden" StrokeThickness="1" Width="5" Height="5" Fill="Red"></Rectangle>
+        <Rectangle Name="rectB" Cursor="SizeNS"  Visibility="Hidden" StrokeThickness="1" Width="5" Height="5" Fill="Red"></Rectangle>
+        <Rectangle Name="rectBL" Cursor="SizeNESW"  Visibility="Hidden" StrokeThickness="1" Width="5" Height="5" Fill="Red"></Rectangle>
+        <Rectangle Name="rectL" Cursor="SizeWE"  Visibility="Hidden" StrokeThickness="1" Width="5" Height="5" Fill="Red"></Rectangle>
+        <StackPanel Name="toolsSp" VerticalAlignment="Center" Height="25" Orientation="Horizontal" HorizontalAlignment="Right" FlowDirection="RightToLeft" Background="#AA0E1111">
+            <RadioButton Name="btnOk" Click="btnOk_Click"  Style="{StaticResource OkStyle}"></RadioButton>
+            <RadioButton Name="btnCancel" Click="btnCancel_Click"  Style="{StaticResource CancelStyle}"></RadioButton>
+            <RadioButton Name="btnSave" Click="btnSave_Click"  Style="{StaticResource SaveStyle}"></RadioButton>
+        </StackPanel>
+        <StackPanel Name="SPMsg" Width="200" Height="90" Visibility="Hidden" Background="#AA0E1111">
+            <TextBlock Name="txtSize" Margin="10,8,10,0" Height="22" Text="" FontSize="14" Foreground="White"></TextBlock>
+            <TextBlock Name="txtPos" Margin="10,5,10,0" Height="22" Text="" FontSize="14" Foreground="White"></TextBlock>
+            <TextBlock Name="txtRGB" Margin="10,5,10,0" Height="22" Text="" FontSize="14" Foreground="White"></TextBlock>
+        </StackPanel>
+    </Canvas>
+</Window>

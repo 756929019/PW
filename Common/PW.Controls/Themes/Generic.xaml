@@ -1,0 +1,22 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:PW.Controls">
+    <!--自定义控件xaml集合-->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/PW.Controls;component/Controls/CommonPanel.xaml" />
+        <ResourceDictionary Source="/PW.Controls;component/Controls/SwitchButton.xaml" />
+        <ResourceDictionary Source="/PW.Controls;component/Controls/FiconButton.xaml" />
+        <ResourceDictionary Source="/PW.Controls;component/Controls/MultiComboBox.xaml" />
+        <ResourceDictionary Source="/PW.Controls;component/Controls/Gauge.xaml" />
+        <ResourceDictionary Source="/PW.Controls;component/Controls/Loading.xaml" />
+        <ResourceDictionary Source="/PW.Controls;component/Controls/BusyBox.xaml" />
+        <ResourceDictionary Source="/PW.Controls;component/Controls/ProgressRing.xaml" />
+        <ResourceDictionary Source="/PW.Controls;component/Controls/WindowBase.xaml" />
+        <ResourceDictionary Source="/PW.Controls;component/Controls/ColorSlider.xaml" />
+        <ResourceDictionary Source="/PW.Controls;component/Controls/SpectrumSlider.xaml" />
+        <ResourceDictionary Source="/PW.Controls;component/Controls/HsvControl.xaml" />
+        <ResourceDictionary Source="/PW.Controls;component/Controls/ColorPicker.xaml" />
+        <ResourceDictionary Source="/PW.Controls;component/Controls/ColorComboBox.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
