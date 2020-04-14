@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Controls.Primitives;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
+using DNBSoft.WPF;
 
 namespace PW.Desktop
 {
@@ -65,8 +66,25 @@ namespace PW.Desktop
             AllocConsole();
 #endif
             this.InitializeComponent();
+
+            InitializeResizeHandle();
         }
 
+        /// <summary>
+        /// ¼ÓÔØResizeÎ¯ÍÐ
+        /// </summary>
+        public void InitializeResizeHandle()
+        {
+            WindowResizer wr = new WindowResizer(this);
+            wr.addResizerRight(right);
+            wr.addResizerLeft(left);
+            wr.addResizerDown(bottom);
+            wr.addResizerLeftDown(leftbottom);
+            wr.addResizerRightDown(rightbottom);
+            //wr.addResizerUp(topSizeGrip);
+            //wr.addResizerLeftUp(topLeftSizeGrip);
+            //wr.addResizerRightUp(topRightSizeGrip);
+        }
         /// <summary>
         /// Logs the specified message.  Called by the CallbackLogger.
         /// </summary>
