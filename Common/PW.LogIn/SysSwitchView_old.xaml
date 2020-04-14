@@ -1,0 +1,324 @@
+﻿<UserControl x:Class="PW.LogIn.SysSwitchView_old"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+              xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:local="clr-namespace:PW.LogIn"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <PathGeometry x:Key="pathGeometry">
+            <PathFigure StartPoint="0,75">
+                <LineSegment Point="150,0"/>
+                <LineSegment Point="300,75"/>
+                <LineSegment Point="300,225"/>
+                <LineSegment Point="150,300"/>
+                <LineSegment Point="0,225"/>
+                <LineSegment Point="0,75"/>
+            </PathFigure>
+        </PathGeometry>
+            <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+                <Setter Property="Height" Value="300"/>
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="BorderThickness" Value="{DynamicResource Sys.Button.BorderThickness}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Sys.Button.BorderBrush}"/>
+            <Setter Property="Background" Value="{DynamicResource Sys.Button.BorderBrush}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Path Width="300" Height="300" Data="{StaticResource pathGeometry}" Fill="{TemplateBinding Background}" Stretch="Fill">
+                                <!--<Path.OpacityMask>
+                                    <RadialGradientBrush GradientOrigin="0.7,0.4" RadiusX="1" RadiusY="1">
+                                        <GradientStop Color="#AA008890" Offset="0"></GradientStop>
+                                        <GradientStop Color="#33005688" Offset="1"></GradientStop>
+                                    </RadialGradientBrush>
+                                </Path.OpacityMask>-->
+                            </Path>
+                            <Path x:Name="particlePath" Width="300" Height="300" Data="{StaticResource pathGeometry}" StrokeThickness="{TemplateBinding BorderThickness}"  Stretch="Fill" Stroke="{TemplateBinding BorderBrush}">
+                                <Path.Fill>
+                                    <RadialGradientBrush GradientOrigin="0.7,0.4" RadiusX="1" RadiusY="1">
+                                        <GradientStop Color="{DynamicResource Sys.Button.Color1}" Offset="0"></GradientStop>
+                                        <GradientStop Color="{DynamicResource Sys.Button.Color1}" Offset="1"></GradientStop>
+                                    </RadialGradientBrush>
+                                </Path.Fill>
+                            </Path>
+                            <!--<Path x:Name="particlePath" Data="F1 M -58.6817,264.938L -59.535,264.375C -59.5293,262.519 -59.5237,260.663 -59.5179,258.806C -59.5122,256.95 -59.5065,255.094 -59.5009,253.238C -59.4952,251.381 -59.4895,249.525 -59.4838,247.669C -59.4781,245.813 -59.4725,243.956 -59.4668,242.1C -59.461,240.244 -59.4554,238.387 -59.4497,236.531C -59.444,234.675 -59.4383,232.819 -59.4326,230.962C -59.4269,229.106 -59.4212,227.25 -59.4155,225.394C -59.4098,223.538 -59.4042,221.681 -59.3985,219.825C -59.3928,217.969 -59.3871,216.112 -59.3814,214.256C -59.3757,212.4 -59.37,210.544 -59.3643,208.688C -59.3586,206.831 -59.3529,204.975 -59.3473,203.119C -59.3416,201.262 -59.3359,199.406 -59.3302,197.55C -59.3245,195.694 -59.3188,193.837 -59.3131,191.981C -59.3075,190.125 -59.3018,188.269 -59.2961,186.413C -59.2904,184.556 -59.2847,182.7 -59.279,180.844C -59.2733,178.988 -59.2676,177.131 -59.2619,175.275C -59.2562,173.419 -59.2505,171.563 -59.2449,169.706C -59.2392,167.85 -59.2335,165.994 -59.2278,164.137C -59.2221,162.281 -59.2164,160.425 -59.2107,158.569C -59.205,156.713 -59.1994,154.856 -59.1937,153C -59.188,151.144 -59.1823,149.287 -59.1766,147.431C -59.1709,145.575 -59.1652,143.719 -59.1595,141.863C -59.1539,140.006 -59.1482,138.15 -59.1425,136.294C -59.1368,134.438 -59.1311,132.581 -59.1254,130.725C -59.1197,128.869 -59.114,127.012 -59.1083,125.156C -59.1027,123.3 -59.097,121.444 -59.0913,119.587C -59.0856,117.731 -59.0799,115.875 -59.0742,114.019C -59.0685,112.163 -59.0628,110.306 -59.0571,108.45C -59.0515,106.594 -59.0458,104.738 -59.0401,102.881C -59.0344,101.025 -59.0287,99.1687 -59.023,97.3125C -59.0173,95.4563 -59.0116,93.6 -59.0059,91.7437C -59.0003,89.8875 -58.9946,88.0313 -58.9888,86.175C -58.9832,84.3188 -58.9775,82.4625 -58.9718,80.6063C -58.9661,78.75 -58.9604,76.8938 -58.9548,75.0375C -58.9491,73.1813 -58.9433,71.325 -58.9377,69.4688C -58.932,67.6125 -58.9263,65.7562 -58.9206,63.9C -58.9149,62.0437 -58.9092,60.1875 -58.9035,58.3313C -58.8978,56.475 -58.8922,54.6188 -58.8865,52.7625C -58.8808,50.9063 -58.8751,49.05 -58.8694,47.1938C -58.8637,45.3375 -58.858,43.4812 -58.8524,41.625C -58.8467,39.7688 -58.841,37.9125 -58.8353,36.0562C -58.8296,34.2 -58.8239,32.3438 -58.8182,30.4875C -58.8125,28.6313 -58.8068,26.775 -58.8011,24.9188C -58.7955,23.0625 -58.7898,21.2063 -58.7841,19.35C -58.7784,17.4938 -58.7727,15.6375 -58.767,13.7813C -58.7613,11.925 -58.7556,10.0687 -58.7499,8.21249C -58.7442,6.35623 -58.7385,4.5 -58.7329,2.64377C -58.7272,0.787506 -58.7215,-1.06873 -58.7158,-2.92496C -58.7101,-4.78122 -58.7044,-6.63748 -58.6987,-8.49374C -58.693,-10.35 -59.9554,-12.407 -58.6817,-14.0625C -57.0538,-16.1782 -53.372,-17.2656 -50.7172,-18.8672C -48.0624,-20.4688 -45.4076,-22.0703 -42.7528,-23.6719C -40.098,-25.2734 -37.5896,-26.9873 -34.7883,-28.4766C -32.6466,-29.6151 -30.0581,-30.3605 -27.9617,-31.5352C -25.0595,-33.1613 -22.5572,-35.0742 -19.855,-36.8438C -17.1528,-38.6133 -14.5361,-40.4414 -11.7483,-42.1523C -10.4071,-42.9755 -9.01811,-43.7792 -7.48167,-44.4375C -6.15505,-45.0059 -4.46094,-45.1657 -3.21501,-45.8086C -1.42769,-46.7308 -0.0861206,-47.9766 1.47833,-49.0605C 3.04279,-50.1445 4.38434,-51.3903 6.17165,-52.3125C 7.4176,-52.9554 9.19238,-53.0407 10.4383,-53.6836C 12.2256,-54.6058 13.5672,-55.8516 15.1317,-56.9355C 16.6961,-58.0195 18.0377,-59.2653 19.825,-60.1875C 21.0709,-60.8304 22.8903,-60.8799 24.0917,-61.5586C 26.9277,-63.161 28.9356,-65.3351 31.7716,-66.9375C 32.9729,-67.6162 34.7924,-67.6657 36.0383,-68.3086C 37.8256,-69.2308 39.1672,-70.4766 40.7316,-71.5605C 42.2961,-72.6445 43.6377,-73.8903 45.425,-74.8125C 46.6709,-75.4553 48.4571,-75.5313 49.6917,-76.1836C 51.7764,-77.2852 53.3894,-78.7266 55.2383,-79.998C 57.0872,-81.2695 58.7002,-82.7109 60.785,-83.8125C 62.0195,-84.4648 63.8057,-84.5408 65.0517,-85.1836C 66.839,-86.1057 68.1805,-87.3516 69.745,-88.4355C 71.3094,-89.5195 72.651,-90.7654 74.4383,-91.6875C 75.6842,-92.3303 77.4591,-92.4158 78.705,-93.0586C 80.4923,-93.9807 81.8339,-95.2266 83.3983,-96.3105C 84.9628,-97.3945 86.3043,-98.6404 88.0917,-99.5625C 89.3376,-100.205 91.1124,-100.291 92.3583,-100.934C 94.1456,-101.856 95.4872,-103.102 97.0517,-104.186C 98.6161,-105.27 99.9577,-106.515 101.745,-107.438C 102.991,-108.08 104.777,-108.156 106.012,-108.809C 108.096,-109.91 109.709,-111.352 111.558,-112.623C 113.407,-113.895 115.02,-115.336 117.105,-116.438C 118.34,-117.09 120.126,-117.166 121.372,-117.809C 123.159,-118.731 124.501,-119.977 126.065,-121.061C 127.629,-122.145 128.971,-123.39 130.758,-124.313C 132.004,-124.955 133.824,-125.005 135.025,-125.684C 137.861,-127.286 139.869,-129.46 142.705,-131.063C 143.906,-131.741 145.726,-131.791 146.972,-132.434C 148.759,-133.356 150.101,-134.602 151.665,-135.686C 153.229,-136.77 154.571,-138.015 156.358,-138.938C 157.604,-139.58 159.379,-139.666 160.625,-140.309C 162.412,-141.231 163.754,-142.477 165.318,-143.561C 166.883,-144.645 168.224,-145.89 170.012,-146.813C 171.258,-147.455 173.043,-147.532 174.278,-148.184C 175.94,-149.06 176.523,-150.877 178.545,-151.313C 180.737,-151.785 183.342,-151.296 185.372,-150.574C 187.903,-149.674 189.544,-147.965 191.629,-146.66C 193.715,-145.355 195.801,-144.051 197.887,-142.746C 199.973,-141.441 201.818,-139.946 204.145,-138.832C 205.384,-138.239 207.188,-138.314 208.412,-137.707C 210.246,-136.797 211.541,-135.492 213.105,-134.385C 214.669,-133.277 216.001,-132.004 217.798,-131.063C 219.037,-130.414 220.864,-130.37 222.065,-129.691C 224.901,-128.089 226.909,-125.915 229.745,-124.313C 230.946,-123.634 232.766,-123.584 234.012,-122.941C 235.799,-122.019 237.141,-120.773 238.705,-119.689C 240.269,-118.605 241.611,-117.36 243.398,-116.438C 244.644,-115.795 246.43,-115.719 247.665,-115.066C 249.75,-113.965 251.363,-112.523 253.212,-111.252C 255.061,-109.98 256.674,-108.539 258.758,-107.438C 259.993,-106.785 261.779,-106.709 263.025,-106.066C 264.812,-105.144 266.154,-103.898 267.718,-102.814C 269.283,-101.73 270.624,-100.485 272.412,-99.5625C 273.658,-98.9197 275.432,-98.8342 276.678,-98.1914C 278.466,-97.2693 279.807,-96.0234 281.372,-94.9395C 282.936,-93.8555 284.278,-92.6096 286.065,-91.6875C 287.311,-91.0447 289.086,-90.9592 290.332,-90.3164C 292.119,-89.3943 293.461,-88.1484 295.025,-87.0645C 296.589,-85.9805 297.931,-84.7346 299.718,-83.8125C 300.964,-83.1697 302.75,-83.0937 303.985,-82.4414C 306.07,-81.3398 307.683,-79.8984 309.532,-78.627C 311.381,-77.3555 312.994,-75.9141 315.078,-74.8125C 316.313,-74.1602 318.099,-74.0843 319.345,-73.4414C 321.132,-72.5192 322.474,-71.2734 324.038,-70.1895C 325.603,-69.1055 326.944,-67.8597 328.732,-66.9375C 329.978,-66.2946 331.797,-66.2451 332.998,-65.5664C 335.834,-63.964 337.842,-61.7899 340.678,-60.1875C 341.88,-59.5088 343.699,-59.4593 344.945,-58.8164C 346.732,-57.8942 348.074,-56.6484 349.638,-55.5645C 351.203,-54.4805 352.544,-53.2347 354.332,-52.3125C 355.578,-51.6696 357.352,-51.5843 358.598,-50.9414C 360.386,-50.0192 361.727,-48.7734 363.292,-47.6895C 364.856,-46.6055 366.198,-45.3597 367.985,-44.4375C 369.231,-43.7946 371.006,-43.7093 372.252,-43.0664C 374.039,-42.1442 375.381,-40.8984 376.945,-39.8145C 378.509,-38.7305 379.851,-37.4847 381.638,-36.5625C 382.884,-35.9196 384.659,-35.8343 385.905,-35.1914C 387.692,-34.2692 389.034,-33.0234 390.598,-31.9395C 392.163,-30.8555 393.504,-29.6097 395.292,-28.6875C 396.538,-28.0446 398.324,-27.9688 399.558,-27.3164C 401.643,-26.2148 403.256,-24.7734 405.105,-23.502C 406.954,-22.2305 408.567,-20.7892 410.652,-19.6875C 411.886,-19.0352 413.698,-18.9807 414.918,-18.3164C 416.418,-17.4998 417.389,-16.3359 418.625,-15.3457C 419.861,-14.3555 421.799,-13.6082 422.332,-12.375C 423.1,-10.5968 422.312,-8.67752 422.303,-6.82877C 422.293,-4.97998 422.284,-3.13126 422.274,-1.2825C 422.264,0.566254 422.255,2.41501 422.245,4.26376C 422.236,6.11252 422.226,7.96124 422.216,9.81C 422.207,11.6588 422.197,13.5075 422.188,15.3562C 422.178,17.205 422.168,19.0537 422.159,20.9025C 422.149,22.7513 422.14,24.6 422.13,26.4488C 422.12,28.2975 422.111,30.1462 422.101,31.995C 422.092,33.8438 422.082,35.6925 422.072,37.5412C 422.063,39.39 422.053,41.2387 422.044,43.0875C 422.034,44.9362 422.024,46.785 422.015,48.6338C 422.005,50.4825 421.996,52.3312 421.986,54.18C 421.976,56.0288 421.967,57.8775 421.957,59.7262C 421.948,61.575 421.938,63.4237 421.928,65.2725C 421.919,67.1212 421.909,68.97 421.9,70.8188C 421.89,72.6675 421.88,74.5163 421.871,76.365C 421.861,78.2138 421.852,80.0625 421.842,81.9113C 421.833,83.76 421.823,85.6087 421.813,87.4575C 421.804,89.3062 421.794,91.155 421.784,93.0037C 421.775,94.8525 421.765,96.7012 421.756,98.55C 421.746,100.399 421.736,102.247 421.727,104.096C 421.717,105.945 421.708,107.794 421.698,109.643C 421.688,111.491 421.679,113.34 421.669,115.189C 421.66,117.038 421.65,118.886 421.64,120.735C 421.631,122.584 421.621,124.432 421.612,126.281C 421.602,128.13 421.592,129.979 421.583,131.827C 421.573,133.676 421.564,135.525 421.554,137.374C 421.544,139.222 421.535,141.071 421.525,142.92C 421.516,144.769 421.506,146.617 421.496,148.466C 421.487,150.315 421.477,152.164 421.468,154.012C 421.458,155.861 421.448,157.71 421.439,159.559C 421.429,161.408 421.42,163.256 421.41,165.105C 421.4,166.954 421.391,168.802 421.381,170.651C 421.372,172.5 421.362,174.349 421.352,176.198C 421.343,178.046 421.333,179.895 421.324,181.744C 421.314,183.592 421.304,185.441 421.295,187.29C 421.285,189.139 421.276,190.987 421.266,192.836C 421.256,194.685 421.247,196.534 421.237,198.382C 421.228,200.231 421.218,202.08 421.208,203.929C 421.199,205.778 421.189,207.626 421.18,209.475C 421.17,211.324 421.16,213.172 421.151,215.021C 421.141,216.87 421.132,218.719 421.122,220.568C 421.112,222.416 421.103,224.265 421.093,226.114C 421.084,227.962 421.074,229.811 421.064,231.66C 421.055,233.509 421.045,235.358 421.036,237.206C 421.026,239.055 421.016,240.904 421.007,242.752C 420.997,244.601 420.988,246.45 420.978,248.299C 420.969,250.147 420.959,251.996 420.949,253.845C 420.94,255.694 420.93,257.542 420.921,259.391C 420.911,261.24 422.075,263.261 420.892,264.938C 419.671,266.667 416.53,267.445 414.349,268.699C 412.169,269.953 409.988,271.207 407.807,272.461C 405.626,273.715 403.442,274.966 401.265,276.223C 398.606,277.758 395.955,279.298 393.301,280.836C 390.646,282.374 387.991,283.911 385.336,285.449C 382.681,286.987 380.026,288.525 377.372,290.062C 374.717,291.6 372.062,293.138 369.407,294.676C 366.752,296.214 364.098,297.751 361.443,299.289C 358.788,300.827 356.133,302.365 353.478,303.902C 350.824,305.44 348.169,306.978 345.514,308.516C 342.859,310.053 340.204,311.591 337.549,313.129C 334.895,314.667 332.219,316.189 329.585,317.742C 328,318.676 326.456,319.641 324.892,320.59C 323.327,321.539 321.928,322.623 320.198,323.438C 318.911,324.044 317.166,324.156 315.932,324.809C 313.847,325.91 312.234,327.352 310.385,328.623C 308.536,329.895 306.923,331.336 304.838,332.438C 303.604,333.09 301.818,333.166 300.572,333.809C 298.784,334.731 297.443,335.977 295.878,337.061C 294.314,338.145 292.972,339.39 291.185,340.313C 289.939,340.955 288.164,341.041 286.918,341.684C 285.131,342.606 283.789,343.852 282.225,344.936C 280.661,346.02 279.319,347.265 277.532,348.188C 276.286,348.83 274.5,348.906 273.265,349.559C 271.18,350.66 269.567,352.102 267.718,353.373C 265.869,354.645 264.256,356.086 262.172,357.188C 260.937,357.84 259.151,357.916 257.905,358.559C 256.118,359.481 254.776,360.727 253.212,361.811C 251.647,362.895 250.306,364.14 248.518,365.063C 247.272,365.705 245.498,365.791 244.252,366.434C 242.464,367.356 241.123,368.602 239.558,369.686C 237.994,370.77 236.652,372.015 234.865,372.938C 233.619,373.58 231.844,373.666 230.598,374.309C 228.811,375.231 227.469,376.477 225.905,377.561C 224.341,378.645 222.999,379.89 221.212,380.813C 219.966,381.455 218.146,381.505 216.945,382.184C 214.109,383.786 212.101,385.96 209.265,387.563C 208.064,388.241 206.244,388.291 204.998,388.934C 203.211,389.856 201.869,391.102 200.305,392.186C 198.741,393.27 197.399,394.515 195.612,395.438C 194.366,396.08 192.546,396.13 191.345,396.809C 188.509,398.411 187.025,401.113 183.665,402.188C 181.59,402.851 178.83,402.216 176.838,401.449C 173.871,400.307 171.908,398.293 169.443,396.715C 166.978,395.137 164.512,393.559 162.047,391.98C 159.582,390.402 157.429,388.58 154.652,387.246C 153.713,386.795 152.179,387.238 151.238,386.789C 148.464,385.466 146.308,383.656 143.843,382.09C 141.378,380.523 138.912,378.957 136.447,377.391C 133.982,375.824 131.8,374.038 129.052,372.691C 128.107,372.228 126.579,372.56 125.638,372.094C 122.697,370.636 120.329,368.734 117.674,367.055C 115.019,365.375 112.364,363.695 109.709,362.016C 107.055,360.336 104.673,358.445 101.745,356.977C 100.8,356.503 99.2904,356.77 98.3317,356.309C 95.9422,355.159 94.065,353.607 91.9316,352.257C 89.7983,350.906 87.665,349.556 85.5317,348.205C 83.3983,346.855 81.265,345.504 79.1317,344.153C 76.9983,342.803 75.1211,341.251 72.7317,340.102C 71.7729,339.64 70.279,339.893 69.3183,339.434C 66.9317,338.292 65.0517,336.75 62.9183,335.408C 60.785,334.066 58.6517,332.725 56.5183,331.383C 54.385,330.041 52.2517,328.699 50.1183,327.357C 47.985,326.016 46.0971,324.481 43.7183,323.332C 42.4826,322.735 40.6224,322.858 39.4517,322.207C 36.557,320.597 34.6219,318.331 31.7716,316.688C 30.5809,316.001 28.7509,315.959 27.505,315.316C 25.7177,314.394 24.3761,313.148 22.8116,312.064C 21.2472,310.98 19.9056,309.735 18.1183,308.813C 16.8724,308.17 15.0976,308.084 13.8516,307.441C 12.0643,306.519 10.7228,305.273 9.15833,304.189C 7.59387,303.105 6.25232,301.86 4.46499,300.938C 3.21906,300.295 1.44425,300.209 0.198324,299.566C -1.58899,298.644 -2.93056,297.398 -4.49502,296.314C -6.05947,295.23 -7.40102,293.985 -9.18833,293.063C -10.4343,292.42 -12.2091,292.334 -13.455,291.691C -15.2423,290.769 -16.5839,289.523 -18.1483,288.439C -19.7128,287.355 -21.0544,286.11 -22.8417,285.188C -24.0876,284.545 -25.8624,284.459 -27.1083,283.816C -28.8957,282.894 -30.2372,281.648 -31.8017,280.564C -33.3661,279.48 -34.7077,278.235 -36.495,277.313C -37.7409,276.67 -39.5271,276.594 -40.7617,275.941C -42.8464,274.84 -44.4595,273.398 -46.3083,272.127C -48.1572,270.855 -49.7703,269.414 -51.855,268.313C -53.0895,267.66 -54.8559,267.567 -56.1217,266.941C -57.1815,266.417 -57.8284,265.605 -58.6817,264.938 Z " 
+                                  Fill="{TemplateBinding Background}" Stretch="Fill" Stroke="Black"/>-->
+
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Fill" TargetName="particlePath">
+                                    <Setter.Value>
+                                        <RadialGradientBrush GradientOrigin="0.7,0.4" RadiusX="1" RadiusY="1">
+                                            <GradientStop Color="{DynamicResource Sys.Button.Color1}" Offset="0"></GradientStop>
+                                            <GradientStop Color="{DynamicResource Sys.Button.Color2}" Offset="1"></GradientStop>
+                                        </RadialGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Stroke" TargetName="particlePath" Value="{DynamicResource Sys.Button.MouseOver.BorderBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid >
+        <Viewbox>
+        <Grid x:Name="LayoutRoot" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.Background>
+                    <ImageBrush ImageSource="pack://application:,,/PW.LogIn;component/Resources/fw.png"/>
+            </Grid.Background>
+                <Grid Width="618" Height="242" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,0,0,0" >
+                <Grid Width="500" Height="120" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,0,0,0" Background="{DynamicResource ModuleControl.Panel.BackgroundBrush}" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="90"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Ellipse x:Name="logo_bg_guang3" Width="55" Height="55" Canvas.Left="16.8822"  Fill="{DynamicResource Sys.Logo.ImageBrush}" Canvas.Top="15.0557" Stretch="Fill"></Ellipse>
+                    <TextBlock Grid.Column="1" Text="{DynamicResource System.Title}" FontSize="32" TextAlignment="Left" HorizontalAlignment="Left" Margin="20,0,0,0" Foreground="{DynamicResource ModuleControl.TextBlock.Foreground}" FontWeight="Bold" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Canvas Grid.Row="1" Width="900" Height="750">
+                <Button Tag="MapModule" x:Name="navBtn1" Click="Button_Click" Canvas.Top="0"  Canvas.Left="150" Style="{StaticResource ButtonStyle1}" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <Button.Background>
+                        <ImageBrush x:Name="navImg1" ImageSource="pack://application:,,/PW.LogIn;component/Resources/sunset.jpg"/>
+                    </Button.Background>
+                    <Grid  Width="200" Height="200" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="navTxt1" Text="" Grid.Row="1" Foreground="White" FontSize="32" TextAlignment="Center"/>
+                    </Grid>
+                </Button>
+                <Button Tag="SystemSetModule" x:Name="navBtn2" Click="Button_Click" Canvas.Top="0" Canvas.Left="450" Style="{StaticResource ButtonStyle1}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button.Background>
+                        <ImageBrush x:Name="navImg2" ImageSource="pack://application:,,/PW.LogIn;component/Resources/sunset.jpg"/>
+                    </Button.Background>
+                    <Grid  Width="200" Height="200" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="navTxt2" Text="" Grid.Row="1" Foreground="White" FontSize="32" TextAlignment="Center"/>
+                    </Grid>
+                </Button>
+                <Button Tag="SystemSetModule" Click="Button_Click"  Canvas.Top="225" Canvas.Left="0" x:Name="navBtn3" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Style="{StaticResource ButtonStyle1}" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <Button.Background>
+                        <ImageBrush x:Name="navImg3" ImageSource="pack://application:,,/PW.LogIn;component/Resources/sunset.jpg"/>
+                    </Button.Background>
+                    <Grid  Width="200" Height="200" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="navTxt3" Text="" Grid.Row="1" Foreground="White" FontSize="32" TextAlignment="Center"/>
+                    </Grid>
+                </Button>
+                <Button Tag="SystemSetModule" Click="Button_Click" Canvas.Top="225" Canvas.Left="300" x:Name="navBtn4" Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Style="{StaticResource ButtonStyle1}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button.Background>
+                        <ImageBrush x:Name="navImg4" ImageSource="pack://application:,,/PW.LogIn;component/Resources/sunset.jpg"/>
+                    </Button.Background>
+                    <Grid  Width="200" Height="200" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="navTxt4" Text="" Grid.Row="1" Foreground="White" FontSize="32" TextAlignment="Center"/>
+                    </Grid>
+                </Button>
+                <Button Tag="SystemSetModule" x:Name="navBtn5" Click="Button_Click" Canvas.Top="225" Canvas.Left="600" Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Style="{StaticResource ButtonStyle1}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button.Background>
+                        <ImageBrush x:Name="navImg5" ImageSource="pack://application:,,/PW.LogIn;component/Resources/sunset.jpg"/>
+                    </Button.Background>
+                    <Grid  Width="200" Height="200" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="navTxt5" Text="" Grid.Row="1" Foreground="White" FontSize="32" TextAlignment="Center"/>
+                    </Grid>
+                </Button>
+                <Button Tag="SystemSetModule" x:Name="navBtn6" Click="Button_Click" Canvas.Top="450" Canvas.Left="150" Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Style="{StaticResource ButtonStyle1}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button.Background>
+                        <ImageBrush x:Name="navImg6" ImageSource="pack://application:,,/PW.LogIn;component/Resources/sunset.jpg"/>
+                    </Button.Background>
+                    <Grid  Width="200" Height="200" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="navTxt6" Text="" Grid.Row="1" Foreground="White" FontSize="32" TextAlignment="Center"/>
+                    </Grid>
+                </Button>
+                <Button Tag="SystemSetModule" x:Name="navBtn7" Click="Button_Click" Canvas.Top="450" Canvas.Left="450" Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Style="{StaticResource ButtonStyle1}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button.Background>
+                        <ImageBrush x:Name="navImg7" ImageSource="pack://application:,,/PW.LogIn;component/Resources/sunset.jpg"/>
+                    </Button.Background>
+                    <Grid  Width="200" Height="200" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="navTxt7" Text="" Grid.Row="1" Foreground="White" FontSize="32" TextAlignment="Center"/>
+                    </Grid>
+                </Button>
+                <Grid Grid.Column="1" Name="grid_Animation">
+                    <Grid.Resources>
+                        <Storyboard x:Key="brdPathAni" AutoReverse="True" RepeatBehavior="Forever" >
+                         
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PointAnimation1" Storyboard.TargetProperty="X" Duration="0:0:6" RepeatBehavior="Forever">
+                                <LinearDoubleKeyFrame Value="300" KeyTime="0:0:0"/>
+                                <LinearDoubleKeyFrame Value="300" KeyTime="0:0:1"/>
+                                <LinearDoubleKeyFrame Value="450" KeyTime="0:0:2"/>
+                                <LinearDoubleKeyFrame Value="600" KeyTime="0:0:3"/>
+                                <LinearDoubleKeyFrame Value="750" KeyTime="0:0:4"/>
+                                <LinearDoubleKeyFrame Value="750" KeyTime="0:0:5"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PointAnimation1" Storyboard.TargetProperty="Y" Duration="0:0:6" RepeatBehavior="Forever">
+                                <LinearDoubleKeyFrame Value="300" KeyTime="0:0:0"/>
+                                <LinearDoubleKeyFrame Value="450" KeyTime="0:0:1"/>
+                                <LinearDoubleKeyFrame Value="525" KeyTime="0:0:2"/>
+                                <LinearDoubleKeyFrame Value="450" KeyTime="0:0:3"/>
+                                <LinearDoubleKeyFrame Value="525" KeyTime="0:0:4"/>
+                                <LinearDoubleKeyFrame Value="675" KeyTime="0:0:5"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PointAnimation2" Storyboard.TargetProperty="Angle" Duration="0:0:6" RepeatBehavior="Forever">
+                                <LinearDoubleKeyFrame Value="90" KeyTime="0:0:0"/>
+                                <LinearDoubleKeyFrame Value="90" KeyTime="0:0:1"/>
+                                <LinearDoubleKeyFrame Value="30" KeyTime="0:0:1"/>
+                                <LinearDoubleKeyFrame Value="30" KeyTime="0:0:2"/>
+                                <LinearDoubleKeyFrame Value="-30" KeyTime="0:0:2"/>
+                                <LinearDoubleKeyFrame Value="-30" KeyTime="0:0:3"/>
+                                <LinearDoubleKeyFrame Value="30" KeyTime="0:0:3"/>
+                                <LinearDoubleKeyFrame Value="30" KeyTime="0:0:4"/>
+                                <LinearDoubleKeyFrame Value="90" KeyTime="0:0:4"/>
+                                <LinearDoubleKeyFrame Value="90" KeyTime="0:0:5"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PointAnimation2" Storyboard.TargetProperty="CenterX" Duration="0:0:6" RepeatBehavior="Forever">
+                                <LinearDoubleKeyFrame Value="300" KeyTime="0:0:0"/>
+                                <LinearDoubleKeyFrame Value="300" KeyTime="0:0:1"/>
+                                <LinearDoubleKeyFrame Value="450" KeyTime="0:0:2"/>
+                                <LinearDoubleKeyFrame Value="600" KeyTime="0:0:3"/>
+                                <LinearDoubleKeyFrame Value="750" KeyTime="0:0:4"/>
+                                <LinearDoubleKeyFrame Value="750" KeyTime="0:0:5"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PointAnimation2" Storyboard.TargetProperty="CenterY" Duration="0:0:6" RepeatBehavior="Forever">
+                                <LinearDoubleKeyFrame Value="300" KeyTime="0:0:0"/>
+                                <LinearDoubleKeyFrame Value="450" KeyTime="0:0:1"/>
+                                <LinearDoubleKeyFrame Value="525" KeyTime="0:0:2"/>
+                                <LinearDoubleKeyFrame Value="450" KeyTime="0:0:3"/>
+                                <LinearDoubleKeyFrame Value="525" KeyTime="0:0:4"/>
+                                <LinearDoubleKeyFrame Value="675" KeyTime="0:0:5"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="pointGrid" Storyboard.TargetProperty="(UIElement.Opacity)" Duration="0:0:6" RepeatBehavior="Forever">
+                                <LinearDoubleKeyFrame Value="1" KeyTime="0:0:0"/>
+                                <LinearDoubleKeyFrame Value="1" KeyTime="0:0:1"/>
+                                <LinearDoubleKeyFrame Value="1" KeyTime="0:0:2"/>
+                                <LinearDoubleKeyFrame Value="0.5" KeyTime="0:0:3"/>
+                                <LinearDoubleKeyFrame Value="0.25" KeyTime="0:0:4"/>
+                                <LinearDoubleKeyFrame Value="0" KeyTime="0:0:5"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </Grid.Resources>
+                    <Grid.Triggers>
+                        <EventTrigger RoutedEvent="Control.Loaded">
+                            <BeginStoryboard Storyboard="{StaticResource brdPathAni}" />
+                        </EventTrigger>
+                    </Grid.Triggers>
+                    <Path Stroke="Red" StrokeThickness="2">
+                        <Path.Data>
+                            <PathGeometry>
+                                <PathFigure StartPoint="300,300">
+                                    <LineSegment Point="300,450"/>
+                                    <LineSegment Point="450,525"/>
+                                    <LineSegment Point="600,450"/>
+                                    <LineSegment Point="750,525"/>
+                                    <LineSegment Point="750,675"/>
+                                </PathFigure>
+                            </PathGeometry>
+                        </Path.Data>
+                    </Path>
+                    <Path Stroke="Blue" StrokeThickness="2">
+                        <Path.Data>
+                            <PathGeometry>
+                                <PathFigure StartPoint="450,525">
+                                    <LineSegment Point="600,450"/>
+                                    <LineSegment Point="600,300"/>
+                                    <LineSegment Point="450,225"/>
+                                    <LineSegment Point="450,75"/>
+                                    <LineSegment Point="600,0"/>
+                                </PathFigure>
+                            </PathGeometry>
+                        </Path.Data>
+                    </Path>
+                    <Path Stroke="Green" StrokeThickness="2">
+                        <Path.Data>
+                            <PathGeometry>
+                                <PathFigure StartPoint="600,300">
+                                    <LineSegment Point="450,225"/>
+                                    <LineSegment Point="300,300"/>
+                                    <LineSegment Point="300,450"/>
+                                    <LineSegment Point="150,525"/>
+                                    <LineSegment Point="0,450"/>
+                                </PathFigure>
+                            </PathGeometry>
+                        </Path.Data>
+                    </Path>
+                    <Grid IsHitTestVisible ="False" x:Name="pointGrid" HorizontalAlignment ="Left" VerticalAlignment="Top" Width="40" Height="15" RenderTransformOrigin="0.5,0.5" Margin="-20,-7.5,0,0">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform x:Name="PointAnimation1"/>
+                                <RotateTransform x:Name="PointAnimation2" Angle="0" CenterX="0" CenterY="0"></RotateTransform>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+                        <Ellipse Width="40" Height="15" Fill="#FF005688">
+                            <Ellipse.OpacityMask>
+                                <RadialGradientBrush GradientOrigin="0.8, 0.5">
+                                    <GradientStop Color="#FF000000" Offset="0"></GradientStop>
+                                    <GradientStop Color="#33000000" Offset="1"></GradientStop>
+                                </RadialGradientBrush>
+                            </Ellipse.OpacityMask>
+                        </Ellipse>
+                        <Path x:Name="pointPath" Width="30" Height="4" Data="M244.5,98.5 L273.25,93.75 C278.03113,96.916667 277.52785,100.08333 273.25,103.25 z" 
+                                  Stretch="Fill">
+                            <Path.Fill>
+                                <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 0">
+                                    <GradientStop Color="#88000000" Offset="0"></GradientStop>
+                                    <GradientStop Color="#FFFFFFFF" Offset="1"></GradientStop>
+                                </LinearGradientBrush>
+                            </Path.Fill>
+                            <Path.Triggers>
+                              
+                            </Path.Triggers>
+                        </Path>
+                    </Grid>
+                </Grid>
+            </Canvas>
+            <!--<TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF0066FF" Text="{DynamicResource System.Copyright}" FontSize="16" Margin="0,45,0,0" Height="25"/>-->
+        </Grid>
+        </Viewbox>
+    </Grid>
+</UserControl>

@@ -1,0 +1,91 @@
+﻿<UserControl x:Class="PW.LogIn.Login"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PW.LogIn"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+    </UserControl.Resources>
+    <Grid >
+        <Viewbox Margin="0" Stretch="Fill">
+            <Grid x:Name="layout" Width="560" Height="280">
+                
+            </Grid>
+        </Viewbox>
+        <Viewbox>
+            <Grid x:Name="LayoutRoot" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <!--<Image Grid.Row="1" Source="pack://application:,,/PW.LogIn;component/Resources/login_bg.png"></Image>-->
+                <Grid Width="618" Height="242" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,0,0,0" >
+                    <Grid Width="500" Height="120" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,0,0,0" Background="{DynamicResource ModuleControl.Panel.BackgroundBrush}" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Ellipse x:Name="logo_bg_guang3" Width="55" Height="55" Canvas.Left="16.8822"  Fill="{DynamicResource Sys.Logo.ImageBrush}" Canvas.Top="15.0557" Stretch="Fill"></Ellipse>
+                        <TextBlock Grid.Column="1" Text="{DynamicResource System.Title}" FontSize="32" TextAlignment="Left" HorizontalAlignment="Left" Margin="20,0,0,0" Foreground="{DynamicResource ModuleControl.TextBlock.Foreground}" FontWeight="Bold" VerticalAlignment="Center"/>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="1" Height="400" Width="400" HorizontalAlignment="Center"  Margin="0,0,0,0" Background="{DynamicResource ModuleControl.Panel.BackgroundBrush}">
+                    <!--Background="{DynamicResource ModuleControl.Panel.BackgroundBrush}"-->
+                    <Grid x:Name="gcLogin" Height="300" Width="301" VerticalAlignment="Center" Grid.Row="1" Margin="0,-20,0,0" HorizontalAlignment="Center" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock TextWrapping="Wrap" Text="帐  号：" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="32"/>
+                        <TextBlock TextWrapping="Wrap" Text="密  码：" HorizontalAlignment="Left" Foreground="White" FontSize="32" Grid.Row="2" d:LayoutOverrides="Height" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtName" Grid.Row="1" VerticalContentAlignment="Center" Text="{Binding Name, Mode=TwoWay}" VerticalAlignment="Top" Height="46" FontSize="26.667" />
+                        <Path Width="272.337" Height="2" Canvas.Left="570.089" Canvas.Top="472.846" Stretch="Fill" Data="F1 M 570.756,473.513L 841.76,474.113" StrokeThickness="1.33333" StrokeLineJoin="Round" Grid.Row="1" UseLayoutRounding="False" VerticalAlignment="Top">
+                            <Path.Stroke>
+                                <RadialGradientBrush RadiusX="1" RadiusY="140.821" Center="2.24116e-007,0.344748" GradientOrigin="2.24116e-007,0.344748">
+                                    <RadialGradientBrush.RelativeTransform>
+                                        <TransformGroup/>
+                                    </RadialGradientBrush.RelativeTransform>
+                                    <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                    <GradientStop Color="#80FFFFFF" Offset="0.257009"/>
+                                    <GradientStop Color="#FFFFFFFF" Offset="0.537383"/>
+                                    <GradientStop Color="#80FFFFFF" Offset="0.78972"/>
+                                    <GradientStop Color="#00FFFFFF" Offset="0.985981"/>
+                                </RadialGradientBrush>
+                            </Path.Stroke>
+                        </Path>
+                        <PasswordBox VerticalContentAlignment="Center" x:Name="txtPassword" Grid.Row="3" FontSize="26.667" PasswordChar="*" local:PasswordBoxHelper.Attach="True"
+                              VerticalAlignment="Top" Height="46" KeyDown="txtPassword_KeyDown"
+                local:PasswordBoxHelper.Password="{Binding Path=Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                        <Path Width="272.337" Height="2" Stretch="Fill" Data="F1 M 570.756,473.513L 841.76,474.113" StrokeThickness="1.33333" StrokeLineJoin="Round" Grid.Row="3" UseLayoutRounding="False" VerticalAlignment="Top">
+                            <Path.Stroke>
+                                <RadialGradientBrush RadiusX="1" RadiusY="140.821" Center="2.24116e-007,0.344748" GradientOrigin="2.24116e-007,0.344748">
+                                    <RadialGradientBrush.RelativeTransform>
+                                        <TransformGroup/>
+                                    </RadialGradientBrush.RelativeTransform>
+                                    <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                    <GradientStop Color="#80FFFFFF" Offset="0.257009"/>
+                                    <GradientStop Color="#FFFFFFFF" Offset="0.537383"/>
+                                    <GradientStop Color="#80FFFFFF" Offset="0.78972"/>
+                                    <GradientStop Color="#00FFFFFF" Offset="0.985981"/>
+                                </RadialGradientBrush>
+                            </Path.Stroke>
+                        </Path>
+                        <Button x:Name="btnLogin" Content="登 录" Grid.Row="4" Width="146" FontSize="29.333" Cursor="Hand" Click="btnLogin_Click" HorizontalAlignment="Left" Margin="0,15,0,0"/>
+                        <CheckBox x:Name="cbxRemPassword" Content="记住用户" IsChecked="True" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="26.667" Foreground="White" Grid.Row="4" Margin="0,0,6,0"/>
+                    </Grid>
+                </Grid>
+                <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF0066FF" Text="{DynamicResource System.Copyright}" FontSize="16" Margin="0,45,0,0" Height="25"/>
+                <Border x:Name="loadingInfo" Height="400" Width="400" Grid.Row="1" VerticalAlignment="Bottom" Visibility="Collapsed" HorizontalAlignment="Center" Background="#34FFFFFF">
+                    <TextBlock Text="正在加载数据，请稍候..." Margin="20,10" FontSize="14" VerticalAlignment="Bottom"/>
+                </Border>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</UserControl>
