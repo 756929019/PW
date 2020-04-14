@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="76f39400-9ffe-4fe5-a8a4-b4948bd3bbfd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:43247/ServiceStatistics.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServiceStatistics.xsd" MetadataType="Schema" ID="c6da7fec-3849-4b69-b269-cc0c6ecd9513" SourceId="1" SourceUrl="http://localhost:43247/ServiceStatistics.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServiceStatistics1.xsd" MetadataType="Schema" ID="63a6a44c-f43a-4fad-bc25-4bef581795c8" SourceId="1" SourceUrl="http://localhost:43247/ServiceStatistics.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceStatistics2.xsd" MetadataType="Schema" ID="9807ee2e-294f-487f-ac04-4abde173d03d" SourceId="1" SourceUrl="http://localhost:43247/ServiceStatistics.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServiceStatistics.wsdl" MetadataType="Wsdl" ID="b64f27bd-23be-4582-8104-f7f397b8ca7d" SourceId="1" SourceUrl="http://localhost:43247/ServiceStatistics.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

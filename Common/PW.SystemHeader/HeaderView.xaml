@@ -1,0 +1,598 @@
+﻿<UserControl x:Class="PW.SystemHeader.HeaderView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+              xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:local="clr-namespace:PW.SystemHeader"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="1500">
+    <UserControl.Resources>
+        <LinearGradientBrush x:Key="HBtnBackground" StartPoint="0.499998,-0.12872" EndPoint="0.499998,1.0374">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Color="#2D000000" Offset="0.223256"/>
+                <GradientStop Color="#2D000000" Offset="0.511629"/>
+                <GradientStop Color="#2D000000" Offset="0.804651"/>
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="BtnBorderBackground" StartPoint="0.5,-0.0303499" EndPoint="0.5,1.16864">
+            <GradientStop Color="#02FFFFFF" Offset="0.158879"/>
+            <GradientStop Color="#02246FFC" Offset="0.401869"/>
+            <GradientStop Color="#19000000" Offset="0.516382"/>
+            <GradientStop Color="#23000000" Offset="0.593458"/>
+            <GradientStop Color="#2C000000" Offset="0.719626"/>
+            <GradientStop Color="#39000000" Offset="0.813084"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="BtnBorderTopBackground" StartPoint="-0.996272,-0.638176" EndPoint="-0.996272,0.941118">
+            <GradientStop Color="#8897ACFD" Offset="0"/>
+            <GradientStop Color="#0097ACFD" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="BtnCheckBackground" StartPoint="0.500074,0.0485452" EndPoint="0.500074,1.21466">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Color="#3300A4C5" Offset="0.087"/>
+                <GradientStop Color="#11008A85" Offset="0.387"/>
+                <GradientStop Color="#33702817" Offset="0.817"/>
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="BtnMouseOverBackground" StartPoint="0.500006,-0.969115" EndPoint="0.500006,1.21531">
+            <GradientStop Color="#AAF1BD37" Offset="0"/>
+            <GradientStop Color="#11F1BD37" Offset="1"/>
+        </LinearGradientBrush>
+        <Style x:Key="ToggleButtonFirstStyle" TargetType="ToggleButton">
+            <Setter Property="Background" Value="{StaticResource HBtnBackground}"/>
+            <Setter Property="Foreground" Value="#FFFFFFFF"/>
+            <Setter Property="Padding" Value="3"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#FFE48710"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="border">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed"/>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="CheckStates">
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="bg_20_Copy">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unchecked"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused"/>
+                                    <VisualState x:Name="Unfocused"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border Background="{TemplateBinding Background}" Margin="0" CornerRadius="12,0,0,12">
+                                <Grid>
+                                    <Border x:Name="bg_20" Background="{StaticResource BtnBorderBackground}" BorderThickness="0" CornerRadius="12,0,0,12" >
+                                        <Border.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#4D000000" Offset="0"/>
+                                                <GradientStop Color="#00000000" Offset="0.75"/>
+                                            </LinearGradientBrush>
+                                        </Border.BorderBrush>
+                                    </Border>
+                                    <Border Height="17" Background="{StaticResource BtnBorderTopBackground}" VerticalAlignment="Top" CornerRadius="12,0,0,0">
+                                        <Border.BorderBrush>
+                                            <LinearGradientBrush StartPoint="0.500006,-0.969115" EndPoint="0.500006,1.21531">
+                                                <GradientStop Color="#FF97ACFD" Offset="0"/>
+                                                <GradientStop Color="#0097ACFD" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Border.BorderBrush>
+                                    </Border>
+                                    <Border x:Name="border" Background="{StaticResource BtnMouseOverBackground}" VerticalAlignment="Top" CornerRadius="12,0,0,0" Visibility="Collapsed">
+                                        <Border.BorderBrush>
+                                            <LinearGradientBrush StartPoint="0.500006,-0.969115" EndPoint="0.500006,1.21531">
+                                                <GradientStop Color="#FF97ACFD" Offset="0"/>
+                                                <GradientStop Color="#0097ACFD" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Border.BorderBrush>
+                                    </Border>
+                                    <Border x:Name="bg_20_Copy" Visibility="Collapsed" Background="{StaticResource BtnCheckBackground}" BorderThickness="0" CornerRadius="12,0,0,12" >
+                                        <Border.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#9AFF3300" Offset="0"/>
+                                                <GradientStop Color="#00244BC4" Offset="0.75"/>
+                                            </LinearGradientBrush>
+                                        </Border.BorderBrush>
+                                    </Border>
+                                    <Path x:Name="leftlight1" Width="4.216" Height="13.924" Stretch="Fill" Data="F1 M 878.527,39.3707C 879.645,39.3707 879.69,43.4011 879.383,46.5383C 879.053,49.9055 879.99,53.295 878.79,53.295C 876.472,53.295 875.33,50.2454 875.33,46.483C 875.33,42.7205 876.209,39.3707 878.527,39.3707 Z " HorizontalAlignment="Left"  UseLayoutRounding="False" VerticalAlignment="Center">
+                                        <Path.Fill>
+                                            <RadialGradientBrush RadiusX="21.9682" RadiusY="0.484663" Center="2.72637,0.534944" GradientOrigin="2.72637,0.534944">
+                                                <RadialGradientBrush.RelativeTransform>
+                                                    <TransformGroup/>
+                                                </RadialGradientBrush.RelativeTransform>
+                                                <GradientStop Color="#FFFFFFFF" Offset="0"/>
+                                                <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                            </RadialGradientBrush>
+                                        </Path.Fill>
+                                    </Path>
+                                </Grid>
+                            </Border>
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ToggleButtonLastStyle" TargetType="ToggleButton">
+            <Setter Property="Background" Value="{StaticResource HBtnBackground}"/>
+            <Setter Property="Foreground" Value="#FFFFFFFF"/>
+            <Setter Property="Padding" Value="3"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#FFE48710"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="border1">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed"/>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="CheckStates">
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="border">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unchecked"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused"/>
+                                    <VisualState x:Name="Unfocused"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border x:Name="Background" CornerRadius="0,12,12,0">
+                                <Border Background="{TemplateBinding Background}" Margin="0" CornerRadius="0,12,12,0">
+                                    <Grid>
+                                        <Border CornerRadius="0,12,12,0" Background="{StaticResource BtnBorderBackground}" >
+                                            <Border.BorderBrush>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#4D000000" Offset="0"/>
+                                                    <GradientStop Color="#00244BC4" Offset="0.75"/>
+                                                </LinearGradientBrush>
+                                            </Border.BorderBrush>
+                                        </Border>
+                                        <Border Height="17" Background="{StaticResource BtnBorderTopBackground}"  VerticalAlignment="Top" BorderThickness="0" CornerRadius="0,12,0,0">
+                                        </Border>
+                                        <Border x:Name="border1" Background="{StaticResource BtnMouseOverBackground}" VerticalAlignment="Top" BorderThickness="0" CornerRadius="0,12,0,0" Visibility="Collapsed">
+                                        </Border>
+                                        <Border x:Name="border" Visibility="Collapsed" Background="{StaticResource BtnCheckBackground}" CornerRadius="0,12,12,0">
+                                        </Border>
+                                        <Path x:Name="rightlight_Copy" Stretch="Fill" Data="F1 M 1384.34,39.3708C 1383.22,39.3708 1383.18,43.4012 1383.48,46.5385C 1383.81,49.9055 1382.88,53.2951 1384.08,53.2951C 1386.39,53.2951 1387.54,50.2456 1387.54,46.4832C 1387.54,42.7206 1386.66,39.3708 1384.34,39.3708 Z " UseLayoutRounding="False" Margin="0" HorizontalAlignment="Right" Width="4.216" Height="13.924" VerticalAlignment="Center">
+                                            <Path.Fill>
+                                                <RadialGradientBrush RadiusX="21.9679" RadiusY="0.484671" Center="-1.72635,0.534948" GradientOrigin="-1.72635,0.534948">
+                                                    <RadialGradientBrush.RelativeTransform>
+                                                        <TransformGroup>
+                                                            <RotateTransform CenterX="-1.72635" CenterY="0.534948" Angle="180"/>
+                                                        </TransformGroup>
+                                                    </RadialGradientBrush.RelativeTransform>
+                                                    <GradientStop Color="#FFFFFFFF" Offset="0"/>
+                                                    <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                                </RadialGradientBrush>
+                                            </Path.Fill>
+                                        </Path>
+                                    </Grid>
+                                </Border>
+                            </Border>
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ToggleButtonCenterStyle" TargetType="ToggleButton">
+            <Setter Property="Background" Value="{StaticResource HBtnBackground}"/>
+            <Setter Property="Foreground" Value="#FFFFFFFF"/>
+            <Setter Property="Padding" Value="3"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#FFE48710"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="border1">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed"/>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="CheckStates">
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="border">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unchecked"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused"/>
+                                    <VisualState x:Name="Unfocused"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border x:Name="Background" CornerRadius="3">
+                                <Grid Background="{TemplateBinding Background}" Margin="0">
+                                    <Border BorderThickness="0" Background="{StaticResource BtnBorderBackground}"  RenderTransformOrigin="0.5,0.5" Margin="0">
+                                        <Border.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFE48710" Offset="0"/>
+                                                <GradientStop Color="#00244BC4" Offset="0.75"/>
+                                            </LinearGradientBrush>
+                                        </Border.BorderBrush>
+                                    </Border>
+                                    <Border VerticalAlignment="Top" Background="{StaticResource BtnBorderTopBackground}"  Height="17">
+                                    </Border>
+                                    <Border x:Name="border" Background="{StaticResource BtnCheckBackground}" BorderThickness="0" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Margin="0">
+                                        <Border.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#9AFF3300" Offset="0"/>
+                                                <GradientStop Color="#00244BC4" Offset="0.75"/>
+                                            </LinearGradientBrush>
+                                        </Border.BorderBrush>
+                                    </Border>
+                                    <Border x:Name="border1" Background="{StaticResource BtnMouseOverBackground}" VerticalAlignment="Top" Visibility="Collapsed">
+                                    </Border>
+                                </Grid>
+                            </Border>
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Storyboard x:Key="brdLogoLight" AutoReverse="True" RepeatBehavior="Forever" >
+            <DoubleAnimation Storyboard.TargetName="logo_bg_guang" Storyboard.TargetProperty="(UIElement.Opacity)"
+                     Duration="0:0:2.5"
+                     From="1" To="0.2"/>
+            <DoubleAnimation Storyboard.TargetName="logo_bg_guang2" Storyboard.TargetProperty="(UIElement.Opacity)"
+                     Duration="0:0:2.5"
+                     From="1" To="0"/>
+            <DoubleAnimation Storyboard.TargetName="logo_bg_guang3" Storyboard.TargetProperty="(UIElement.Opacity)"
+                     Duration="0:0:2.5"
+                     From="1" To="0.4"/>
+        </Storyboard>
+
+        <Style x:Key="BootstrapButtonStyle" TargetType="ToggleButton">
+            <Setter Property="Foreground" Value="#FF000000"/>
+            <Setter Property="Padding" Value="3"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Grid x:Name="grid" Margin="0,0,0,0" Visibility="{TemplateBinding Visibility}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0" To="#B35EB2F8" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="Flexible_30"/>
+                                            <ColorAnimation Duration="0" To="#B34179C2" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="Flexible_30"/>
+                                            <ColorAnimation Duration="0" To="#B325418D" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="Flexible_30"/>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="grid">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Cursor>Hand</Cursor>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="CheckStates">
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0" To="{DynamicResource Sys.Panel.BackgroundColor}" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="Flexible_30"/>
+                                            <ColorAnimation Duration="0" To="#A34179C2" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="Flexible_30"/>
+                                            <ColorAnimation Duration="0" To="#A325418D" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="Flexible_30"/>
+                                            <DoubleAnimation Duration="0" To="180" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" Storyboard.TargetName="triangle" d:IsOptimized="True"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unchecked">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" Storyboard.TargetName="triangle" d:IsOptimized="True"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused"/>
+                                    <VisualState x:Name="Unfocused"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid x:Name="Background" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,-1">
+                                <Grid Background="Transparent" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Path x:Name="Flexible_30"  Stretch="Fill" Data="F1 M 716.526,0.975342L 718.44,0.975342L 718.445,0.975342L 744.698,0.975342C 742.35,1.61951 740.002,2.26355 737.807,4.03833C 735.613,5.81311 733.572,8.71863 732.079,10.213C 730.587,11.7074 729.642,11.7908 728.698,11.8741L 718.445,11.8741L 718.44,11.8741L 716.526,11.874L 710.776,11.874L 703.067,11.874L 703.057,11.874L 690.872,11.8739L 685.049,11.8739L 683.208,11.8739L 683.203,11.8739L 672.95,11.8739C 672.006,11.7906 671.061,11.7073 669.569,10.2129C 668.076,8.71851 666.035,5.81299 663.841,4.03821C 661.647,2.26355 659.299,1.61951 656.951,0.975342L 656.95,0.97522L 656.951,0.975342L 683.203,0.97522L 683.208,0.97522L 690.872,0.97522L 703.057,0.97522L 703.067,0.97522L 710.776,0.975342L 716.526,0.975342 Z ">
+                                        <Path.Fill>
+                                            <LinearGradientBrush StartPoint="0.499995,-1.64417" EndPoint="0.499995,2.56027">
+                                                <LinearGradientBrush.GradientStops>
+                                                    <GradientStop Color="#305EB2F8" Offset="0.239394"/>
+                                                    <GradientStop Color="#A34179C2" Offset="0.525252"/>
+                                                    <GradientStop Color="#A325418D" Offset="0.691919"/>
+                                                </LinearGradientBrush.GradientStops>
+                                            </LinearGradientBrush>
+                                        </Path.Fill>
+                                    </Path>
+                                    <Path x:Name="triangle" Data="M27.671843,6 L31.333334,2 L35.02343,6 z" 
+                           		HorizontalAlignment="Center" Stretch="Fill" UseLayoutRounding="False" Width="12" Fill="#FFEBE1E1" Margin="0" RenderTransformOrigin="0.5,0.5" Height="6" VerticalAlignment="Center">
+                                        <Path.RenderTransform>
+                                            <RotateTransform/>
+                                        </Path.RenderTransform>
+                                    </Path>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Storyboard x:Name="sb_HideRightPart" x:Key="sb_HideRightPart" FillBehavior="HoldEnd">
+            <DoubleAnimation Duration="0:0:0.3" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutRootGrid" d:IsOptimized="True"/>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="LayoutRootGrid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="80"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="sb_ShowRightPart" x:Key="sb_ShowRightPart" FillBehavior="HoldEnd">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="LayoutRootGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="80"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutRootGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+    <Grid x:Name="LayoutRootGrid" Height="80">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Loaded" SourceName="LayoutRoot">
+                <ei:ControlStoryboardAction Storyboard="{StaticResource brdLogoLight}"/>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+        <!--LOGO-->
+        <Grid x:Name="LogoGrid">
+            <Grid.Resources>
+                <LinearGradientBrush x:Key="YDLinearFillBrush" StartPoint="0.5,-0.67804" EndPoint="0.5,0.906028">
+                    <GradientStop Color="#80000000" Offset="0.484848"/>
+                    <GradientStop Color="#40000000" Offset="0.752525"/>
+                    <GradientStop Color="#00000000" Offset="1"/>
+                </LinearGradientBrush>
+                <RadialGradientBrush x:Key="YDRadialFillBrush" RadiusX="0.5" RadiusY="1.39892" Center="0.5,0.500001" GradientOrigin="0.5,0.500001">
+                    <RadialGradientBrush.RelativeTransform>
+                        <TransformGroup/>
+                    </RadialGradientBrush.RelativeTransform>
+                    <GradientStop Color="#80FFFFFF" Offset="0.484848"/>
+                    <GradientStop Color="#40FFFFFF" Offset="0.752525"/>
+                    <GradientStop Color="#00FFFFFF" Offset="1"/>
+                </RadialGradientBrush>
+
+                <RadialGradientBrush x:Key="YDEllipseRadialFillBrush" RadiusX="0.5" RadiusY="0.499999" Center="0.5,0.500001" GradientOrigin="0.5,0.500001">
+                    <RadialGradientBrush.RelativeTransform>
+                        <TransformGroup/>
+                    </RadialGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FF0056F9" Offset="0.363636"/>
+                    <GradientStop Color="#800056F9" Offset="0.754941"/>
+                    <GradientStop Color="#000056F9" Offset="1"/>
+                </RadialGradientBrush>
+                <RadialGradientBrush x:Key="YDEllipseRadialFillBrush2" RadiusX="0.499997" RadiusY="0.499999" Center="0.60243,0.495352" GradientOrigin="0.60243,0.495352">
+                    <RadialGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <RotateTransform CenterX="0.60243" CenterY="0.495352" Angle="119.407"/>
+                        </TransformGroup>
+                    </RadialGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FF016BF6" Offset="0.212121"/>
+                    <GradientStop Color="#FF035DDD" Offset="0.581573"/>
+                    <GradientStop Color="#FF054FC4" Offset="0.853535"/>
+                </RadialGradientBrush>
+            </Grid.Resources>
+            <Path x:Name="logo_bg_7" Fill="{StaticResource YDLinearFillBrush}" Width="562.81" Stretch="Fill" Data="F1 M 562.81,1L 0,1L 0,81.9992L 341.302,81.9992L 349.177,82.0005C 359.857,80.1762 370.538,78.3518 383.42,71.8378C 396.302,65.3238 411.385,54.1201 423.934,45.3653C 436.483,36.6106 446.497,30.3049 456.511,23.9992C 469.088,17.2312 481.666,10.4632 500.089,6.60211C 517.439,2.96606 539.974,1.9079 562.81,1 Z " UseLayoutRounding="False">
+            </Path>
+            <Path x:Name="logo_bg_shadow_8" Fill="{StaticResource YDRadialFillBrush}" Width="226.626" Stretch="Fill" Data="F1 M 578.626,0L 565.626,0C 542.789,0.907898 520.255,1.96606 502.905,5.60211C 484.482,9.4632 471.904,16.2312 459.326,22.9992C 449.312,29.3049 439.298,35.6106 426.75,44.3653C 414.201,53.1201 399.118,64.3238 386.236,70.8378C 373.357,77.3503 362.678,79.1753 352,80.9992L 357.118,80.9992L 364.992,81.0005C 375.673,79.1762 386.354,77.3518 399.236,70.8378C 412.118,64.3238 427.201,53.1201 439.75,44.3653C 452.298,35.6106 462.312,29.3049 472.326,22.9992C 484.904,16.2312 497.482,9.4632 515.905,5.60211C 533.255,1.96606 555.789,0.907898 578.626,0 Z " HorizontalAlignment="Right" Margin="0,0,-16,0" UseLayoutRounding="False">
+
+            </Path>
+            <Grid x:Name="logo" Canvas.Left="0" Canvas.Top="0" HorizontalAlignment="Left" Margin="16,0,0,0">
+                <Ellipse x:Name="logo_bg_guang" Width="61.0998" Fill="{StaticResource YDEllipseRadialFillBrush}"  Height="61.0998" Canvas.Left="9.48237" Canvas.Top="7.87256" Stretch="Fill">
+                </Ellipse>
+                <Ellipse x:Name="logo_bg_guang2" Width="46" Height="46" Canvas.Left="16.8822" Fill="{StaticResource YDEllipseRadialFillBrush2}" Canvas.Top="15.0557" Stretch="Fill">
+                </Ellipse>
+                <Ellipse x:Name="logo_bg_guang3" Width="46" Height="46" Canvas.Left="16.8822"  Fill="{DynamicResource Sys.Logo.ImageBrush}" Canvas.Top="15.0557" Stretch="Fill"></Ellipse>
+            </Grid>
+
+            <TextBlock TextAlignment="Left" FontFamily="微软雅黑" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,7,0,0">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <MatrixTransform Matrix="1.33333,0,0,1.33333,73.1072,13.2307"/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+                <Run Text="{DynamicResource System.Title}" FontSize="18.75"  Foreground="#FFFFFFFF" FontFamily="SimSun" FontWeight="Black"/>
+                <Run Text="{DynamicResource System.Version}" FontSize="13"  Foreground="#FFFFFFFF" FontFamily="SimSun" FontWeight="Black"/>
+                <LineBreak/>
+                <Run Text="{DynamicResource System.TitleEN}" FontSize="9"  Foreground="#FFFFFFFF"/>
+            </TextBlock>
+        </Grid>
+        <!--<Image Source="{StaticResource Logo}" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" Height="86"/>-->
+        <!--注销帮助-->
+        <!--系统菜单-->
+        <Grid x:Name="btnGrid" HorizontalAlignment="Right"   VerticalAlignment="Center" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,15,0">
+            <Grid.Resources>
+                <LinearGradientBrush x:Key="YelowBrush" StartPoint="0.5,1" EndPoint="0.5,0">
+                    <GradientStop Color="#0C000000" Offset="0.158879"/>
+                    <GradientStop Color="#16000000" Offset="0.401869"/>
+                    <GradientStop Color="#26000000" Offset="0.516382"/>
+                    <GradientStop Color="#3F000000" Offset="0.593458"/>
+                    <GradientStop Color="#4C000000" Offset="0.7"/>
+                    <GradientStop Color="#67000000" Offset="0.813084"/>
+                </LinearGradientBrush>
+                <LinearGradientBrush x:Key="BlueBrush" StartPoint="0.500001,1.03035" EndPoint="0.500001,-0.168623">
+                    <GradientStop Color="#000925C0" Offset="0.064"/>
+                    <GradientStop Color="#1A0A1D5E" Offset="0.177"/>
+                    <GradientStop Color="#23181AC4" Offset="0.233"/>
+                    <GradientStop Color="#4F061C64" Offset="0.36"/>
+                    <GradientStop Color="#7F1F3C9D" Offset="0.616"/>
+                </LinearGradientBrush>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal"  x:Name="btnStackPanel">
+                <ToggleButton Tag="MapModule" x:Name="navBtn1"  Width="134" Height="37"    Click="SystemButton_Click"  Style="{StaticResource ToggleButtonFirstStyle}"  >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="navIco1" Style="{DynamicResource FIcon}" ></TextBlock>
+                        <!--<Path x:Name="navIco1" HorizontalAlignment="center" Margin="4,0,4,0" VerticalAlignment="Center" Width="22.3752" Height="22.3726" Stretch="Fill" Fill="#FFC9DEFF" Data="F1 M 910.682,39.628C 912.146,41.5193 913.017,43.8923 913.017,46.4688L 903.549,46.4688L 910.682,39.628 Z M 901.494,46.2746L 901.561,46.3445L 901.596,57.6541C 895.525,57.53 890.642,52.5698 890.642,46.469C 890.642,40.2903 895.651,35.2815 901.829,35.2815C 904.869,35.2815 907.625,36.4937 909.642,38.4611L 901.494,46.2746 Z M 912.909,48.0313C 912.209,53.0374 908.197,56.9819 903.158,57.5783L 903.129,48.0313L 912.909,48.0313 Z " UseLayoutRounding="False"/>-->
+                        <TextBlock x:Name="navTxt1" Text="xxx"  HorizontalAlignment="Center" Grid.Column="1" FontFamily="微软雅黑" FontSize="15"  VerticalAlignment="Center"></TextBlock>
+                    </Grid>
+                </ToggleButton>
+                <ToggleButton Tag="SystemSetModule" x:Name="navBtn2"  Width="134" Height="37"    Click="SystemButton_Click" Style="{StaticResource ToggleButtonCenterStyle}"  >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="navIco2" Text="&#xe600;" Style="{DynamicResource FIcon}"></TextBlock>
+                        <!--<Path x:Name="navIco2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,0,4,0" Width="24" Height="24" Stretch="Fill" Fill="#FFFFFFFF"  Data="F1 M 921,47.0001C 921,53.0751 925.925,58.0001 932,58.0001C 938.075,58.0001 943,53.0751 943,47.0001C 943,40.925 938.075,36.0001 932,36.0001C 925.925,36.0001 921,40.925 921,47.0001 Z M 935.715,48.8806L 930.459,54.4866L 928.354,52.2849L 940,40.3304L 937.246,53.9848L 935.715,48.8806 Z M 928.504,45.2768L 933.76,39.6692L 935.865,41.8726L 924.219,53.827L 926.973,40.1725L 928.504,45.2768 Z "/>-->
+                        <TextBlock x:Name="navTxt2" Text="xxx" FontFamily="微软雅黑" FontSize="15" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                    </Grid>
+                </ToggleButton>
+                <ToggleButton Tag="SystemSetModule" x:Name="navBtn3"  Width="134" Height="37"    Click="SystemButton_Click" Style="{StaticResource ToggleButtonCenterStyle}"  >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="navIco3" Text="&#xe600;" Style="{DynamicResource FIcon}"></TextBlock>
+                        <TextBlock x:Name="navTxt3" Text="xxx" FontFamily="微软雅黑" FontSize="15" Grid.Column="1"  HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                        <!--<Path x:Name="navIco3" Grid.Column="0" Width="25.5573" Height="18.8668" Stretch="Fill" Fill="#FFC9DEFF" Data="F1 M 1148.27,42.9019C 1151.49,39.5952 1156,37.5417 1160.98,37.5417C 1166.03,37.5417 1170.59,39.6539 1173.83,43.0437L 1171.64,45.2271C 1168.94,42.4888 1165.18,40.7917 1161.03,40.7917C 1156.92,40.7917 1153.2,42.4518 1150.5,45.1376L 1148.27,42.9019 Z M 1169.89,46.9789L 1167.69,49.1761C 1166.03,47.5464 1163.74,46.542 1161.23,46.542C 1158.66,46.542 1156.33,47.5919 1154.65,49.2866L 1152.46,47.0889C 1154.7,44.8457 1157.8,43.4587 1161.23,43.4587C 1164.6,43.4587 1167.65,44.8005 1169.89,46.9789 Z M 1165.78,51.0857L 1163.97,52.8953C 1163.22,52.1611 1162.2,51.7086 1161.06,51.7086C 1159.96,51.7086 1158.95,52.1387 1158.21,52.8405L 1156.4,51.03C 1157.6,49.8517 1159.25,49.1252 1161.06,49.1252C 1162.91,49.1252 1164.58,49.8747 1165.78,51.0857 Z M 1160.98,53.5752C 1161.76,53.5752 1162.4,54.2095 1162.4,54.9919C 1162.4,55.7742 1161.76,56.4085 1160.98,56.4085C 1160.2,56.4085 1159.56,55.7742 1159.56,54.9919C 1159.56,54.2095 1160.2,53.5752 1160.98,53.5752 Z " HorizontalAlignment="Center" Margin="4,0" UseLayoutRounding="False" VerticalAlignment="Center"/>-->
+                    </Grid>
+                </ToggleButton>
+                <ToggleButton Tag="SystemSetModule" x:Name="navBtn4" Width="134" Height="37"   Click="SystemButton_Click" Style="{StaticResource ToggleButtonCenterStyle}"  >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="navIco4" Text="&#xe600;" Style="{DynamicResource FIcon}" ></TextBlock>
+                        <!--<Path x:Name="navIco4" Grid.Column="0" Width="22.9061" Height="19.9872" Stretch="Fill" Fill="#FFC9DEFF" Data="F1 M 1293.11,37.4358C 1292.85,36.9963 1292.6,36.5566 1292.34,36.5594C 1292.09,36.5622 1291.83,37.0071 1291.58,37.4523L 1281.37,55.121C 1281.1,55.5962 1280.83,56.0714 1280.92,56.309C 1281.01,56.5466 1281.48,56.5466 1281.94,56.5466L 1302.78,56.5466C 1303.23,56.5466 1303.69,56.5466 1303.79,56.3237C 1303.88,56.101 1303.63,55.6555 1303.37,55.2098L 1293.11,37.4358 Z M 1290.79,53.0294C 1290.79,52.0858 1291.56,51.321 1292.5,51.321C 1293.44,51.321 1294.21,52.0858 1294.21,53.0294C 1294.21,53.9729 1293.44,54.7377 1292.5,54.7377C 1291.56,54.7377 1290.79,53.9729 1290.79,53.0294 Z M 1292.49,50.5557C 1292.04,50.5557 1291.58,50.4238 1291.35,50.27C 1291.12,50.1161 1291.11,49.9405 1291.1,49.7648L 1290.73,42.1252C 1291.31,41.8589 1291.9,41.5927 1292.48,41.5927C 1293.07,41.5927 1293.67,41.8589 1294.26,42.1252L 1293.83,49.8542C 1293.82,50.0001 1293.81,50.1459 1293.59,50.2849C 1293.37,50.4238 1292.94,50.5557 1292.49,50.5557 Z "  HorizontalAlignment="Center" Margin="4,0" UseLayoutRounding="False" VerticalAlignment="Center"/>-->
+                        <TextBlock x:Name="navTxt4" Text="xxx" FontFamily="微软雅黑" FontSize="15" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                    </Grid>
+                </ToggleButton>
+                <ToggleButton Tag="SystemSetModule" x:Name="navBtn5"  Width="134" Height="37"    Click="SystemButton_Click" Style="{StaticResource ToggleButtonCenterStyle}"  >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="navIco5" Text="&#xe600;" Style="{DynamicResource FIcon}" ></TextBlock>
+                        <!--<Path x:Name="navIco5" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,0,4,0" Width="24" Height="24" Stretch="Fill" Fill="#FFFFFFFF"  Data="F1 M 921,47.0001C 921,53.0751 925.925,58.0001 932,58.0001C 938.075,58.0001 943,53.0751 943,47.0001C 943,40.925 938.075,36.0001 932,36.0001C 925.925,36.0001 921,40.925 921,47.0001 Z M 935.715,48.8806L 930.459,54.4866L 928.354,52.2849L 940,40.3304L 937.246,53.9848L 935.715,48.8806 Z M 928.504,45.2768L 933.76,39.6692L 935.865,41.8726L 924.219,53.827L 926.973,40.1725L 928.504,45.2768 Z "/>-->
+                        <TextBlock x:Name="navTxt5" Text="xxx" FontFamily="微软雅黑" FontSize="15" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                    </Grid>
+                </ToggleButton>
+                <ToggleButton Visibility="Collapsed"  Tag="SystemSetModule" x:Name="navBtn6" Width="134" Height="37"   Click="SystemButton_Click" Style="{StaticResource ToggleButtonCenterStyle}"  >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="navIco6" Text="&#xe600;" Style="{DynamicResource FIcon}" ></TextBlock>
+                        <!--<Path x:Name="navIco6" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,0,4,0" Width="24" Height="24" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 1037.17,46.5543C 1037.17,49.7299 1034.6,52.3043 1031.42,52.3043C 1028.25,52.3043 1025.67,49.7299 1025.67,46.5543C 1025.67,43.3787 1028.25,40.8043 1031.42,40.8043C 1034.6,40.8043 1037.17,43.3787 1037.17,46.5543 Z M 1028.28,46.5552C 1028.28,48.2897 1029.69,49.6958 1031.42,49.6958C 1033.16,49.6958 1034.56,48.2897 1034.56,46.5552C 1034.56,44.8208 1033.16,43.4147 1031.42,43.4147C 1029.69,43.4147 1028.28,44.8208 1028.28,46.5552 Z M 1041.03,46.5551C 1041.03,47.5672 1040.88,48.5428 1040.59,49.4589C 1040.88,48.5427 1041.03,47.567 1041.03,46.5547C 1041.03,45.6855 1040.92,44.8431 1040.7,44.0422L 1043.4,44.0422L 1043.4,49.4589L 1040.59,49.4589C 1040.38,50.1047 1040.11,50.7209 1039.78,51.2996L 1041.8,53.3207L 1037.97,57.1509L 1035.89,55.0663C 1035.33,55.3616 1034.73,55.6028 1034.11,55.7834L 1034.11,58.7501L 1028.7,58.7501L 1028.7,55.7717C 1028.08,55.5896 1027.49,55.3475 1026.93,55.0521L 1024.83,57.1509L 1021,53.3209L 1023.05,51.2733C 1022.73,50.7021 1022.46,50.0947 1022.26,49.4587L 1019.4,49.4587L 1019.4,44.0421L 1022.15,44.0421C 1022.33,43.3583 1022.59,42.7047 1022.91,42.0903L 1021,40.1806L 1024.83,36.3503L 1026.68,38.1968C 1028.08,37.4005 1029.7,36.9456 1031.42,36.9456C 1036.73,36.9456 1041.03,41.2481 1041.03,46.5551 Z M 1024.25,46.5552C 1024.25,50.5161 1027.46,53.7271 1031.42,53.7271C 1035.39,53.7271 1038.6,50.5161 1038.6,46.5552C 1038.6,42.5943 1035.38,39.3832 1031.42,39.3832C 1027.46,39.3832 1024.25,42.5943 1024.25,46.5552 Z M 1041.8,40.1802L 1039.92,42.0628C 1039.06,40.4355 1037.74,39.0855 1036.14,38.1814L 1037.97,36.3501L 1041.8,40.1802 Z M 1028.7,37.3381L 1028.7,34.7502L 1034.11,34.7502L 1034.11,37.326C 1033.26,37.0781 1032.36,36.9451 1031.42,36.9451C 1030.48,36.9451 1029.56,37.0823 1028.7,37.3381 Z " UseLayoutRounding="False"/>-->
+                        <TextBlock x:Name="navTxt6" Text="xxx" FontFamily="微软雅黑" FontSize="15" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                    </Grid>
+                </ToggleButton>
+                <ToggleButton Tag="SystemSetModule" x:Name="navBtn7" Width="134" Height="37"   Click="SystemButton_Click" Style="{StaticResource ToggleButtonCenterStyle}"  >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="navIco7" Text="&#xe600;" Style="{DynamicResource FIcon}"></TextBlock>
+                        <!--<Path x:Name="navIco7" Grid.Column="0" Width="22.9061" Height="19.9872" Stretch="Fill" Fill="#FFC9DEFF" Data="F1 M 6.98326,33.4103C 6.76817,32.8523 6.60179,32.2238 6.48415,31.5248C 6.36653,30.8257 6.30772,30.1636 6.30772,29.5384C 6.30772,28.5503 6.40517,27.6496 6.60011,26.8363C 6.79503,26.0229 7.08577,25.2549 7.47227,24.5323C 7.85878,23.8097 8.34444,23.1225 8.92924,22.4704C 9.51402,21.8184 10.1929,21.1697 10.966,20.5244C 11.786,19.832 12.5036,19.1918 13.1186,18.6037C 13.7337,18.0155 14.258,17.4257 14.6915,16.8341C 15.1251,16.2426 15.4494,15.6292 15.6645,14.994C 15.8797,14.3588 15.9872,13.6547 15.9872,12.8817C 15.9872,12.2162 15.8679,11.5995 15.6293,11.0315C 15.3906,10.4635 15.0512,9.97447 14.6109,9.56444C 14.1706,9.1544 13.6329,8.83171 12.9976,8.59648C 12.3624,8.36119 11.655,8.24358 10.8752,8.24358C 9.19475,8.24358 7.45042,8.61662 5.64223,9.36278C 3.83403,10.1089 2.11998,11.2416 0.500015,12.7607L 0.500015,3.37358C 2.12669,2.41237 3.89958,1.6931 5.81868,1.21584C 7.73778,0.738632 9.7224,0.500015 11.7726,0.500015C 13.7354,0.500015 15.5603,0.715073 17.2475,1.14528C 18.9347,1.57549 20.4068,2.25441 21.6638,3.18202C 22.9208,4.10963 23.9022,5.29265 24.608,6.73112C 25.3138,8.16966 25.6667,9.90053 25.6667,11.9238C 25.6667,13.2077 25.5222,14.3705 25.2331,15.4125C 24.9441,16.4544 24.5223,17.4374 23.9678,18.3617C 23.4132,19.2859 22.7242,20.1732 21.9007,21.0235C 21.0773,21.8739 20.1279,22.7527 19.0524,23.6602C 18.3331,24.2719 17.6996,24.8399 17.1517,25.3642C 16.6039,25.8885 16.1502,26.4094 15.7906,26.927C 15.431,27.4446 15.1587,27.9924 14.9739,28.5705C 14.789,29.1486 14.6966,29.804 14.6966,30.5367C 14.6966,31.0408 14.7638,31.5567 14.8983,32.0844C 15.0327,32.612 15.2175,33.054 15.4528,33.4103L 6.98326,33.4103 Z M 11.5205,46.9616C 9.84004,46.9616 8.44188,46.4608 7.32607,45.4592C 6.21696,44.4173 5.6624,43.1872 5.6624,41.7689C 5.6624,40.3103 6.21696,39.0903 7.32607,38.1088C 8.44188,37.1275 9.84004,36.6367 11.5205,36.6367C 13.1741,36.6367 14.5487,37.1275 15.6444,38.1088C 16.7333,39.0701 17.2778,40.2901 17.2778,41.7689C 17.2778,43.2679 16.7434,44.5081 15.6746,45.4895C 14.579,46.4708 13.1943,46.9616 11.5205,46.9616 Z  "  HorizontalAlignment="Center" Margin="4,0" UseLayoutRounding="False" VerticalAlignment="Center"/>-->
+                        <TextBlock  x:Name="navTxt7" Text="xxx" FontFamily="微软雅黑" FontSize="15" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ToggleButton>
+                <ToggleButton  Style="{StaticResource ToggleButtonLastStyle}" />
+            </StackPanel>
+                <Border x:Name="bg1" Background="{StaticResource YelowBrush}" Grid.Row="1" BorderThickness="0" Grid.ColumnSpan="5" Height="11"  VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="0" CornerRadius="12">
+            </Border>
+        </Grid>
+    </Grid>
+    <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0">
+        <ToggleButton Style="{StaticResource BootstrapButtonStyle}" Margin="0,0,0,0" x:Name="headerBtn" Width="70" Height="12" Click="headerBtn_Click">
+        </ToggleButton>
+    </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PW.DBCommon.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PW.DBCommon.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOftable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="table" nillable="true" type="tns:table" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftable" nillable="true" type="tns:ArrayOftable" />
+  <xs:complexType name="table">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="table_comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="table_name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="table" nillable="true" type="tns:table" />
+  <xs:complexType name="ArrayOfcolumn">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="column" nillable="true" type="tns:column" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfcolumn" nillable="true" type="tns:ArrayOfcolumn" />
+  <xs:complexType name="column">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="character_maximum_length" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="column_comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="column_key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="column_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="data_type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="is_nullable" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ordinal_position" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="column" nillable="true" type="tns:column" />
+</xs:schema>
