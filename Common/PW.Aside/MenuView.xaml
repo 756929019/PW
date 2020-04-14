@@ -1,0 +1,211 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PW.Aside"
+             
+              x:Class="PW.Aside.MenuView"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Background="#30888888">
+    <UserControl.Resources>
+        <Style  x:Key="MenuTreeViewItem" TargetType="{x:Type TreeViewItem}">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="FontWeight" Value="Bold" />
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+            <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+            <Setter Property="MinHeight" Value="40" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="{DynamicResource Sys.TreeViewItem.BackgroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Sys.TreeViewItem.BorderBrush}" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TreeViewItem}">
+                        <StackPanel>
+                            <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}"
+                                MinHeight="{TemplateBinding MinHeight}" UseLayoutRounding="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                <Grid Margin="{TemplateBinding Margin}" VerticalAlignment="Stretch" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition MinWidth="18" Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="21"/>
+                                    </Grid.ColumnDefinitions>
+                                    <!--图标Text="&#xe643;" -->
+                                    <TextBlock x:Name="ItemIcon" Text="{Binding itemIcon}" Foreground="{TemplateBinding Foreground}" FontSize="13" Margin="4" Height="13" VerticalAlignment="Center" Style="{DynamicResource FIcon}"/>
+                                    <!--展开收缩按钮-->
+                                    <ToggleButton x:Name="ExpanderBtn" Grid.Column="2"
+                                              IsChecked="{Binding Path=IsExpanded, RelativeSource={x:Static RelativeSource.TemplatedParent}, Mode=TwoWay}"
+                                              ClickMode="Press" >
+                                        <ToggleButton.Template>
+                                            <ControlTemplate TargetType="ToggleButton">
+                                                <Border>
+                                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </ToggleButton.Template>
+                                        <ToggleButton.Content>
+                                            <TextBlock x:Name="ExpanderIcon"  Foreground="{TemplateBinding Foreground}" FontSize="13" Margin="4" Height="15" VerticalAlignment="Center" Text="&#xe625;" Style="{DynamicResource FIcon}"/>
+                                        </ToggleButton.Content>
+                                    </ToggleButton>
+                                    <!--内容-->
+                                    <ContentPresenter x:Name="PART_Header" Grid.Column="1" ContentSource="Header"
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                </Grid>
+                            </Border>
+                            <ItemsPresenter Margin="5,0,0,0" x:Name="ItemsHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsExpanded" Value="False">
+                                <Setter TargetName="ItemsHost" Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                            <Trigger Property="IsExpanded" Value="True">
+                                <Setter TargetName="ExpanderIcon" Property="Text" Value="&#xe624;" />
+                            </Trigger>
+                            <Trigger Property="HasItems" Value="False">
+                                <Setter TargetName="ExpanderIcon" Property="Visibility" Value="Hidden" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource Sys.TreeViewItem.MouseOver.BackgroundBrush}" />
+                                <Setter Property="Foreground" Value="{DynamicResource Sys.TreeViewItem.MouseOver.Foreground}" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource Sys.TreeViewItem.MouseOver.BackgroundBrush}" />
+                                <Setter Property="Foreground" Value="{DynamicResource Sys.TreeViewItem.MouseOver.Foreground}" />
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="True" />
+                                    <Condition Property="Selector.IsSelectionActive" Value="True" />
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" Value="{DynamicResource Sys.TreeViewItem.MouseOver.BackgroundBrush}" />
+                                <Setter Property="Foreground" Value="{DynamicResource Sys.TreeViewItem.MouseOver.Foreground}" />
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--TreeView样式-->
+        <Style x:Key="MenuTreeView" TargetType="{x:Type TreeView}">
+            <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+            <Setter Property="VirtualizingStackPanel.IsVirtualizing" Value="True"></Setter>
+            <Setter Property="VirtualizingStackPanel.VirtualizationMode" Value="Recycling" />
+            <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
+            <Setter Property="Background" Value="{DynamicResource Sys.TreeView.BackgroundBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Sys.TreeView.BorderBrush}"/>
+            <Setter Property="ItemContainerStyle" Value="{StaticResource MenuTreeViewItem}"></Setter>
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel IsItemsHost="True" Margin="0"/>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="LeftShowAndHideToggleButtonStyle" TargetType="ToggleButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Grid x:Name="grid">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CheckStates">
+                                    <VisualState x:Name="Checked"/>
+                                    <VisualState x:Name="Unchecked">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="180" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" Storyboard.TargetName="Flexible_arrow"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Indeterminate"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0" To="#FF25418D" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="path"/>
+                                            <ColorAnimation Duration="0" To="#FF4179C2" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="path"/>
+                                            <ColorAnimation Duration="0" To="#FF5EB2F8" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="path"/>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="grid">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Cursor>Hand</Cursor>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed"/>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Path x:Name="path" Stretch="Fill" Data="F1 M 1131.5,311.621L 1131.5,311.621C 1133.15,311.621 1134.5,312.964 1134.5,314.621L 1134.5,504.621C 1134.5,506.278 1133.15,507.621 1131.5,507.621L 1131.5,507.621C 1129.84,507.621 1128.5,506.278 1128.5,504.621L 1128.5,314.621C 1128.5,312.964 1129.84,311.621 1131.5,311.621 Z ">
+                                <Path.Fill>
+                                    <LinearGradientBrush StartPoint="-2.03455e-005,0.5" EndPoint="1,0.5">
+                                        <GradientStop Color="#B325418D" Offset="0.231481"/>
+                                        <GradientStop Color="#B34179C2" Offset="0.680556"/>
+                                        <GradientStop Color="#B35EB2F8" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Path.Fill>
+                            </Path>
+                            <Path x:Name="Flexible_arrow" Stretch="Fill" Fill="#CDFFFFFF" Data="F1 M 1133.47,408.839L 1130.43,411.621L 1130.43,406.058L 1133.47,408.839 Z " HorizontalAlignment="Center" VerticalAlignment="Center" Width="3" Height="6" RenderTransformOrigin="0.5,0.5">
+                                <Path.RenderTransform>
+                                    <RotateTransform />
+                                </Path.RenderTransform>
+                            </Path>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Storyboard x:Name="sb_HideRightPart" x:Key="sb_HideRightPart" FillBehavior="HoldEnd">
+            <DoubleAnimation Duration="0:0:0.3" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="treeViewGrid" d:IsOptimized="True"/>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="treeViewGrid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="222"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="sb_ShowRightPart" x:Key="sb_ShowRightPart" FillBehavior="HoldEnd">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="treeViewGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="222"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="treeViewGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="8"/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="treeViewGrid" Width="222">
+        <TreeView x:Name="treeView" Style="{StaticResource MenuTreeView}" ItemsSource="{Binding ItemTreeDataList}" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Stretch" SelectedItemChanged="treeView_SelectedItemChanged" >
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                    <TextBlock x:Name="treeViewItemTB" Text="{Binding itemName}" Tag="{Binding itemId}"/>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+        </Grid>
+        <Grid Grid.Column="1" Margin="0">
+            <ToggleButton Style="{StaticResource LeftShowAndHideToggleButtonStyle}" Margin="0,0,0,0" x:Name="menuBtn" Width="8" Height="50" Click="menuBtn_Click">
+            </ToggleButton>
+        </Grid>
+    </Grid>
+
+</UserControl>
