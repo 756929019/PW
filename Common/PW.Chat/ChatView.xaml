@@ -1,0 +1,650 @@
+﻿<UserControl x:Class="PW.Chat.ChatView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:mv="http://www.galasoft.ch/mvvmlight"
+             xmlns:con="clr-namespace:PW.Controls;assembly=PW.Controls"
+             xmlns:local="clr-namespace:PW.Chat"
+             xmlns:localmod="clr-namespace:PW.Chat.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="768" d:DesignWidth="1024" >
+    <UserControl.Resources>
+        <con:BoolConvertVisibility x:Key="boolToVisibility"/>
+        <con:ObjectConvertHeight x:Key="objectToHeight"/>
+        <con:ObjectConvertColor x:Key="objectToColor"/>
+        <con:CountConvertVisibility x:Key="countToVisibility"/>
+        <con:ModelConvertVisibility x:Key="modelToVisibility"/>
+        <Style x:Key="ButtonFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--通讯录的样式-->
+        <Style x:Key="FriendStyle" TargetType="{x:Type RadioButton}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Border>
+                            <Path x:Name="btnPath" Stretch="Fill" StrokeThickness="1" Stroke="Gray" Fill="#FF3E3E40">
+                                <Path.Data>
+                                    <GeometryGroup>
+                                        <PathGeometry Figures="M 12,30 A 6,10 0 1 1 18,30 L 30,40 L 30,45 L 0,45 L 0,40Z" />
+                                        <PathGeometry Figures="M 25,25 L 35,25"/>
+                                        <PathGeometry Figures="M 28,30 L 35,30"/>
+                                        <PathGeometry Figures="M 32,35 L 35,35"/>
+                                    </GeometryGroup>
+                                </Path.Data>
+                            </Path>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Fill" Value="#FF14D212" TargetName="btnPath"/>
+                                <Setter Property="Stroke" Value="#FF14D212" TargetName="btnPath"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Stroke" Value="White" TargetName="btnPath"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsChecked" Value="true"/>
+                                    <Condition Property="IsMouseOver" Value="true"/>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.Setters>
+                                    <Setter Property="Stroke" Value="#FF14D212" TargetName="btnPath"/>
+                                </MultiTrigger.Setters>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--聊天按钮的样式-->
+        <Style x:Key="ChatStyle" TargetType="{x:Type RadioButton}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Border>
+                            <Path x:Name="btnPath" Stretch="Fill" StrokeThickness="1" Stroke="Gray" Fill="#FF3E3E40">
+                                <Path.Data>
+                                    <GeometryGroup>
+                                        <PathGeometry Figures="M 4,40 A 16,13 0 1 1 10,45 L 3,48 Z" />
+                                    </GeometryGroup>
+                                </Path.Data>
+                            </Path>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Fill" Value="#FF14D212" TargetName="btnPath"/>
+                                <Setter Property="Stroke" Value="#FF14D212" TargetName="btnPath"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Stroke" Value="White" TargetName="btnPath"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsChecked"  Value="true"/>
+                                    <Condition Property="IsMouseOver" Value="true"/>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.Setters>
+                                    <Setter Property="Stroke" Value="#FF14D212" TargetName="btnPath"/>
+                                </MultiTrigger.Setters>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--未读消息个数圆形按钮-->
+        <Style x:Key="CirButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Ellipse Fill="Red" Width="17" Height="17"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <LinearGradientBrush x:Key="TextBoxBorder" StartPoint="0,0" MappingMode="Absolute" EndPoint="0,20">
+            <GradientStop Color="#ABADB3" Offset="0.05"/>
+            <GradientStop Color="#E2E3EA" Offset="0.07"/>
+            <GradientStop Color="#E3E9EF" Offset="1"/>
+        </LinearGradientBrush>
+
+        <!--圆角聊天内容框-->
+        <Style x:Key="ChatRichTextBoxStyle" BasedOn="{x:Null}" TargetType="{x:Type RichTextBox}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBoxBorder}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RichTextBox}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="3" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Margin="0">
+                            <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Margin="3"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!--最后一次信息-->
+        <Style x:Key="LastChatRichTextBoxStyle" BasedOn="{x:Null}" TargetType="{x:Type RichTextBox}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBoxBorder}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RichTextBox}">
+                        <Border x:Name="br" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="0">
+                            <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Margin="3"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Paragraph">
+            <Setter Property="Margin" Value="1"></Setter>
+        </Style>
+        <!--聊天列表样式-->
+        <Style x:Key="ListBoxItemChatStyle" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border>
+                            <StackPanel x:Name="sp" Orientation="Horizontal" Height="{Binding Converter={StaticResource objectToHeight}}" Background="{Binding Converter={StaticResource objectToColor}}">
+                                <Grid>
+                                    <Image Source="{Binding Icon}" Width="40" Height="40" Margin="10"/>
+                                    <Button Foreground="White" Visibility="{Binding UnReadCount,Converter={StaticResource countToVisibility}}" Content="{Binding UnReadCount}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5" Style="{StaticResource CirButtonStyle}"/>
+                                </Grid>
+                                <Grid Width="176">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="{Binding ShowName}" Foreground="{TemplateBinding Foreground}" FontSize="15" HorizontalAlignment="Left" Margin="5,10,0,0"/>
+                                    <TextBlock Grid.Row="0" Text="{Binding LastTime}" FontSize="15" HorizontalAlignment="Right" Margin="0,10,5,0"/>
+                                    <!--<TextBlock Grid.Row="1" Text="{Binding LastMsg}" FontSize="12" HorizontalAlignment="Left" Margin="5,0,0,0"/>-->
+                                    <con:BindableRichTextBox Grid.Row="1" Foreground="Black" Background="Transparent" IsReadOnly="True" BorderThickness="0" BorderBrush="Transparent" Document="{Binding LastMsg,UpdateSourceTrigger=PropertyChanged}" FontSize="12" HorizontalAlignment="Left" VirtualizingStackPanel.VirtualizationMode="Standard" Margin="5,0,0,0" IsHitTestVisible="False" Style="{StaticResource LastChatRichTextBoxStyle}"/>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="#FFE2E4E6" TargetName="sp"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter Property="Background" Value="#FFCACDD3" TargetName="sp"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--通讯录列表样式-->
+        <Style x:Key="ListBoxItemFriendStyle" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border>
+                            <StackPanel x:Name="sp" Orientation="Horizontal" Height="{Binding Converter={StaticResource objectToHeight}}" Background="{Binding Converter={StaticResource objectToColor}}">
+                                <TextBlock Text="{Binding }" FontWeight="Black" Visibility="{Binding Converter={StaticResource modelToVisibility}}" FontSize="15" Margin="10,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                                <Image Source="{Binding Icon}" Width="40" Height="40" Margin="10"/>
+                                <TextBlock Text="{Binding ShowName}" Foreground="{TemplateBinding Foreground}" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="#FFE2E4E6" TargetName="sp"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter Property="Background" Value="#FFCACDD3" TargetName="sp"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--发送按钮样式-->
+        <SolidColorBrush x:Key="ButtonNormalBorder" Color="#FF707070"/>
+        <Style x:Key="SendButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#AA3DCE3D"/>
+            <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="bor" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <TextBlock x:Name="tb" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Foreground" TargetName="tb" Value="White"/>
+                                <Setter Property="Background" TargetName="bor" Value="#FF3DCE3D"/>
+                                <Setter Property="BorderBrush" TargetName="bor" Value="#FF3DCE3D"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--ToolTip-->
+        <Style x:Key="ToolTipTextBoxStyle" BasedOn="{x:Null}" TargetType="{x:Type TextBox}">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBoxBorder}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border>
+                            <Grid>
+                                <Path StrokeThickness="1" Stroke="Gray" Stretch="Fill">
+                                    <Path.Data>
+                                        <PathGeometry>
+                                            <PathFigure StartPoint="0,0">
+                                                <LineSegment Point="50,0"/>
+                                                <ArcSegment Point="52,2" Size="2,2" SweepDirection="Clockwise"/>
+                                                <LineSegment Point="52,22"/>
+                                                <ArcSegment Point="50,24" Size="2,2" SweepDirection="Clockwise"/>
+                                                <LineSegment Point="45,24"/>
+                                                <LineSegment Point="43,32"/>
+                                                <LineSegment Point="41,24"/>
+                                                <LineSegment Point="0,24"/>
+                                                <ArcSegment Point="-2,22" Size="2,2" SweepDirection="Clockwise"/>
+                                                <LineSegment Point="-2,2"/>
+                                                <ArcSegment Point="0,0" Size="2,2" SweepDirection="Clockwise"/>
+                                            </PathFigure>
+                                        </PathGeometry>
+                                    </Path.Data>
+                                </Path>
+                                <TextBlock Text="{TemplateBinding Text}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="0,5"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ToolBtnStyle" TargetType="{x:Type RadioButton}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+            <Setter Property="Background" Value="Gray"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+        </Style>
+        <Style x:Key="EmojiStyle" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ToolBtnStyle}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid>
+                            <Ellipse Width="30" Height="30" Fill="#AAFFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"></Ellipse>
+                            <Viewbox Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Path Data="M512 65.92A446.528 446.528 0 0 0 65.92 512 446.592 446.592 0 0 0 512 958.144 446.592 446.592 0 0 0 958.08 512 446.528 446.528 0 0 0 512 65.92z m0 854.72A409.088 409.088 0 0 1 103.424 512 409.152 409.152 0 0 1 512 103.36 409.216 409.216 0 0 1 920.64 512 409.088 409.088 0 0 1 512 920.64z M338.304 368.064z m-52.288 0c0 32.512 23.424 58.816 52.288 58.816 28.864 0 52.224-26.368 52.224-58.816 0-32.448-23.424-58.816-52.224-58.816-28.864 0-52.288 26.368-52.288 58.816M690.304 368.064z m-52.288 0c0 32.512 23.424 58.816 52.288 58.816 28.8 0 52.224-26.368 52.224-58.816 0-32.448-23.424-58.816-52.224-58.816-28.864 0-52.288 26.368-52.288 58.816 M512 807.616c143.168 0 259.456-109.632 273.344-249.216H238.72c13.568 139.584 129.984 249.216 273.28 249.216z" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
+                            </Viewbox>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Background" Value="Green"/>
+                                <Setter Property="BorderBrush" Value="Green"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="Green"/>
+                                <Setter Property="BorderBrush" Value="Green"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="FileStyle" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ToolBtnStyle}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid>
+                            <Ellipse Width="30" Height="30" Fill="#AAFFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"></Ellipse>
+                            <Viewbox Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Path Data="M1023.45728 780.8V414.06976 229.79072c0-22.76352-1.63328-44.0064-21.0432-60.01664-17.50016-14.44352-38.42048-12.74368-59.39712-12.74368H493.66016l22.10304 12.68224-72.34048-101.12512c-16.72192-23.38304-67.34848-13.54752-92.0576-13.54752H80.03072c-33.01888 0-33.01888 51.2 0 51.2h340.66944l-22.10304-12.68224 54.912 76.76416c12.416 17.3568 22.0928 37.90336 45.8496 37.90336h465.98144c10.28608 0 6.91712 16.74752 6.91712 23.4752V780.8c0 33.01376 51.2 33.01376 51.2 0z M948.05504 852.48H72.79616c-14.17728 0-7.04-65.4592-7.04-74.56768V316.23168 169.11872c0-6.93248-5.86752-61.36832 5.12-62.47936 32.52736-3.28192 32.8448-54.51264 0-51.2-63.34976 6.38976-56.32 64.36864-56.32 110.81216v642.4832c0 41.26208 0.06144 94.9504 57.73312 94.9504h875.76576c33.01376-0.00512 33.01376-51.20512 0-51.20512z M63.58016 394.24h908.78976c33.01376 0 33.01376-51.2 0-51.2H63.58528c-33.01888 0-33.01888 51.2-0.00512 51.2z" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
+                            </Viewbox>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Background" Value="Green"/>
+                                <Setter Property="BorderBrush" Value="Green"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="Green"/>
+                                <Setter Property="BorderBrush" Value="Green"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="CutStyle" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ToolBtnStyle}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid>
+                            <Ellipse Width="30" Height="30" Fill="#AAFFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"></Ellipse>
+                            <Viewbox Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Path Data="M409.6 645.12c26.624 30.72 40.96 69.632 40.96 112.64 0 96.256-77.824 174.08-174.08 174.08s-174.08-77.824-174.08-174.08 77.824-174.08 174.08-174.08c20.48 0 38.912 4.096 57.344 10.24l120.832-137.216-231.424-313.344v-61.44l280.576 319.488 280.576-319.488v61.44l-231.424 313.344 120.832 137.216c45.056-16.384 96.256-12.288 143.36 12.288 77.824 43.008 110.592 139.264 75.776 221.184-4.096 10.24-16.384 14.336-26.624 10.24-10.24-4.096-14.336-16.384-10.24-26.624 26.624-61.44 2.048-135.168-57.344-167.936-63.488-34.816-145.408-12.288-182.272 51.2s-12.288 145.408 53.248 180.224c36.864 20.48 79.872 22.528 116.736 6.144 10.24-4.096 22.528 0 26.624 10.24 4.096 10.24 0 22.528-10.24 26.624-49.152 20.48-104.448 18.432-151.552-8.192-83.968-47.104-114.688-153.6-67.584-237.568 6.144-10.24 12.288-18.432 18.432-26.624l-92.16-124.928-100.352 124.928z m-133.12 245.76c73.728 0 133.12-59.392 133.12-133.12s-59.392-133.12-133.12-133.12-133.12 59.392-133.12 133.12 59.392 133.12 133.12 133.12z m225.28-409.6c12.288 0 20.48-8.192 20.48-20.48s-8.192-20.48-20.48-20.48-20.48 8.192-20.48 20.48 8.192 20.48 20.48 20.48z" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
+                            </Viewbox>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Background" Value="Green"/>
+                                <Setter Property="BorderBrush" Value="Green"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="Green"/>
+                                <Setter Property="BorderBrush" Value="Green"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PhoneStyle" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ToolBtnStyle}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid>
+                            <Ellipse Width="30" Height="30" Fill="#AAFFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"></Ellipse>
+                            <Viewbox Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Path Data="M772.654545 900.654545l-13.963636-4.654545C165.236364 714.472727 128 265.309091 125.672727 260.654545V232.727273l155.927273-116.363637 160.581818 209.454546-81.454545 90.763636c27.927273 95.418182 174.545455 200.145455 242.036363 242.036364l109.381819-74.472727 190.836363 169.890909-130.327273 146.618181zM172.218182 258.327273c2.327273 25.6 44.218182 416.581818 586.472727 588.8l83.781818-88.436364-128-114.036364-104.727272 69.818182-11.636364-6.981818c-9.309091-6.981818-249.018182-146.618182-279.272727-290.909091l-2.327273-11.636363 72.145454-79.127273L279.272727 183.854545l-107.054545 74.472728z" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
+                            </Viewbox>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Background" Value="Green"/>
+                                <Setter Property="BorderBrush" Value="Green"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="Green"/>
+                                <Setter Property="BorderBrush" Value="Green"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="VideoStyle" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ToolBtnStyle}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid>
+                            <Ellipse Width="30" Height="30" Fill="#AAFFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center"></Ellipse>
+                            <Viewbox Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Path Data="M949.776 260.464c-5.815-2.718-12.434-1.619-17.024 2.281L671.641 485.372 671.641 272.531c0-4.083-1.563-8.167-4.675-11.293-3.112-3.112-7.196-4.675-11.294-4.675L80.968 256.563c-4.098 0-8.167 1.563-11.293 4.675-3.112 3.126-4.675 7.21-4.675 11.293l0 478.923c0 4.098 1.563 8.181 4.675 11.307 3.126 3.126 7.196 4.676 11.293 4.676l574.704 0c4.098 0 8.182-1.55 11.294-4.676s4.675-7.209 4.675-11.307L671.641 538.585l261.111 222.67c4.591 3.872 11.209 4.971 17.024 2.28 5.802-2.718 9.224-8.49 9.224-14.518L959 511.999 959 274.925C959 268.912 955.578 263.182 949.776 260.464zM642.803 738.598 93.839 738.598 93.839 285.401l548.964 0L642.803 738.598zM930.161 721.15 684.877 511.972l245.284-209.123L930.161 721.15z" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
+                            </Viewbox>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Background" Value="Green"/>
+                                <Setter Property="BorderBrush" Value="Green"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="Green"/>
+                                <Setter Property="BorderBrush" Value="Green"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <SolidColorBrush x:Key="ListBorder" Color="#FFEAEAEA"/>
+        <Style x:Key="ChatListBoxStyle" TargetType="{x:Type ListBox}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ListBorder}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="ItemContainerStyle">
+                <Setter.Value>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Focusable" Value="False"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" FlowDirection="{Binding FlowDir}" Margin="15,5">
+                                        <Image Grid.Column="1" Source="{Binding Image}" Height="35" Width="35" VerticalAlignment="Top"/>
+                                        <Path Grid.Column="2" StrokeThickness="1" Stroke="{Binding TbColor}" Data="M12,13 L5,18 L12,23Z" Fill="{Binding TbColor}" Margin="0" SnapsToDevicePixels="True"/>
+                                        <!--<TextBox Grid.Column="3" MaxWidth="355" TextWrapping="Wrap" FontSize="15" BorderBrush="{Binding TbColor}" Background="{Binding TbColor}" IsReadOnly="True" BorderThickness="0" Style="{StaticResource ChatTextBoxStyle}" FlowDirection="LeftToRight" Text="{Binding Message}"/>-->
+                                        <con:BindableRichTextBox Grid.Column="3" MaxWidth="355" FontSize="15" BorderBrush="{Binding TbColor}" Background="{Binding TbColor}" IsReadOnly="True" BorderThickness="0" Style="{StaticResource ChatRichTextBoxStyle}" FlowDirection="LeftToRight" Document="{Binding Message,UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--Visibility="Hidden"-->
+        <Canvas Visibility="Hidden" x:Name="gridMsgMain" Width="852" Height="612">
+            <Border BorderBrush="{DynamicResource ModuleControl.Panel.BorderBrush}" Width="852" Height="612" Canvas.Left="0" Canvas.Top="0" x:Name="myWin" BorderThickness="1">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded" SourceName="myWin">
+                        <i:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.ColumnSpan="3" Background="#883E3E40" MouseDown="Grid_MouseDown" MouseLeftButtonDown="Grid_MouseLeftButtonDown" MouseMove="Grid_MouseMove" MouseLeftButtonUp="Grid_MouseLeftButtonUp">
+                        <StackPanel  VerticalAlignment="Center" Orientation="Horizontal" FlowDirection="RightToLeft">
+                            <Button Width="25" Height="25" Content="X"  x:Name="closeBtn" Click="closeBtn_Click"></Button>
+                            <Button Width="25" Height="25" Content="口" x:Name="maxBtn" Click="maxBtn_Click"></Button>
+                            <Button Width="25" Height="25" Content="-" x:Name="minBtn" Click="minBtn_Click"></Button>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1" Background="#883E3E40">
+                        <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0">
+                            <RadioButton Height="20" Width="20" x:Name="rb_chat" IsChecked="{Binding IsChecked}" GroupName="rb" Style="{StaticResource ChatStyle}" Margin="0,10,0,10"/>
+                            <RadioButton Height="20" Width="20" x:Name="rb_friend" GroupName="rb" Style="{StaticResource FriendStyle}"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="1" Width="250" Background="#88AAAAAA">
+                        <!--聊天列表-->
+                        <ListBox Grid.Row="1" Visibility="{Binding ElementName=rb_chat,Path=IsChecked,Converter={StaticResource boolToVisibility}}" ItemsSource="{Binding Contact_latest}" SelectedItem="{Binding Select_Contact_latest}" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemContainerStyle="{StaticResource ListBoxItemChatStyle}" Background="#FFEAEAEA" BorderThickness="0" Margin="0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding ChatCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ListBox>
+                        <!--通讯录-->
+                        <ListBox Grid.Row="1" Visibility="{Binding ElementName=rb_friend,Path=IsChecked,Converter={StaticResource boolToVisibility}}" ItemsSource="{Binding Contact_all}" SelectedItem="{Binding Select_Contact_all}" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemContainerStyle="{StaticResource ListBoxItemFriendStyle}" Background="#FFEAEAEA" BorderThickness="0" Margin="0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding FirendCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ListBox>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <TextBlock Text="{Binding UserName}" Visibility="{Binding ElementName=rb_chat,Path=IsChecked,Converter={StaticResource boolToVisibility}}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" FontSize="15" Grid.ColumnSpan="2"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="2" Background="#88EAEAEA">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="150"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Visibility="{Binding ElementName=rb_chat,Path=IsChecked,Converter={StaticResource boolToVisibility}}">
+                            <con:ScrollingListBox ItemsSource="{Binding ChatList}" Background="WhiteSmoke"  Style="{StaticResource ChatListBoxStyle}"/>
+                        </Grid>
+                        <Grid Grid.Row="1" Background="#FFF9F9F9" Visibility="{Binding ElementName=rb_chat,Path=IsChecked,Converter={StaticResource boolToVisibility}}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="35"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0">
+                                <RadioButton x:Name="RB_Emoji" Command="{Binding EmojiCommand}" Style="{StaticResource EmojiStyle}"/>
+                                <RadioButton x:Name="RB_File" Command="{Binding FileCommand}" CommandParameter="{Binding ElementName=rtb}" Style="{StaticResource FileStyle}"/>
+                                <RadioButton x:Name="RB_Cut" Click="RB_Cut_Click" Style="{StaticResource CutStyle}"/>
+                                <con:ColorComboBox Foreground="Black" Width="90" Height="30"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,0">
+                                <RadioButton x:Name="RB_Phone" Command="{Binding EmojiCommand}" Style="{StaticResource PhoneStyle}"/>
+                                <RadioButton x:Name="RB_Video" Command="{Binding FileCommand}" Style="{StaticResource VideoStyle}"/>
+                            </StackPanel>
+                            <con:BindableRichTextBox x:Name="rtb" Document="{Binding ShowSendMessage,UpdateSourceTrigger=PropertyChanged}" FontSize="15" Grid.Row="1" Background="#FFF9F9F9" Focusable="True" Margin="10,0" BorderThickness="0" AcceptsReturn="False">
+                                <i:Interaction.Triggers>
+                                    <ei:KeyTrigger FiredOn="KeyUp" Key="Enter">
+                                        <i:InvokeCommandAction Command="{Binding SendCommand}"/>
+                                    </ei:KeyTrigger>
+                                    <ei:KeyTrigger FiredOn="KeyUp" Modifiers="Ctrl" Key="Enter">
+                                        <i:InvokeCommandAction Command="{Binding CtrlEnterCommand}" CommandParameter="{Binding ElementName=rtb}"/>
+                                    </ei:KeyTrigger>
+                                    <ei:KeyTrigger FiredOn="KeyUp" Modifiers="Shift" Key="Enter">
+                                        <i:InvokeCommandAction Command="{Binding ShiftEnterCommand}" CommandParameter="{Binding ElementName=rtb}"/>
+                                    </ei:KeyTrigger>
+                                </i:Interaction.Triggers>
+                                <con:BindableRichTextBox.Resources>
+                                    <Style TargetType="Paragraph">
+                                        <Setter Property="Margin" Value="0"></Setter>
+                                    </Style>
+                                </con:BindableRichTextBox.Resources>
+                            </con:BindableRichTextBox>
+                            <TextBox Grid.Row="1" Visibility="{Binding Tootip_Visibility}" Text="不能发送空白信息" Background="White" HorizontalContentAlignment="Center" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15,0" Style="{StaticResource ToolTipTextBoxStyle}" FontSize="13" Height="35" Width="110"/>
+                            <Button Grid.Row="2" Command="{Binding SendCommand}" Content="发送" Width="68" Height="26" FontSize="13" BorderBrush="Gray" Background="WhiteSmoke" Foreground="Gray" HorizontalAlignment="Right" Margin="0,0,15,0" Style="{StaticResource SendButtonStyle}"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Canvas>
+        <Grid Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="35" Width="50">
+            <Grid.Resources>
+                <Style x:Key="MsgButtonStyle" TargetType="{x:Type Button}">
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Grid Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                                    <Grid.Resources>
+                                        <Storyboard x:Key="OnLoaded" RepeatBehavior="Forever" AutoReverse="True">
+                                            <!--<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="Ellipse">
+                                                <EasingColorKeyFrame KeyTime="0:0:1" Value="Transparent"/>
+                                            </ColorAnimationUsingKeyFrames>-->
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="Ellipse">
+                                                <EasingColorKeyFrame KeyTime="0:0:1.5" Value="#10FFFFFF"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                            <DoubleAnimation Storyboard.TargetProperty="(FrameworkElement.Effect).
+(DropShadowEffect.BlurRadius)" BeginTime="00:00:00" From="20" To="0" Duration="00:00:1.5" 
+Storyboard.TargetName="Ellipse"/>
+                                        </Storyboard>
+                                    </Grid.Resources>
+                                    <Grid.Triggers>
+                                        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                            <BeginStoryboard Storyboard="{StaticResource OnLoaded}"></BeginStoryboard>
+                                        </EventTrigger>
+                                    </Grid.Triggers>
+                                    <TextBlock x:Name="Ellipse" Text="&#xe603;" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{DynamicResource FIcon}" Foreground="{TemplateBinding Foreground}" FontSize="{TemplateBinding FontSize}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                                        <TextBlock.Effect>
+                                            <DropShadowEffect Opacity="1" ShadowDepth="0" Color="{TemplateBinding Foreground}" BlurRadius="0" Direction="10"></DropShadowEffect>
+                                        </TextBlock.Effect>
+                                    </TextBlock>
+                                    <!--<Ellipse x:Name="Ellipse" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Fill="{TemplateBinding Background}" >
+                                        <Ellipse.Effect>
+                                            <DropShadowEffect Opacity="1" ShadowDepth="0" Color="{TemplateBinding Background}" BlurRadius="0" Direction="10"></DropShadowEffect>
+                                        </Ellipse.Effect>
+                                    </Ellipse>-->
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+            <Button Style="{StaticResource MsgButtonStyle}" Height="35" Width="50" Foreground="#FFFFFFFF" Background="#FFFFFFFF" FontSize="25" x:Name="btnChat" Click="btnChat_Click">
+            </Button>
+        </Grid>
+        <Popup x:Name="pop" PopupAnimation="Fade" PlacementTarget="{Binding ElementName=RB_Emoji}" Placement="Top" HorizontalOffset="-100" AllowsTransparency="True" StaysOpen="False" IsOpen="{Binding Emoji_Popup}">
+            <local:EmojiTabControlUC x:Name="EmojiTabControlUC" Width="455" Height="250" Close="EmojiTabControlUC_Close"/>
+        </Popup>
+    </Grid>
+</UserControl>
