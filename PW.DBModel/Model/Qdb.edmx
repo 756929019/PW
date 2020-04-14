@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="qdbModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="answers">
+          <Key>
+            <PropertyRef Name="answer_id" />
+          </Key>
+          <Property Name="answer_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="answer_no" Type="varchar" MaxLength="10" />
+          <Property Name="answer_content" Type="varchar" MaxLength="255" />
+          <Property Name="answer_score" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="upuser" Type="varchar" MaxLength="50" />
+          <Property Name="uptime" Type="datetime" Precision="0" />
+          <Property Name="question_id" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="papers">
+          <Key>
+            <PropertyRef Name="paper_id" />
+          </Key>
+          <Property Name="paper_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="paper_title" Type="varchar" MaxLength="255" />
+          <Property Name="paper_description" Type="text" />
+          <Property Name="upuser" Type="varchar" MaxLength="50" />
+          <Property Name="uptime" Type="datetime" Precision="0" />
+          <Property Name="group_id" Type="varchar" MaxLength="50" />
+          <Property Name="isshow" Type="varchar" MaxLength="10" />
+          <Property Name="paper_no" Type="int" />
+        </EntityType>
+        <EntityType Name="questions">
+          <Key>
+            <PropertyRef Name="question_id" />
+          </Key>
+          <Property Name="question_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="question_no" Type="int" />
+          <Property Name="question_content" Type="text" />
+          <Property Name="upuser" Type="varchar" MaxLength="50" />
+          <Property Name="uptime" Type="datetime" Precision="0" />
+          <Property Name="paper_id" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="results">
+          <Key>
+            <PropertyRef Name="result_id" />
+          </Key>
+          <Property Name="result_id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="result_content" Type="text" />
+          <Property Name="min_score" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="max_score" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="paper_id" Type="varchar" MaxLength="50" />
+          <Property Name="upuser" Type="varchar" MaxLength="50" />
+          <Property Name="uptime" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userno" Type="varchar" MaxLength="50" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="userpwd" Type="varchar" MaxLength="50" />
+          <Property Name="group_id" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="qdbModelStoreContainer">
+          <EntitySet Name="answers" EntityType="Self.answers" Schema="qdb" store:Type="Tables" />
+          <EntitySet Name="papers" EntityType="Self.papers" Schema="qdb" store:Type="Tables" />
+          <EntitySet Name="questions" EntityType="Self.questions" Schema="qdb" store:Type="Tables" />
+          <EntitySet Name="results" EntityType="Self.results" Schema="qdb" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="qdb" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="qdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="answers">
+          <Key>
+            <PropertyRef Name="answer_id" />
+          </Key>
+          <Property Name="answer_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="answer_no" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="answer_content" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="answer_score" Type="Decimal" />
+          <Property Name="upuser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="uptime" Type="DateTime" />
+          <Property Name="question_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="papers">
+          <Key>
+            <PropertyRef Name="paper_id" />
+          </Key>
+          <Property Name="paper_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="paper_title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="paper_description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="upuser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="uptime" Type="DateTime" />
+          <Property Name="group_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isshow" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="paper_no" Type="Int32" />
+        </EntityType>
+        <EntityType Name="questions">
+          <Key>
+            <PropertyRef Name="question_id" />
+          </Key>
+          <Property Name="question_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="question_no" Type="Int32" />
+          <Property Name="question_content" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="upuser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="uptime" Type="DateTime" />
+          <Property Name="paper_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="results">
+          <Key>
+            <PropertyRef Name="result_id" />
+          </Key>
+          <Property Name="result_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="result_content" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="min_score" Type="Decimal" />
+          <Property Name="max_score" Type="Decimal" />
+          <Property Name="paper_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="upuser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="uptime" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="userpwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="group_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="qdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="answers" EntityType="Self.answers" />
+          <EntitySet Name="papers" EntityType="Self.papers" />
+          <EntitySet Name="questions" EntityType="Self.questions" />
+          <EntitySet Name="results" EntityType="Self.results" />
+          <EntitySet Name="users" EntityType="Self.users" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="qdbModelStoreContainer" CdmEntityContainer="qdbEntities">
+          <EntitySetMapping Name="answers">
+            <EntityTypeMapping TypeName="qdbModel.answers">
+              <MappingFragment StoreEntitySet="answers">
+                <ScalarProperty Name="answer_id" ColumnName="answer_id" />
+                <ScalarProperty Name="answer_no" ColumnName="answer_no" />
+                <ScalarProperty Name="answer_content" ColumnName="answer_content" />
+                <ScalarProperty Name="answer_score" ColumnName="answer_score" />
+                <ScalarProperty Name="upuser" ColumnName="upuser" />
+                <ScalarProperty Name="uptime" ColumnName="uptime" />
+                <ScalarProperty Name="question_id" ColumnName="question_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="papers">
+            <EntityTypeMapping TypeName="qdbModel.papers">
+              <MappingFragment StoreEntitySet="papers">
+                <ScalarProperty Name="paper_id" ColumnName="paper_id" />
+                <ScalarProperty Name="paper_title" ColumnName="paper_title" />
+                <ScalarProperty Name="paper_description" ColumnName="paper_description" />
+                <ScalarProperty Name="upuser" ColumnName="upuser" />
+                <ScalarProperty Name="uptime" ColumnName="uptime" />
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+                <ScalarProperty Name="isshow" ColumnName="isshow" />
+                <ScalarProperty Name="paper_no" ColumnName="paper_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="questions">
+            <EntityTypeMapping TypeName="qdbModel.questions">
+              <MappingFragment StoreEntitySet="questions">
+                <ScalarProperty Name="question_id" ColumnName="question_id" />
+                <ScalarProperty Name="question_no" ColumnName="question_no" />
+                <ScalarProperty Name="question_content" ColumnName="question_content" />
+                <ScalarProperty Name="upuser" ColumnName="upuser" />
+                <ScalarProperty Name="uptime" ColumnName="uptime" />
+                <ScalarProperty Name="paper_id" ColumnName="paper_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="results">
+            <EntityTypeMapping TypeName="qdbModel.results">
+              <MappingFragment StoreEntitySet="results">
+                <ScalarProperty Name="result_id" ColumnName="result_id" />
+                <ScalarProperty Name="result_content" ColumnName="result_content" />
+                <ScalarProperty Name="min_score" ColumnName="min_score" />
+                <ScalarProperty Name="max_score" ColumnName="max_score" />
+                <ScalarProperty Name="paper_id" ColumnName="paper_id" />
+                <ScalarProperty Name="upuser" ColumnName="upuser" />
+                <ScalarProperty Name="uptime" ColumnName="uptime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="qdbModel.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="userno" ColumnName="userno" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="userpwd" ColumnName="userpwd" />
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
