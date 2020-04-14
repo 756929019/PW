@@ -1,0 +1,187 @@
+﻿<Window x:Class="PW.Desktop.Shell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+    xmlns:local="clr-namespace:PW.Desktop"	
+        xmlns:ctrls="clr-namespace:PW.Controls.Controls;assembly=PW.Controls"  
+         xmlns:ctrl="clr-namespace:PW.Controls;assembly=PW.Controls" 
+        xmlns:prism="http://www.codeplex.com/prism"
+	x:Name="Window"
+	Title="Desktop"
+    WindowStartupLocation="CenterScreen"
+	UseLayoutRounding="True"
+	Width="1024" Height="768" WindowState="Maximized" Loaded="Window_Loaded" WindowStyle="None" ResizeMode="NoResize" Icon="Resources/logo.png" Closed="Window_Closed" 
+        >
+    <Window.Resources>
+        <ctrl:BoolConvertVisibility x:Key="boolToVisibility"/>
+    </Window.Resources>
+    <!--AllowsTransparency="True"-->
+    <Grid x:Name="window">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="bgGrid" Grid.RowSpan="2">
+            <Grid.Background>
+                <ImageBrush x:Name="bgImg" ImageSource="Images/bg/bg001.jpg"></ImageBrush>
+            </Grid.Background>
+            <Grid.Effect>
+                <!--模糊背景-->
+                <BlurEffect Radius="1"></BlurEffect>
+            </Grid.Effect>
+        </Grid>
+        <Grid Height="30" Background="{DynamicResource ModuleControl.Panel.BackgroundBrush}" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Cursor="Hand">
+            <StackPanel  VerticalAlignment="Center" Orientation="Horizontal" FlowDirection="RightToLeft">
+                <Button Width="25" Height="25" x:Name="closeBtn" Click="closeBtn_Click">
+                    <TextBlock Style="{DynamicResource FIcon}" Text="&#xe60a;" FontSize="14" Margin="1,4,0,0" VerticalAlignment="Center"/>
+                </Button>
+                <Button Width="25" Height="25" x:Name="maxBtn" Click="maxBtn_Click">
+                    <TextBlock Style="{DynamicResource FIcon}" Text="&#xe62b;" FontSize="14" Margin="1,4,0,0" VerticalAlignment="Center"/>
+                </Button>         
+                <Button Width="25" Height="25" x:Name="minBtn" Click="minBtn_Click">
+                    <TextBlock Style="{DynamicResource FIcon}" Text="&#xe62d;" FontSize="14" Margin="1,4,0,0" VerticalAlignment="Center"/>
+                </Button>
+                <Button Width="25" Height="25" ToolTip="换肤" x:Name="bgBtn" Click="bgBtn_Click">
+                    <TextBlock Style="{DynamicResource FIcon}" Text="&#xe619;" FontSize="14" Margin="1,4,0,0" VerticalAlignment="Center"/>
+                </Button>
+            </StackPanel>
+            <Popup x:Name="pop" PopupAnimation="Fade" PlacementTarget="{Binding ElementName=bgBtn}" Placement="Bottom" VerticalOffset="3" HorizontalOffset="-135" AllowsTransparency="True" StaysOpen="False" IsOpen="{Binding Bg_Popup}">
+                <Grid Width="210" Height="110" Background="#33000000">
+                    <Grid.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Height" Value="25"/>
+                            <Setter Property="Width" Value="25"/>
+                        </Style>
+                    </Grid.Resources>
+                    <WrapPanel x:Name="bgBtnPanel" Margin="5">
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/bg001.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/bg002.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/bg003.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/bg.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/bg2.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/bg4.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/bg5.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/bg8.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/bg9.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/bg10.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/bg11.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/bg12.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/bg13.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/blue.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/chrome.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/city.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/cloth.png"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/greenish.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/kiwi.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/lights.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/night.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/ocean.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/sunny.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/sunset.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/tectile.png"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/violate.jpg"/>
+                        </Button>
+                        <Button>
+                            <Image Stretch="Fill" Source="Images/bg/yellow.jpg"/>
+                        </Button>
+                    </WrapPanel>
+                </Grid>
+            </Popup>
+        </Grid>
+        <Grid x:Name="LayoutRoot" Grid.Row="1">
+               
+    	<Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+    	</Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0"/>
+        </Grid.ColumnDefinitions>
+        <Grid  Grid.Row="1" Grid.Column="1" x:Name="gridMain" Margin="0">
+            <ContentControl x:Name="mainContentControl" prism:RegionManager.RegionName="MainRegion" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></ContentControl>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="0" x:Name="gridHeader" Grid.ColumnSpan="3" Margin="0">
+            <ContentControl x:Name="headerContentControl" prism:RegionManager.RegionName="HeaderRegion" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></ContentControl>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0" x:Name="gridAside" Margin="0">
+             <ContentControl x:Name="asideContentControl" prism:RegionManager.RegionName="AsideRegion" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></ContentControl>
+        </Grid>
+        <Grid  Grid.Row="3" Grid.Column="0" x:Name="gridFooter"  Grid.ColumnSpan="3" Margin="0">
+                <ContentControl x:Name="footerContentControl" prism:RegionManager.RegionName="FooterRegion" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></ContentControl>
+        </Grid>
+            
+    </Grid>
+
+        <Grid Grid.Row="1" x:Name="gridChat" Margin="0" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <ContentControl x:Name="chatContentControl" prism:RegionManager.RegionName="ChatRegion" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></ContentControl>
+        </Grid>
+
+        <Grid Grid.Row="1" x:Name="gridLoading" Background="#55000000" Visibility="{Binding ElementName=ctrlsProgressRing,Path=IsActive,Converter={StaticResource boolToVisibility}}">
+            <Grid Height="110" Width="260">
+            <Border Background="#551FA60A"  Opacity="0.89" CornerRadius="1">
+                <Border.Effect>
+                    <DropShadowEffect Color="#88EDF972" BlurRadius="8" ShadowDepth="0" Direction="0" Opacity="0.7" />
+                </Border.Effect>
+            </Border>
+            <StackPanel VerticalAlignment="Center"  Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                <ctrls:Loading x:Name="ctrlsProgressRing" Width="60" Height="70" Margin="5" IsActive="True" FillColor="#FF3CFBFB"  />
+                <TextBlock x:Name="txtMessage" Margin="20,10,15,10" Width="120" FontSize="22" VerticalAlignment="Center" Foreground="#FF3CFBFB" TextWrapping="Wrap">Loading...</TextBlock>
+            </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

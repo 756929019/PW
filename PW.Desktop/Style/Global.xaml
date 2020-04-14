@@ -1,0 +1,159 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
+    <!--TextBlock-->
+    <Style TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource Sys.Foreground}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource Sys.FontFamily}"/>
+        <Setter Property="FontSize" Value="{DynamicResource Sys.FontSize}"/>
+        <Setter Property="Padding" Value="0,3,0,0"/>
+    </Style>
+    <Style x:Key="DefTextBlock" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource Sys.Foreground}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource Sys.FontFamily}"/>
+        <Setter Property="FontSize" Value="{DynamicResource Sys.FontSize}"/>
+        <Setter Property="Padding" Value="0,3,0,0"/>
+    </Style>
+    
+    <!--文本框-->
+    <Style TargetType="TextBox">
+        <Setter Property="Foreground" Value="{DynamicResource Sys.Input.Foreground}"/>
+        <Setter Property="Background" Value="{DynamicResource Sys.Input.Background}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Sys.Input.BorderBrush}"/>
+        <Setter Property="FontSize" Value="{DynamicResource Sys.Input.FontSize}"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource Sys.Input.BorderThickness}"/>
+        <Setter Property="Height" Value="20"/>
+    </Style>
+    <Style TargetType="PasswordBox">
+        <Setter Property="Foreground" Value="{DynamicResource Sys.Input.Foreground}"/>
+        <Setter Property="Background" Value="{DynamicResource Sys.Input.Background}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Sys.Input.BorderBrush}"/>
+        <Setter Property="FontSize" Value="{DynamicResource Sys.Input.FontSize}"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource Sys.Input.BorderThickness}"/>
+        <Setter Property="Height" Value="20"/>
+    </Style>
+    <!--复选框-->
+    <Style TargetType="CheckBox">
+        <Setter Property="Foreground" Value="{DynamicResource Sys.Input.Foreground}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="4,0,0,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Grid VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimation Duration="0" To="{DynamicResource Sys.Input.MouseOver.BorderBrush}" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="hotbg_20" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="Disabled"/>
+                                <VisualState x:Name="Pressed"/>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CheckIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ColorAnimation Duration="0" To="{DynamicResource Sys.Input.Checked.BorderBrush}" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="hotbg_20" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked"/>
+                                <VisualState x:Name="Indeterminate">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="IndeterminateIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23">
+                            <Grid>
+                                <Path x:Name="hotbg_20" Stretch="Fill" StrokeThickness="1.33333" StrokeLineJoin="Round" Fill="{DynamicResource Sys.Input.Background}" Stroke="{DynamicResource Sys.Input.BorderBrush}" Data="F1 M 746.405,724.995L 725.944,724.995C 725.703,724.995 725.508,724.534 725.508,723.966L 725.508,704.689C 725.508,704.122 725.703,703.661 725.944,703.661L 746.405,703.661C 746.646,703.661 746.841,704.122 746.841,704.689L 746.841,723.966C 746.841,724.534 746.646,724.995 746.405,724.995 Z " UseLayoutRounding="False">
+                                    <!--<Path.Fill>
+                                        <RadialGradientBrush RadiusX="1.96789" RadiusY="1.89722" Center="0.0848637,0.291189" GradientOrigin="0.0848637,0.291189">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <SkewTransform CenterX="0.0848637" CenterY="0.291189" AngleX="-13.2747" AngleY="0"/>
+                                                    <RotateTransform CenterX="0.0848637" CenterY="0.291189" Angle="37.211"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#303EAFFF" Offset="0.0858586"/>
+                                            <GradientStop Color="#302463FF" Offset="0.301316"/>
+                                            <GradientStop Color="#300A17FF" Offset="0.555556"/>
+                                            <GradientStop Color="#302474FF" Offset="0.828512"/>
+                                            <GradientStop Color="#303ED1FF" Offset="0.969697"/>
+                                        </RadialGradientBrush>
+                                    </Path.Fill>-->
+                                </Path>
+                                <Path x:Name="CheckIcon" Data="M102.03442,598.79645 L105.22962,597.78918 L106.78825,600.42358 C106.78825,600.42358 108.51028,595.74304 110.21724,593.60419 C112.00967,591.35822 114.89314,591.42316 114.89314,591.42316 C114.89314,591.42316 112.67844,593.42645 111.93174,594.44464 C110.7449,596.06293 107.15683,604.13837 107.15683,604.13837 z" Fill="{DynamicResource Sys.Input.Foreground}" FlowDirection="LeftToRight" Stretch="Fill" HorizontalAlignment="Center" UseLayoutRounding="False" VerticalAlignment="Center" Visibility="Collapsed"/>
+                                <Border x:Name="IndeterminateIcon" Background="{DynamicResource Sys.Input.Foreground}" Margin="4,9" Visibility="Collapsed"/>
+                            </Grid>
+                        </Viewbox>
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.Column="1" Margin="{TemplateBinding Padding}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--单选框-->
+    <Style TargetType="RadioButton">
+        <Setter Property="Foreground" Value="{DynamicResource Sys.Input.Foreground}"/>
+    </Style>
+
+    <!--Button-->
+    <Style TargetType="Button">
+        <Setter Property="FontSize" Value="{DynamicResource Sys.FontSize}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Sys.Foreground}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource Sys.FontFamily}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="{DynamicResource Sys.Button.Background}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Sys.Button.BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource Sys.Button.BorderThickness}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border" CornerRadius="1" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+                        <ContentPresenter Name="content" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              RecognizesAccessKey="True" 
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource Sys.Button.MouseOver.Background}">
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource Sys.Button.Pressed.Background}">
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="border" Property="Opacity" Value="0.6" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+   
+</ResourceDictionary>
