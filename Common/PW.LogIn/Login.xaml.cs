@@ -261,9 +261,9 @@ namespace PW.LogIn
                 regionManager.RequestNavigate(RegionNames.Main, "SysSwitchView");
 
                 // 加载各模块主页面
-                CommandEventArgs ces = new CommandEventArgs();
-                ces.Type = CommandType.registerDefViewWithRegion;
-                GlobalData.EventAggregator.GetEvent<CommandEvent>().Publish(ces);
+                //CommandEventArgs ces = new CommandEventArgs();
+                //ces.Type = CommandType.registerDefViewWithRegion;
+                //GlobalData.EventAggregator.GetEvent<CommandEvent>().Publish(ces);
             }
         }
 
