@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/" name="outputtemplate">
+  <xsl:text disable-output-escaping="yes">&lt;%@ ServiceHost Language="C#" Debug="true" Service="PW.Service.Service</xsl:text><xsl:value-of select="TableModel/ModelName"/><xsl:text disable-output-escaping="yes">" CodeBehind="Service</xsl:text><xsl:value-of select="TableModel/ModelName"/><xsl:text disable-output-escaping="yes">.svc.cs" %&gt;</xsl:text>
+</xsl:template>
+</xsl:stylesheet>

@@ -99,8 +99,10 @@ namespace PW.Tools.Views
                     }
 
                     //Directory.GetCurrentDirectory();
-                    Util.TransferXml(Util.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/mode.xslt", "D:/" + name + ".cs");
-                    Util.TransferXml(Util.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/iservice.xslt", "D:/IService" + name + ".cs");
+                    Util.TransferXml(Util.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/mode.xslt", "D:/CodeGenerator/model/" + name + ".cs");
+                    Util.TransferXml(Util.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/iservice.xslt", "D:/CodeGenerator/service/IService" + name + ".cs");
+                    Util.TransferXml(Util.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/service.xslt", "D:/CodeGenerator/service/Service" + name + ".svc.cs");
+                    Util.TransferXml(Util.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/service.svc.xslt", "D:/CodeGenerator/service/Service" + name + ".svc");
                 }
             }
         }

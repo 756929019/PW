@@ -58,6 +58,11 @@ namespace PW.Tools.Views
             XmlTextWriter xw = null;
             try
             {
+                DirectoryInfo dir = new DirectoryInfo(TargetFileName);
+                if (!Directory.Exists(dir.Parent.FullName))//如果不存在就创建file文件夹
+                {
+                    Directory.CreateDirectory(dir.Parent.FullName);
+                }
                 xw = new XmlTextWriter(TargetFileName, Encoding.UTF8);
                 xslTran.Load(XslPath);
                 xslTran.Transform(readerXml, xw);
