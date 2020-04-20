@@ -7,6 +7,7 @@ namespace PW.Tools.Views
 {
     public class TableModel
     {
+        public string DbContextName { get; set; }
         public string TableName { get; set; }
         public string Comment { get; set; }
         public string NameSpace { get; set; }

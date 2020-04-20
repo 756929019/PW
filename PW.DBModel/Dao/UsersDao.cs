@@ -11,9 +11,9 @@ namespace PW.DBCommon.Dao
     {
         public List<users> query(users user)
         {
-            using (qdbEntities qdb = new qdbEntities())
+            using (qdbEntities myDb = new qdbEntities())
             {
-                IQueryable<users> db = qdb.users; // var db = from s in qdb.Set<users>() select s;
+                IQueryable<users> db = myDb.users; // var db = from s in qdb.Set<users>() select s;
                 if (!String.IsNullOrEmpty(user.username))
                 {
                     db = db.Where<users>(p => p.username.Contains(user.username));
@@ -50,39 +50,39 @@ namespace PW.DBCommon.Dao
 
         public int deleteById(int id)
         {
-            using (qdbEntities qdb = new qdbEntities())
+            using (qdbEntities myDb = new qdbEntities())
             {
                 users user = new users() { id = id };
-                qdb.users.Attach(user);
-                qdb.Entry(user).State = EntityState.Deleted;
-                return qdb.SaveChanges();
+                myDb.users.Attach(user);
+                myDb.Entry(user).State = EntityState.Deleted;
+                return myDb.SaveChanges();
             }
         }
 
         public int add(users user)
         {
-            using (qdbEntities qdb = new qdbEntities())
+            using (qdbEntities myDb = new qdbEntities())
             {
-                qdb.users.Add(user);
-                return qdb.SaveChanges();
+                myDb.users.Add(user);
+                return myDb.SaveChanges();
             }
         }
 
         public int updateById(users user)
         {
-            using (qdbEntities qdb = new qdbEntities())
+            using (qdbEntities myDb = new qdbEntities())
             {
-                qdb.users.Attach(user);
-                qdb.Entry(user).State = EntityState.Modified;
-                return qdb.SaveChanges();
+                myDb.users.Attach(user);
+                myDb.Entry(user).State = EntityState.Modified;
+                return myDb.SaveChanges();
             }
         }
 
         public users getById(int id)
         {
-            using (qdbEntities qdb = new qdbEntities())
+            using (qdbEntities myDb = new qdbEntities())
             {
-                return qdb.Set<users>().Where<users>(p => p.id == id).FirstOrDefault<users>();
+                return myDb.Set<users>().Where<users>(p => p.id == id).FirstOrDefault<users>();
             }
         }
 

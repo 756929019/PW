@@ -16,6 +16,8 @@ namespace PW.Tools.Views
         public string Mark { get; set; }
         public string VarName { get; set; }
         public string VarNameLocal { get; set; }
+        public string ColumnKey { get; set; }
+        
         //        select* from sysdatabases where name not in ('master','model','msdb','tempdb')
         //select* from sysobjects where xtype='U' order by name
         //select* from sysobjects where xtype='V' order by name

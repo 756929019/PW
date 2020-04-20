@@ -173,6 +173,10 @@
     <Resource Include="Images\WordWrap.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="template\dao.xslt">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="template\service.svc.xslt">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
