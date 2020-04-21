@@ -59,7 +59,19 @@
                 whereLambda.And(p =<xsl:text disable-output-escaping="yes">&gt;</xsl:text> p.<xsl:value-of select="FieldName"/>.Equals(record.<xsl:value-of select="FieldName"/>));
             }
             </xsl:for-each>
-            return LoadPageItems(5, 2, out _total, whereLambda, p =<xsl:text disable-output-escaping="yes">&gt;</xsl:text> p.id, true);
+            <xsl:for-each select="TableModel/Fields/FieldModel">
+              <xsl:choose>
+                <xsl:when test="ColumnKey='PRI'">
+            return LoadPageItems(5, 2, out _total, whereLambda, p =<xsl:text disable-output-escaping="yes">&gt;</xsl:text> p.<xsl:value-of select="FieldName"/>, true);
+                </xsl:when>
+                <xsl:when test="FieldName='ID'">
+            return LoadPageItems(5, 2, out _total, whereLambda, p =<xsl:text disable-output-escaping="yes">&gt;</xsl:text> p.<xsl:value-of select="FieldName"/>, true);
+                </xsl:when>
+                <xsl:otherwise>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:for-each>
+            // return LoadPageItems(5, 2, out _total, whereLambda, p =<xsl:text disable-output-escaping="yes">&gt;</xsl:text> p.id, true);
         }
 
         /// <summary>
@@ -70,14 +82,13 @@
             using (<xsl:value-of select="TableModel/DbContextName"/> myDb = new <xsl:value-of select="TableModel/DbContextName"/>())
             {
                 // TODO 生成代码后需要检查一下是否找到正确的主键，这里做一个错误代码，避免直接使用
-                你好啊，确认sql条件后删除我
                 <xsl:for-each select="TableModel/Fields/FieldModel">
                   <xsl:choose>
                     <xsl:when test="ColumnKey='PRI'">
-                <xsl:copy-of select="$tableName" /> record = new <xsl:value-of select="TableModel/TableName"/>() { <xsl:value-of select="FieldName"/> = id };
+                <xsl:copy-of select="$tableName" /> record = new <xsl:copy-of select="$tableName" />() { <xsl:value-of select="FieldName"/> = id };
                     </xsl:when>
                     <xsl:when test="FieldName='ID'">
-                <xsl:copy-of select="$tableName" /> record = new <xsl:value-of select="TableModel/TableName"/>() { <xsl:value-of select="FieldName"/> = id };
+                <xsl:copy-of select="$tableName" /> record = new <xsl:copy-of select="$tableName" />() { <xsl:value-of select="FieldName"/> = id };
                     </xsl:when>
                     <xsl:otherwise>
                     </xsl:otherwise>
@@ -92,7 +103,7 @@
         /// <summary>
         /// 添加
         /// </summary>
-        public <xsl:value-of select="TableModel/TableName"/> add(<xsl:value-of select="TableModel/TableName"/>&#160;record)
+        public int add(<xsl:value-of select="TableModel/TableName"/>&#160;record)
         {
             using (<xsl:value-of select="TableModel/DbContextName"/> myDb = new <xsl:value-of select="TableModel/DbContextName"/>())
             {
@@ -122,14 +133,13 @@
             using (<xsl:value-of select="TableModel/DbContextName"/> myDb = new <xsl:value-of select="TableModel/DbContextName"/>())
             {
                  // TODO 生成代码后需要检查一下是否找到正确的主键，这里做一个错误代码，避免直接使用
-                 你好啊，确认sql条件后删除我
               <xsl:for-each select="TableModel/Fields/FieldModel">
                 <xsl:choose>
                   <xsl:when test="ColumnKey='PRI'">
-                 return myDb.Set<xsl:text disable-output-escaping="yes">&lt;</xsl:text><xsl:copy-of select="$tableName" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>().Where<xsl:text disable-output-escaping="yes">&lt;</xsl:text><xsl:value-of select="TableModel/TableName"/><xsl:text disable-output-escaping="yes">&gt;</xsl:text>(p =<xsl:text disable-output-escaping="yes">&gt;</xsl:text> p.<xsl:value-of select="FieldName"/> == id).FirstOrDefault<xsl:text disable-output-escaping="yes">&lt;</xsl:text><xsl:value-of select="TableModel/TableName"/><xsl:text disable-output-escaping="yes">&gt;</xsl:text>();
+                 return myDb.Set<xsl:text disable-output-escaping="yes">&lt;</xsl:text><xsl:copy-of select="$tableName" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>().Where<xsl:text disable-output-escaping="yes">&lt;</xsl:text><xsl:copy-of select="$tableName" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>(p =<xsl:text disable-output-escaping="yes">&gt;</xsl:text> p.<xsl:value-of select="FieldName"/> == id).FirstOrDefault<xsl:text disable-output-escaping="yes">&lt;</xsl:text><xsl:copy-of select="$tableName" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>();
                   </xsl:when>
                   <xsl:when test="FieldName='ID'">
-                 return myDb.Set<xsl:text disable-output-escaping="yes">&lt;</xsl:text><xsl:copy-of select="$tableName" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>().Where<xsl:text disable-output-escaping="yes">&lt;</xsl:text><xsl:value-of select="TableModel/TableName"/><xsl:text disable-output-escaping="yes">&gt;</xsl:text>(p =<xsl:text disable-output-escaping="yes">&gt;</xsl:text> p.<xsl:value-of select="FieldName"/> == id).FirstOrDefault<xsl:text disable-output-escaping="yes">&lt;</xsl:text><xsl:value-of select="TableModel/TableName"/><xsl:text disable-output-escaping="yes">&gt;</xsl:text>();
+                 return myDb.Set<xsl:text disable-output-escaping="yes">&lt;</xsl:text><xsl:copy-of select="$tableName" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>().Where<xsl:text disable-output-escaping="yes">&lt;</xsl:text><xsl:copy-of select="$tableName" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>(p =<xsl:text disable-output-escaping="yes">&gt;</xsl:text> p.<xsl:value-of select="FieldName"/> == id).FirstOrDefault<xsl:text disable-output-escaping="yes">&lt;</xsl:text><xsl:copy-of select="$tableName" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>();
                   </xsl:when>
                   <xsl:otherwise>
                   </xsl:otherwise>

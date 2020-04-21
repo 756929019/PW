@@ -26,13 +26,13 @@
         /// 删除
         /// </summary>
         [OperationContract]
-        <xsl:value-of select="TableModel/TableName"/> deleteById(int id);
+        int deleteById(int id);
 
         /// <summary>
         /// 添加
         /// </summary>
         [OperationContract]
-        <xsl:value-of select="TableModel/TableName"/> add(<xsl:value-of select="TableModel/TableName"/>&#160;record);
+        int add(<xsl:value-of select="TableModel/TableName"/>&#160;record);
 
         /// <summary>
         /// 更新

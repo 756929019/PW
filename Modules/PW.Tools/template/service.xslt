@@ -36,7 +36,7 @@
         /// <summary>
         /// 添加
         /// </summary>
-        public <xsl:value-of select="TableModel/TableName"/> add(<xsl:value-of select="TableModel/TableName"/>&#160;record)
+        public int add(<xsl:value-of select="TableModel/TableName"/>&#160;record)
         {
             return new <xsl:value-of select="TableModel/ModelName"/>Dao().add(record);
         }
