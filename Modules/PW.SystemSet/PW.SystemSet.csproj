@@ -96,6 +96,10 @@
     <Compile Include="SystemSetModule_MainView.xaml.cs">
       <DependentUpon>SystemSetModule_MainView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\UserViewModel .cs" />
+    <Compile Include="Views\UserView.xaml.cs">
+      <DependentUpon>UserView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StyleSetting.xaml.cs">
       <DependentUpon>StyleSetting.xaml</DependentUpon>
     </Compile>
@@ -120,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\UserView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\StyleSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -133,6 +141,14 @@
     <ProjectReference Include="..\..\Common\PW.Infrastructure\PW.Infrastructure.csproj">
       <Project>{171D7BC9-44A7-452A-ACAF-DD8ED4EDAC98}</Project>
       <Name>PW.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\PW.SericeCore\PW.ServiceCenter.csproj">
+      <Project>{30E99E0E-E214-40B0-8764-A4AC56822DDB}</Project>
+      <Name>PW.ServiceCenter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PW.DBModel\PW.DBCommon.csproj">
+      <Project>{3C0B6EC2-949C-496B-9C87-5418DEF74A5C}</Project>
+      <Name>PW.DBCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

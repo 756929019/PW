@@ -38,7 +38,7 @@ namespace PW.SystemHeader
         [ImportingConstructor]
         public HeaderView(IRegionManager regionManager, IEventAggregator eventAggregator, IModuleManager moduleManager)
         {
-            NavigateToScreenEvent ntsEvent = GlobalData.EventAggregator.GetEvent<NavigateToScreenEvent>();
+            HNavigateToScreenEvent ntsEvent = GlobalData.EventAggregator.GetEvent<HNavigateToScreenEvent>();
             ntsEvent.Subscribe(OnLinkageNavigateEvent);
         }
         public void OnLinkageNavigateEvent(CommandRegionEventArgs e)
@@ -99,7 +99,7 @@ namespace PW.SystemHeader
             cms.Region = RegionNames.Main;
             cms.Module = ((sender as ToggleButton).Tag as NavModuleInfo).module;
             cms.menuVm = ((sender as ToggleButton).Tag as NavModuleInfo).menuVm;
-            GlobalData.EventAggregator.GetEvent<NavigateToScreenEvent>().Publish(cms);
+            GlobalData.EventAggregator.GetEvent<HNavigateToScreenEvent>().Publish(cms);
         }
         private void UncheckedButtons()
         {

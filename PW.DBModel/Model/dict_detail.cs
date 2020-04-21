@@ -12,15 +12,13 @@ namespace PW.DBCommon.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class papers
+    public partial class dict_detail
     {
-        public string paper_id { get; set; }
-        public string paper_title { get; set; }
-        public string paper_description { get; set; }
-        public string upuser { get; set; }
-        public Nullable<System.DateTime> uptime { get; set; }
-        public string group_id { get; set; }
-        public string isshow { get; set; }
-        public Nullable<int> paper_no { get; set; }
+        public long ID { get; set; }
+        public string LABEL { get; set; }
+        public string VALUE { get; set; }
+        public string SORT { get; set; }
+        public Nullable<long> DICT_ID { get; set; }
+        public Nullable<System.DateTime> CREATE_TIME { get; set; }
     }
 }

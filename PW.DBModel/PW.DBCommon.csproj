@@ -81,15 +81,47 @@
   <ItemGroup>
     <Compile Include="Dao\BaseDao.cs" />
     <Compile Include="Dao\CodeGeneratorDao.cs" />
-    <Compile Include="Dao\UsersDao.cs" />
+    <Compile Include="Dao\DeptDao.cs" />
+    <Compile Include="Dao\DictDao.cs" />
+    <Compile Include="Dao\DictDetailDao.cs" />
+    <Compile Include="Dao\GeneralWorkflowFuncDao.cs" />
+    <Compile Include="Dao\GeneralWorkflowsDao.cs" />
+    <Compile Include="Dao\GeneralWorkflowstepdetDao.cs" />
+    <Compile Include="Dao\GeneralWorkflowStepsDao.cs" />
+    <Compile Include="Dao\MenuDao.cs" />
+    <Compile Include="Dao\RoleDao.cs" />
+    <Compile Include="Dao\RolesDeptsDao.cs" />
+    <Compile Include="Dao\RolesMenusDao.cs" />
+    <Compile Include="Dao\UserAvatarDao.cs" />
+    <Compile Include="Dao\UserDao.cs" />
+    <Compile Include="Dao\UsersRolesDao.cs" />
     <Compile Include="DBUtility\DBBLL.cs" />
     <Compile Include="DBUtility\DBClass.cs" />
     <Compile Include="DBUtility\MYSQLDBClass.cs" />
     <Compile Include="DBUtility\SqlHelper.cs" />
-    <Compile Include="Model\answers.cs">
+    <Compile Include="Model\column.cs" />
+    <Compile Include="Model\dept.cs">
       <DependentUpon>Qdb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\papers.cs">
+    <Compile Include="Model\dict.cs">
+      <DependentUpon>Qdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\dict_detail.cs">
+      <DependentUpon>Qdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\general_workflows.cs">
+      <DependentUpon>Qdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\general_workflowstepdet.cs">
+      <DependentUpon>Qdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\general_workflow_func.cs">
+      <DependentUpon>Qdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\general_workflow_steps.cs">
+      <DependentUpon>Qdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\menu.cs">
       <DependentUpon>Qdb.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Qdb.Context.cs">
@@ -107,15 +139,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Qdb.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\questions.cs">
+    <Compile Include="Model\role.cs">
       <DependentUpon>Qdb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\results.cs">
+    <Compile Include="Model\roles_depts.cs">
       <DependentUpon>Qdb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\column.cs" />
+    <Compile Include="Model\roles_menus.cs">
+      <DependentUpon>Qdb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\table.cs" />
-    <Compile Include="Model\users.cs">
+    <Compile Include="Model\user.cs">
+      <DependentUpon>Qdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\users_roles.cs">
+      <DependentUpon>Qdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\user_avatar.cs">
       <DependentUpon>Qdb.tt</DependentUpon>
     </Compile>
     <Compile Include="PredicateExtensions.cs" />
@@ -152,6 +192,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\Qdb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Qdb.edmx</DependentUpon>
@@ -162,9 +205,6 @@
       <DependentUpon>Qdb.edmx</DependentUpon>
       <LastGenOutput>Qdb.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

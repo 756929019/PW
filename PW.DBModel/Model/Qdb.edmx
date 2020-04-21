@@ -5,140 +5,480 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="qdbModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="answers">
+        <EntityType Name="dept">
           <Key>
-            <PropertyRef Name="answer_id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="answer_id" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="answer_no" Type="varchar" MaxLength="10" />
-          <Property Name="answer_content" Type="varchar" MaxLength="255" />
-          <Property Name="answer_score" Type="decimal" Precision="10" Scale="0" />
-          <Property Name="upuser" Type="varchar" MaxLength="50" />
-          <Property Name="uptime" Type="datetime" Precision="0" />
-          <Property Name="question_id" Type="varchar" MaxLength="50" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="255" />
+          <Property Name="PID" Type="bigint" />
+          <Property Name="ENABLED" Type="bit" />
+          <Property Name="CREATE_TIME" Type="datetime" Precision="0" />
         </EntityType>
-        <EntityType Name="papers">
+        <EntityType Name="dict">
           <Key>
-            <PropertyRef Name="paper_id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="paper_id" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="paper_title" Type="varchar" MaxLength="255" />
-          <Property Name="paper_description" Type="text" />
-          <Property Name="upuser" Type="varchar" MaxLength="50" />
-          <Property Name="uptime" Type="datetime" Precision="0" />
-          <Property Name="group_id" Type="varchar" MaxLength="50" />
-          <Property Name="isshow" Type="varchar" MaxLength="10" />
-          <Property Name="paper_no" Type="int" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="255" />
+          <Property Name="REMARK" Type="varchar" MaxLength="255" />
+          <Property Name="CREATE_TIME" Type="datetime" Precision="0" />
         </EntityType>
-        <EntityType Name="questions">
+        <EntityType Name="dict_detail">
           <Key>
-            <PropertyRef Name="question_id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="question_id" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="question_no" Type="int" />
-          <Property Name="question_content" Type="text" />
-          <Property Name="upuser" Type="varchar" MaxLength="50" />
-          <Property Name="uptime" Type="datetime" Precision="0" />
-          <Property Name="paper_id" Type="varchar" MaxLength="50" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LABEL" Type="varchar" MaxLength="255" />
+          <Property Name="VALUE" Type="varchar" MaxLength="255" />
+          <Property Name="SORT" Type="varchar" MaxLength="255" />
+          <Property Name="DICT_ID" Type="bigint" />
+          <Property Name="CREATE_TIME" Type="datetime" Precision="0" />
         </EntityType>
-        <EntityType Name="results">
+        <EntityType Name="general_workflow_func">
           <Key>
-            <PropertyRef Name="result_id" />
+            <PropertyRef Name="ORIGREC" />
           </Key>
-          <Property Name="result_id" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="result_content" Type="text" />
-          <Property Name="min_score" Type="decimal" Precision="10" Scale="0" />
-          <Property Name="max_score" Type="decimal" Precision="10" Scale="0" />
-          <Property Name="paper_id" Type="varchar" MaxLength="50" />
-          <Property Name="upuser" Type="varchar" MaxLength="50" />
-          <Property Name="uptime" Type="datetime" Precision="0" />
+          <Property Name="ORIGREC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ORIGSTS" Type="char" MaxLength="1" />
+          <Property Name="WORKFLOWCODE" Type="varchar" MaxLength="100" />
+          <Property Name="STEPCODE" Type="varchar" MaxLength="50" />
+          <Property Name="CALCDESC" Type="varchar" MaxLength="200" />
+          <Property Name="CALCNAME" Type="varchar" MaxLength="50" />
+          <Property Name="CALCUL" Type="text" />
+          <Property Name="CONTROLID" Type="varchar" MaxLength="30" />
+          <Property Name="ACTIONTYPE" Type="varchar" MaxLength="30" />
+          <Property Name="REPLACE" Type="varchar" MaxLength="10" />
+          <Property Name="CONTROLTYPE" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="users">
+        <EntityType Name="general_workflow_steps">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ORIGREC" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="userno" Type="varchar" MaxLength="50" />
-          <Property Name="username" Type="varchar" MaxLength="50" />
-          <Property Name="userpwd" Type="varchar" MaxLength="50" />
-          <Property Name="group_id" Type="varchar" MaxLength="50" />
+          <Property Name="ORIGREC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WORKFLOWCODE" Type="varchar" MaxLength="100" />
+          <Property Name="USRNAM" Type="varchar" MaxLength="500" />
+          <Property Name="NUMBEROOFDAYS" Type="int" />
+          <Property Name="STEPCODE" Type="varchar" MaxLength="50" />
+          <Property Name="SORTER" Type="int" />
+          <Property Name="JOBDESCRIPTION" Type="varchar" MaxLength="500" />
+          <Property Name="GOTOSTEPS" Type="varchar" MaxLength="254" />
+          <Property Name="SIGNATURETYPE" Type="varchar" MaxLength="15" />
+          <Property Name="ORIGSTS" Type="char" MaxLength="1" />
+          <Property Name="TREEAUTH" Type="varchar" MaxLength="100" />
+          <Property Name="STEPSTATUS" Type="varchar" MaxLength="100" />
+          <Property Name="STEPNAME" Type="varchar" MaxLength="100" />
+          <Property Name="EXECUTEACTION" Type="varchar" MaxLength="4000" />
+          <Property Name="EXECUTEACTION1" Type="varchar" MaxLength="4000" />
+          <Property Name="EXECUTEACTION2" Type="varchar" MaxLength="4000" />
+          <Property Name="EXECUTEACTION3" Type="varchar" MaxLength="4000" />
+          <Property Name="CONSOLEITEM" Type="varchar" MaxLength="32" />
+          <Property Name="DESTINATIONTYPE" Type="varchar" MaxLength="1" />
+          <Property Name="GROUPNAME" Type="varchar" MaxLength="32" />
+          <Property Name="STEPDISPSTATUS" Type="varchar" MaxLength="100" />
+          <Property Name="GROUPTABLE" Type="varchar" MaxLength="100" />
+          <Property Name="GROUPTABLEFIELD1" Type="varchar" MaxLength="100" />
+          <Property Name="GROUPTABLEFIELD2" Type="varchar" MaxLength="100" />
+          <Property Name="GROUPTABLEFIELD3" Type="varchar" MaxLength="100" />
+          <Property Name="MYLIMSSTS" Type="varchar" MaxLength="50" />
+          <Property Name="COMMENTNAME" Type="varchar" MaxLength="100" />
+          <Property Name="FUNCCODE" Type="varchar" MaxLength="20" />
+          <Property Name="BYSERVGRP" Type="varchar" MaxLength="2" />
+          <Property Name="ROLES" Type="char" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="general_workflows">
+          <Key>
+            <PropertyRef Name="ORIGREC" />
+          </Key>
+          <Property Name="ORIGREC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WORKFLOWCODE" Type="varchar" MaxLength="100" />
+          <Property Name="WORKFLOWDESC" Type="varchar" MaxLength="100" />
+          <Property Name="WORKFLOWNAME" Type="varchar" MaxLength="50" />
+          <Property Name="STARTDATE" Type="datetime" Precision="0" />
+          <Property Name="VERSION" Type="int" />
+          <Property Name="APPLICATIONREF" Type="varchar" MaxLength="50" />
+          <Property Name="ENDDATE" Type="datetime" Precision="0" />
+          <Property Name="ORIGSTS" Type="char" MaxLength="1" />
+          <Property Name="TABLERELATED" Type="varchar" MaxLength="100" />
+          <Property Name="STATUSFIELD" Type="varchar" MaxLength="100" />
+          <Property Name="DISSTATUSFIELD" Type="varchar" MaxLength="100" />
+          <Property Name="NEEDESIGN" Type="varchar" MaxLength="20" />
+          <Property Name="REJECTFIELD" Type="varchar" MaxLength="100" />
+          <Property Name="RETIRED" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="general_workflowstepdet">
+          <Key>
+            <PropertyRef Name="ORIGREC" />
+          </Key>
+          <Property Name="ORIGREC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ORIGSTS" Type="char" MaxLength="1" />
+          <Property Name="WORKFLOWCODE" Type="varchar" MaxLength="100" />
+          <Property Name="STEPCODE" Type="varchar" MaxLength="50" />
+          <Property Name="DISPOSITIONNAME" Type="varchar" MaxLength="40" />
+          <Property Name="DISPOSITIONCODE" Type="varchar" MaxLength="40" />
+          <Property Name="TOSTEPCODE" Type="varchar" MaxLength="50" />
+          <Property Name="INVESTIGATIONCODE" Type="int" />
+          <Property Name="TOSTEPNAME" Type="varchar" MaxLength="100" />
+          <Property Name="EXECUTEACTION" Type="varchar" MaxLength="1000" />
+          <Property Name="SORTER" Type="int" />
+          <Property Name="VERIFYACTION" Type="varchar" MaxLength="4000" />
+          <Property Name="REASONS" Type="varchar" MaxLength="200" />
+          <Property Name="ISREJECT" Type="char" MaxLength="1" />
+          <Property Name="VISIBLE" Type="char" MaxLength="1" />
+          <Property Name="AUDITTYPE" Type="varchar" MaxLength="50" />
+          <Property Name="NOTNULLCOMMENT" Type="char" MaxLength="1" />
+          <Property Name="DISPFLAG" Type="varchar" MaxLength="1" />
+          <Property Name="STEPDETCAT" Type="varchar" MaxLength="100" />
+          <Property Name="REQUIREREASON" Type="varchar" MaxLength="1" />
+          <Property Name="ISMULTIAUDIT" Type="varchar" MaxLength="1" />
+          <Property Name="ISAUDITUSER" Type="varchar" MaxLength="1" />
+          <Property Name="CALCUL" Type="text" />
+          <Property Name="BUSINESSTYPE" Type="varchar" MaxLength="1000" />
+          <Property Name="MESSAGETEXT" Type="varchar" MaxLength="1000" />
+          <Property Name="MESSAGEUSER" Type="text" />
+          <Property Name="ISSENDMES" Type="varchar" MaxLength="1" />
+          <Property Name="ISMULTIPLE" Type="char" MaxLength="1" />
+          <Property Name="VERIFYCALCNO" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="I_FRAME" Type="bit" />
+          <Property Name="NAME" Type="varchar" MaxLength="255" />
+          <Property Name="COMPONENT" Type="varchar" MaxLength="255" />
+          <Property Name="PID" Type="bigint" />
+          <Property Name="SORT" Type="bigint" />
+          <Property Name="ICON" Type="varchar" MaxLength="255" />
+          <Property Name="PATH" Type="varchar" MaxLength="255" />
+          <Property Name="CACHE" Type="bit" />
+          <Property Name="HIDDEN" Type="bit" />
+          <Property Name="COMPONENT_NAME" Type="varchar" MaxLength="20" />
+          <Property Name="CREATE_TIME" Type="datetime" Precision="0" />
+          <Property Name="PERMISSION" Type="varchar" MaxLength="255" />
+          <Property Name="TYPE" Type="int" />
+          <Property Name="MODULES" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="255" />
+          <Property Name="REMARK" Type="varchar" MaxLength="255" />
+          <Property Name="DATA_SCOPE" Type="varchar" MaxLength="255" />
+          <Property Name="LEVEL" Type="int" />
+          <Property Name="CREATE_TIME" Type="datetime" Precision="0" />
+          <Property Name="PERMISSION" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="roles_depts">
+          <Key>
+            <PropertyRef Name="ROLE_ID" />
+            <PropertyRef Name="DEPT_ID" />
+          </Key>
+          <Property Name="ROLE_ID" Type="bigint" Nullable="false" />
+          <Property Name="DEPT_ID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="roles_menus">
+          <Key>
+            <PropertyRef Name="MENU_ID" />
+            <PropertyRef Name="ROLE_ID" />
+          </Key>
+          <Property Name="MENU_ID" Type="bigint" Nullable="false" />
+          <Property Name="ROLE_ID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AVATAR_ID" Type="bigint" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="255" />
+          <Property Name="ENABLED" Type="bigint" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="255" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="255" />
+          <Property Name="DEPT_ID" Type="bigint" />
+          <Property Name="PHONE" Type="varchar" MaxLength="255" />
+          <Property Name="JOB_ID" Type="bigint" />
+          <Property Name="CREATE_TIME" Type="datetime" Precision="0" />
+          <Property Name="LAST_PASSWORD_RESET_TIME" Type="datetime" Precision="0" />
+          <Property Name="NICK_NAME" Type="varchar" MaxLength="255" />
+          <Property Name="SEX" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="user_avatar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REAL_NAME" Type="varchar" MaxLength="255" />
+          <Property Name="PATH" Type="varchar" MaxLength="255" />
+          <Property Name="SIZE" Type="varchar" MaxLength="255" />
+          <Property Name="CREATE_TIME" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="users_roles">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+            <PropertyRef Name="ROLE_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="bigint" Nullable="false" />
+          <Property Name="ROLE_ID" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityContainer Name="qdbModelStoreContainer">
-          <EntitySet Name="answers" EntityType="Self.answers" Schema="qdb" store:Type="Tables" />
-          <EntitySet Name="papers" EntityType="Self.papers" Schema="qdb" store:Type="Tables" />
-          <EntitySet Name="questions" EntityType="Self.questions" Schema="qdb" store:Type="Tables" />
-          <EntitySet Name="results" EntityType="Self.results" Schema="qdb" store:Type="Tables" />
-          <EntitySet Name="users" EntityType="Self.users" Schema="qdb" store:Type="Tables" />
+          <EntitySet Name="dept" EntityType="Self.dept" Schema="qdb" store:Type="Tables" />
+          <EntitySet Name="dict" EntityType="Self.dict" Schema="qdb" store:Type="Tables" />
+          <EntitySet Name="dict_detail" EntityType="Self.dict_detail" Schema="qdb" store:Type="Tables" />
+          <EntitySet Name="general_workflow_func" EntityType="Self.general_workflow_func" Schema="qdb" store:Type="Tables" />
+          <EntitySet Name="general_workflow_steps" EntityType="Self.general_workflow_steps" Schema="qdb" store:Type="Tables" />
+          <EntitySet Name="general_workflows" EntityType="Self.general_workflows" Schema="qdb" store:Type="Tables" />
+          <EntitySet Name="general_workflowstepdet" EntityType="Self.general_workflowstepdet" Schema="qdb" store:Type="Tables" />
+          <EntitySet Name="menu" EntityType="Self.menu" Schema="qdb" store:Type="Tables" />
+          <EntitySet Name="role" EntityType="Self.role" Schema="qdb" store:Type="Tables" />
+          <EntitySet Name="roles_depts" EntityType="Self.roles_depts" Schema="qdb" store:Type="Tables" />
+          <EntitySet Name="roles_menus" EntityType="Self.roles_menus" Schema="qdb" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="qdb" store:Type="Tables" />
+          <EntitySet Name="user_avatar" EntityType="Self.user_avatar" Schema="qdb" store:Type="Tables" />
+          <EntitySet Name="users_roles" EntityType="Self.users_roles" Schema="qdb" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="qdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="answers">
+        <EntityType Name="dept">
           <Key>
-            <PropertyRef Name="answer_id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="answer_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="answer_no" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="answer_content" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="answer_score" Type="Decimal" />
-          <Property Name="upuser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="uptime" Type="DateTime" />
-          <Property Name="question_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PID" Type="Int64" />
+          <Property Name="ENABLED" Type="Boolean" />
+          <Property Name="CREATE_TIME" Type="DateTime" />
         </EntityType>
-        <EntityType Name="papers">
+        <EntityType Name="dict">
           <Key>
-            <PropertyRef Name="paper_id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="paper_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="paper_title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="paper_description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="upuser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="uptime" Type="DateTime" />
-          <Property Name="group_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="isshow" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="paper_no" Type="Int32" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="REMARK" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_TIME" Type="DateTime" />
         </EntityType>
-        <EntityType Name="questions">
+        <EntityType Name="dict_detail">
           <Key>
-            <PropertyRef Name="question_id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="question_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="question_no" Type="Int32" />
-          <Property Name="question_content" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="upuser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="uptime" Type="DateTime" />
-          <Property Name="paper_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LABEL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="VALUE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SORT" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DICT_ID" Type="Int64" />
+          <Property Name="CREATE_TIME" Type="DateTime" />
         </EntityType>
-        <EntityType Name="results">
+        <EntityType Name="general_workflow_func">
           <Key>
-            <PropertyRef Name="result_id" />
+            <PropertyRef Name="ORIGREC" />
           </Key>
-          <Property Name="result_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="result_content" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="min_score" Type="Decimal" />
-          <Property Name="max_score" Type="Decimal" />
-          <Property Name="paper_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="upuser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="uptime" Type="DateTime" />
+          <Property Name="ORIGREC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORIGSTS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="WORKFLOWCODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="STEPCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CALCDESC" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CALCNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CALCUL" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="CONTROLID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ACTIONTYPE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="REPLACE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CONTROLTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="users">
+        <EntityType Name="general_workflow_steps">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ORIGREC" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="userno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="userpwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="group_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ORIGREC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WORKFLOWCODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="USRNAM" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NUMBEROOFDAYS" Type="Int32" />
+          <Property Name="STEPCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SORTER" Type="Int32" />
+          <Property Name="JOBDESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="GOTOSTEPS" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="SIGNATURETYPE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ORIGSTS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TREEAUTH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="STEPSTATUS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="STEPNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EXECUTEACTION" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="EXECUTEACTION1" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="EXECUTEACTION2" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="EXECUTEACTION3" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="CONSOLEITEM" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="DESTINATIONTYPE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="GROUPNAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="STEPDISPSTATUS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GROUPTABLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GROUPTABLEFIELD1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GROUPTABLEFIELD2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GROUPTABLEFIELD3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MYLIMSSTS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COMMENTNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FUNCCODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BYSERVGRP" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="ROLES" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="general_workflows">
+          <Key>
+            <PropertyRef Name="ORIGREC" />
+          </Key>
+          <Property Name="ORIGREC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WORKFLOWCODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="WORKFLOWDESC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="WORKFLOWNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STARTDATE" Type="DateTime" />
+          <Property Name="VERSION" Type="Int32" />
+          <Property Name="APPLICATIONREF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ENDDATE" Type="DateTime" />
+          <Property Name="ORIGSTS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TABLERELATED" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="STATUSFIELD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DISSTATUSFIELD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NEEDESIGN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="REJECTFIELD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RETIRED" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="general_workflowstepdet">
+          <Key>
+            <PropertyRef Name="ORIGREC" />
+          </Key>
+          <Property Name="ORIGREC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORIGSTS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="WORKFLOWCODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="STEPCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DISPOSITIONNAME" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="DISPOSITIONCODE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="TOSTEPCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="INVESTIGATIONCODE" Type="Int32" />
+          <Property Name="TOSTEPNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EXECUTEACTION" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="SORTER" Type="Int32" />
+          <Property Name="VERIFYACTION" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="REASONS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ISREJECT" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="VISIBLE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="AUDITTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NOTNULLCOMMENT" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="DISPFLAG" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="STEPDETCAT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="REQUIREREASON" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ISMULTIAUDIT" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ISAUDITUSER" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CALCUL" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="BUSINESSTYPE" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="MESSAGETEXT" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="MESSAGEUSER" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="ISSENDMES" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ISMULTIPLE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="VERIFYCALCNO" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="I_FRAME" Type="Boolean" />
+          <Property Name="NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="COMPONENT" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PID" Type="Int64" />
+          <Property Name="SORT" Type="Int64" />
+          <Property Name="ICON" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PATH" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CACHE" Type="Boolean" />
+          <Property Name="HIDDEN" Type="Boolean" />
+          <Property Name="COMPONENT_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_TIME" Type="DateTime" />
+          <Property Name="PERMISSION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TYPE" Type="Int32" />
+          <Property Name="MODULES" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="REMARK" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DATA_SCOPE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LEVEL" Type="Int32" />
+          <Property Name="CREATE_TIME" Type="DateTime" />
+          <Property Name="PERMISSION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="roles_depts">
+          <Key>
+            <PropertyRef Name="ROLE_ID" />
+            <PropertyRef Name="DEPT_ID" />
+          </Key>
+          <Property Name="ROLE_ID" Type="Int64" Nullable="false" />
+          <Property Name="DEPT_ID" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="roles_menus">
+          <Key>
+            <PropertyRef Name="MENU_ID" />
+            <PropertyRef Name="ROLE_ID" />
+          </Key>
+          <Property Name="MENU_ID" Type="Int64" Nullable="false" />
+          <Property Name="ROLE_ID" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AVATAR_ID" Type="Int64" />
+          <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ENABLED" Type="Int64" />
+          <Property Name="PASSWORD" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DEPT_ID" Type="Int64" />
+          <Property Name="PHONE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="JOB_ID" Type="Int64" />
+          <Property Name="CREATE_TIME" Type="DateTime" />
+          <Property Name="LAST_PASSWORD_RESET_TIME" Type="DateTime" />
+          <Property Name="NICK_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SEX" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="user_avatar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REAL_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PATH" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SIZE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_TIME" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="users_roles">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+            <PropertyRef Name="ROLE_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="Int64" Nullable="false" />
+          <Property Name="ROLE_ID" Type="Int64" Nullable="false" />
         </EntityType>
         <EntityContainer Name="qdbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="answers" EntityType="Self.answers" />
-          <EntitySet Name="papers" EntityType="Self.papers" />
-          <EntitySet Name="questions" EntityType="Self.questions" />
-          <EntitySet Name="results" EntityType="Self.results" />
-          <EntitySet Name="users" EntityType="Self.users" />
+          <EntitySet Name="dept" EntityType="Self.dept" />
+          <EntitySet Name="dict" EntityType="Self.dict" />
+          <EntitySet Name="dict_detail" EntityType="Self.dict_detail" />
+          <EntitySet Name="general_workflow_func" EntityType="Self.general_workflow_func" />
+          <EntitySet Name="general_workflow_steps" EntityType="Self.general_workflow_steps" />
+          <EntitySet Name="general_workflows" EntityType="Self.general_workflows" />
+          <EntitySet Name="general_workflowstepdet" EntityType="Self.general_workflowstepdet" />
+          <EntitySet Name="menu" EntityType="Self.menu" />
+          <EntitySet Name="role" EntityType="Self.role" />
+          <EntitySet Name="roles_depts" EntityType="Self.roles_depts" />
+          <EntitySet Name="roles_menus" EntityType="Self.roles_menus" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <EntitySet Name="user_avatar" EntityType="Self.user_avatar" />
+          <EntitySet Name="users_roles" EntityType="Self.users_roles" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -146,66 +486,233 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="qdbModelStoreContainer" CdmEntityContainer="qdbEntities">
-          <EntitySetMapping Name="answers">
-            <EntityTypeMapping TypeName="qdbModel.answers">
-              <MappingFragment StoreEntitySet="answers">
-                <ScalarProperty Name="answer_id" ColumnName="answer_id" />
-                <ScalarProperty Name="answer_no" ColumnName="answer_no" />
-                <ScalarProperty Name="answer_content" ColumnName="answer_content" />
-                <ScalarProperty Name="answer_score" ColumnName="answer_score" />
-                <ScalarProperty Name="upuser" ColumnName="upuser" />
-                <ScalarProperty Name="uptime" ColumnName="uptime" />
-                <ScalarProperty Name="question_id" ColumnName="question_id" />
+          <EntitySetMapping Name="dept">
+            <EntityTypeMapping TypeName="qdbModel.dept">
+              <MappingFragment StoreEntitySet="dept">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="ENABLED" ColumnName="ENABLED" />
+                <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="papers">
-            <EntityTypeMapping TypeName="qdbModel.papers">
-              <MappingFragment StoreEntitySet="papers">
-                <ScalarProperty Name="paper_id" ColumnName="paper_id" />
-                <ScalarProperty Name="paper_title" ColumnName="paper_title" />
-                <ScalarProperty Name="paper_description" ColumnName="paper_description" />
-                <ScalarProperty Name="upuser" ColumnName="upuser" />
-                <ScalarProperty Name="uptime" ColumnName="uptime" />
-                <ScalarProperty Name="group_id" ColumnName="group_id" />
-                <ScalarProperty Name="isshow" ColumnName="isshow" />
-                <ScalarProperty Name="paper_no" ColumnName="paper_no" />
+          <EntitySetMapping Name="dict">
+            <EntityTypeMapping TypeName="qdbModel.dict">
+              <MappingFragment StoreEntitySet="dict">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+                <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="questions">
-            <EntityTypeMapping TypeName="qdbModel.questions">
-              <MappingFragment StoreEntitySet="questions">
-                <ScalarProperty Name="question_id" ColumnName="question_id" />
-                <ScalarProperty Name="question_no" ColumnName="question_no" />
-                <ScalarProperty Name="question_content" ColumnName="question_content" />
-                <ScalarProperty Name="upuser" ColumnName="upuser" />
-                <ScalarProperty Name="uptime" ColumnName="uptime" />
-                <ScalarProperty Name="paper_id" ColumnName="paper_id" />
+          <EntitySetMapping Name="dict_detail">
+            <EntityTypeMapping TypeName="qdbModel.dict_detail">
+              <MappingFragment StoreEntitySet="dict_detail">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LABEL" ColumnName="LABEL" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="SORT" ColumnName="SORT" />
+                <ScalarProperty Name="DICT_ID" ColumnName="DICT_ID" />
+                <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="results">
-            <EntityTypeMapping TypeName="qdbModel.results">
-              <MappingFragment StoreEntitySet="results">
-                <ScalarProperty Name="result_id" ColumnName="result_id" />
-                <ScalarProperty Name="result_content" ColumnName="result_content" />
-                <ScalarProperty Name="min_score" ColumnName="min_score" />
-                <ScalarProperty Name="max_score" ColumnName="max_score" />
-                <ScalarProperty Name="paper_id" ColumnName="paper_id" />
-                <ScalarProperty Name="upuser" ColumnName="upuser" />
-                <ScalarProperty Name="uptime" ColumnName="uptime" />
+          <EntitySetMapping Name="general_workflow_func">
+            <EntityTypeMapping TypeName="qdbModel.general_workflow_func">
+              <MappingFragment StoreEntitySet="general_workflow_func">
+                <ScalarProperty Name="ORIGREC" ColumnName="ORIGREC" />
+                <ScalarProperty Name="ORIGSTS" ColumnName="ORIGSTS" />
+                <ScalarProperty Name="WORKFLOWCODE" ColumnName="WORKFLOWCODE" />
+                <ScalarProperty Name="STEPCODE" ColumnName="STEPCODE" />
+                <ScalarProperty Name="CALCDESC" ColumnName="CALCDESC" />
+                <ScalarProperty Name="CALCNAME" ColumnName="CALCNAME" />
+                <ScalarProperty Name="CALCUL" ColumnName="CALCUL" />
+                <ScalarProperty Name="CONTROLID" ColumnName="CONTROLID" />
+                <ScalarProperty Name="ACTIONTYPE" ColumnName="ACTIONTYPE" />
+                <ScalarProperty Name="REPLACE" ColumnName="REPLACE" />
+                <ScalarProperty Name="CONTROLTYPE" ColumnName="CONTROLTYPE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="users">
-            <EntityTypeMapping TypeName="qdbModel.users">
-              <MappingFragment StoreEntitySet="users">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="userno" ColumnName="userno" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="userpwd" ColumnName="userpwd" />
-                <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <EntitySetMapping Name="general_workflow_steps">
+            <EntityTypeMapping TypeName="qdbModel.general_workflow_steps">
+              <MappingFragment StoreEntitySet="general_workflow_steps">
+                <ScalarProperty Name="ORIGREC" ColumnName="ORIGREC" />
+                <ScalarProperty Name="WORKFLOWCODE" ColumnName="WORKFLOWCODE" />
+                <ScalarProperty Name="USRNAM" ColumnName="USRNAM" />
+                <ScalarProperty Name="NUMBEROOFDAYS" ColumnName="NUMBEROOFDAYS" />
+                <ScalarProperty Name="STEPCODE" ColumnName="STEPCODE" />
+                <ScalarProperty Name="SORTER" ColumnName="SORTER" />
+                <ScalarProperty Name="JOBDESCRIPTION" ColumnName="JOBDESCRIPTION" />
+                <ScalarProperty Name="GOTOSTEPS" ColumnName="GOTOSTEPS" />
+                <ScalarProperty Name="SIGNATURETYPE" ColumnName="SIGNATURETYPE" />
+                <ScalarProperty Name="ORIGSTS" ColumnName="ORIGSTS" />
+                <ScalarProperty Name="TREEAUTH" ColumnName="TREEAUTH" />
+                <ScalarProperty Name="STEPSTATUS" ColumnName="STEPSTATUS" />
+                <ScalarProperty Name="STEPNAME" ColumnName="STEPNAME" />
+                <ScalarProperty Name="EXECUTEACTION" ColumnName="EXECUTEACTION" />
+                <ScalarProperty Name="EXECUTEACTION1" ColumnName="EXECUTEACTION1" />
+                <ScalarProperty Name="EXECUTEACTION2" ColumnName="EXECUTEACTION2" />
+                <ScalarProperty Name="EXECUTEACTION3" ColumnName="EXECUTEACTION3" />
+                <ScalarProperty Name="CONSOLEITEM" ColumnName="CONSOLEITEM" />
+                <ScalarProperty Name="DESTINATIONTYPE" ColumnName="DESTINATIONTYPE" />
+                <ScalarProperty Name="GROUPNAME" ColumnName="GROUPNAME" />
+                <ScalarProperty Name="STEPDISPSTATUS" ColumnName="STEPDISPSTATUS" />
+                <ScalarProperty Name="GROUPTABLE" ColumnName="GROUPTABLE" />
+                <ScalarProperty Name="GROUPTABLEFIELD1" ColumnName="GROUPTABLEFIELD1" />
+                <ScalarProperty Name="GROUPTABLEFIELD2" ColumnName="GROUPTABLEFIELD2" />
+                <ScalarProperty Name="GROUPTABLEFIELD3" ColumnName="GROUPTABLEFIELD3" />
+                <ScalarProperty Name="MYLIMSSTS" ColumnName="MYLIMSSTS" />
+                <ScalarProperty Name="COMMENTNAME" ColumnName="COMMENTNAME" />
+                <ScalarProperty Name="FUNCCODE" ColumnName="FUNCCODE" />
+                <ScalarProperty Name="BYSERVGRP" ColumnName="BYSERVGRP" />
+                <ScalarProperty Name="ROLES" ColumnName="ROLES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="general_workflows">
+            <EntityTypeMapping TypeName="qdbModel.general_workflows">
+              <MappingFragment StoreEntitySet="general_workflows">
+                <ScalarProperty Name="ORIGREC" ColumnName="ORIGREC" />
+                <ScalarProperty Name="WORKFLOWCODE" ColumnName="WORKFLOWCODE" />
+                <ScalarProperty Name="WORKFLOWDESC" ColumnName="WORKFLOWDESC" />
+                <ScalarProperty Name="WORKFLOWNAME" ColumnName="WORKFLOWNAME" />
+                <ScalarProperty Name="STARTDATE" ColumnName="STARTDATE" />
+                <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+                <ScalarProperty Name="APPLICATIONREF" ColumnName="APPLICATIONREF" />
+                <ScalarProperty Name="ENDDATE" ColumnName="ENDDATE" />
+                <ScalarProperty Name="ORIGSTS" ColumnName="ORIGSTS" />
+                <ScalarProperty Name="TABLERELATED" ColumnName="TABLERELATED" />
+                <ScalarProperty Name="STATUSFIELD" ColumnName="STATUSFIELD" />
+                <ScalarProperty Name="DISSTATUSFIELD" ColumnName="DISSTATUSFIELD" />
+                <ScalarProperty Name="NEEDESIGN" ColumnName="NEEDESIGN" />
+                <ScalarProperty Name="REJECTFIELD" ColumnName="REJECTFIELD" />
+                <ScalarProperty Name="RETIRED" ColumnName="RETIRED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="general_workflowstepdet">
+            <EntityTypeMapping TypeName="qdbModel.general_workflowstepdet">
+              <MappingFragment StoreEntitySet="general_workflowstepdet">
+                <ScalarProperty Name="ORIGREC" ColumnName="ORIGREC" />
+                <ScalarProperty Name="ORIGSTS" ColumnName="ORIGSTS" />
+                <ScalarProperty Name="WORKFLOWCODE" ColumnName="WORKFLOWCODE" />
+                <ScalarProperty Name="STEPCODE" ColumnName="STEPCODE" />
+                <ScalarProperty Name="DISPOSITIONNAME" ColumnName="DISPOSITIONNAME" />
+                <ScalarProperty Name="DISPOSITIONCODE" ColumnName="DISPOSITIONCODE" />
+                <ScalarProperty Name="TOSTEPCODE" ColumnName="TOSTEPCODE" />
+                <ScalarProperty Name="INVESTIGATIONCODE" ColumnName="INVESTIGATIONCODE" />
+                <ScalarProperty Name="TOSTEPNAME" ColumnName="TOSTEPNAME" />
+                <ScalarProperty Name="EXECUTEACTION" ColumnName="EXECUTEACTION" />
+                <ScalarProperty Name="SORTER" ColumnName="SORTER" />
+                <ScalarProperty Name="VERIFYACTION" ColumnName="VERIFYACTION" />
+                <ScalarProperty Name="REASONS" ColumnName="REASONS" />
+                <ScalarProperty Name="ISREJECT" ColumnName="ISREJECT" />
+                <ScalarProperty Name="VISIBLE" ColumnName="VISIBLE" />
+                <ScalarProperty Name="AUDITTYPE" ColumnName="AUDITTYPE" />
+                <ScalarProperty Name="NOTNULLCOMMENT" ColumnName="NOTNULLCOMMENT" />
+                <ScalarProperty Name="DISPFLAG" ColumnName="DISPFLAG" />
+                <ScalarProperty Name="STEPDETCAT" ColumnName="STEPDETCAT" />
+                <ScalarProperty Name="REQUIREREASON" ColumnName="REQUIREREASON" />
+                <ScalarProperty Name="ISMULTIAUDIT" ColumnName="ISMULTIAUDIT" />
+                <ScalarProperty Name="ISAUDITUSER" ColumnName="ISAUDITUSER" />
+                <ScalarProperty Name="CALCUL" ColumnName="CALCUL" />
+                <ScalarProperty Name="BUSINESSTYPE" ColumnName="BUSINESSTYPE" />
+                <ScalarProperty Name="MESSAGETEXT" ColumnName="MESSAGETEXT" />
+                <ScalarProperty Name="MESSAGEUSER" ColumnName="MESSAGEUSER" />
+                <ScalarProperty Name="ISSENDMES" ColumnName="ISSENDMES" />
+                <ScalarProperty Name="ISMULTIPLE" ColumnName="ISMULTIPLE" />
+                <ScalarProperty Name="VERIFYCALCNO" ColumnName="VERIFYCALCNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="menu">
+            <EntityTypeMapping TypeName="qdbModel.menu">
+              <MappingFragment StoreEntitySet="menu">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="I_FRAME" ColumnName="I_FRAME" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="COMPONENT" ColumnName="COMPONENT" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="SORT" ColumnName="SORT" />
+                <ScalarProperty Name="ICON" ColumnName="ICON" />
+                <ScalarProperty Name="PATH" ColumnName="PATH" />
+                <ScalarProperty Name="CACHE" ColumnName="CACHE" />
+                <ScalarProperty Name="HIDDEN" ColumnName="HIDDEN" />
+                <ScalarProperty Name="COMPONENT_NAME" ColumnName="COMPONENT_NAME" />
+                <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+                <ScalarProperty Name="PERMISSION" ColumnName="PERMISSION" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="MODULES" ColumnName="MODULES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="role">
+            <EntityTypeMapping TypeName="qdbModel.role">
+              <MappingFragment StoreEntitySet="role">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+                <ScalarProperty Name="DATA_SCOPE" ColumnName="DATA_SCOPE" />
+                <ScalarProperty Name="LEVEL" ColumnName="LEVEL" />
+                <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+                <ScalarProperty Name="PERMISSION" ColumnName="PERMISSION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roles_depts">
+            <EntityTypeMapping TypeName="qdbModel.roles_depts">
+              <MappingFragment StoreEntitySet="roles_depts">
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="DEPT_ID" ColumnName="DEPT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roles_menus">
+            <EntityTypeMapping TypeName="qdbModel.roles_menus">
+              <MappingFragment StoreEntitySet="roles_menus">
+                <ScalarProperty Name="MENU_ID" ColumnName="MENU_ID" />
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="qdbModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AVATAR_ID" ColumnName="AVATAR_ID" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="ENABLED" ColumnName="ENABLED" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="DEPT_ID" ColumnName="DEPT_ID" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="JOB_ID" ColumnName="JOB_ID" />
+                <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+                <ScalarProperty Name="LAST_PASSWORD_RESET_TIME" ColumnName="LAST_PASSWORD_RESET_TIME" />
+                <ScalarProperty Name="NICK_NAME" ColumnName="NICK_NAME" />
+                <ScalarProperty Name="SEX" ColumnName="SEX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_avatar">
+            <EntityTypeMapping TypeName="qdbModel.user_avatar">
+              <MappingFragment StoreEntitySet="user_avatar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="REAL_NAME" ColumnName="REAL_NAME" />
+                <ScalarProperty Name="PATH" ColumnName="PATH" />
+                <ScalarProperty Name="SIZE" ColumnName="SIZE" />
+                <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users_roles">
+            <EntityTypeMapping TypeName="qdbModel.users_roles">
+              <MappingFragment StoreEntitySet="users_roles">
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

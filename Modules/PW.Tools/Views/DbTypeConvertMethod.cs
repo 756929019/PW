@@ -162,6 +162,8 @@ namespace PW.Tools.Views
                     return "int";
                 case "bit":
                     return "bool";
+                case "bigint":
+                    return "long";
                 case "datetime":
                     return "DateTime";
                 case "float":

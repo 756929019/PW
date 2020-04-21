@@ -133,30 +133,95 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ServiceCodeGenerator.svc" />
-    <Content Include="ServiceUsers.svc" />
+    <Content Include="ServiceDept.svc" />
+    <Content Include="ServiceDict.svc" />
+    <Content Include="ServiceDictDetail.svc" />
+    <Content Include="ServiceGeneralWorkflowFunc.svc" />
+    <Content Include="ServiceGeneralWorkflows.svc" />
+    <Content Include="ServiceGeneralWorkflowstepdet.svc" />
+    <Content Include="ServiceGeneralWorkflowSteps.svc" />
     <Content Include="ServiceLogin.svc" />
+    <Content Include="ServiceMenu.svc" />
+    <Content Include="ServiceRole.svc" />
+    <Content Include="ServiceRolesDepts.svc" />
+    <Content Include="ServiceRolesMenus.svc" />
     <Content Include="ServiceStatistics.svc" />
+    <Content Include="ServiceUser.svc" />
+    <Content Include="ServiceUserAvatar.svc" />
+    <Content Include="ServiceUsersRoles.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IServiceCodeGenerator.cs" />
-    <Compile Include="IServiceUsers.cs" />
+    <Compile Include="IServiceDept.cs" />
+    <Compile Include="IServiceDict.cs" />
+    <Compile Include="IServiceDictDetail.cs" />
+    <Compile Include="IServiceGeneralWorkflowFunc.cs" />
+    <Compile Include="IServiceGeneralWorkflows.cs" />
+    <Compile Include="IServiceGeneralWorkflowstepdet.cs" />
+    <Compile Include="IServiceGeneralWorkflowSteps.cs" />
+    <Compile Include="IServiceMenu.cs" />
+    <Compile Include="IServiceRole.cs" />
+    <Compile Include="IServiceRolesDepts.cs" />
+    <Compile Include="IServiceRolesMenus.cs" />
     <Compile Include="IServiceStatistics.cs" />
+    <Compile Include="IServiceUser.cs" />
+    <Compile Include="IServiceUserAvatar.cs" />
+    <Compile Include="IServiceUsersRoles.cs" />
     <Compile Include="ServiceCodeGenerator.svc.cs">
       <DependentUpon>ServiceCodeGenerator.svc</DependentUpon>
     </Compile>
-    <Compile Include="ServiceUsers.svc.cs">
-      <DependentUpon>ServiceUsers.svc</DependentUpon>
+    <Compile Include="ServiceDept.svc.cs">
+      <DependentUpon>ServiceDept.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceDict.svc.cs">
+      <DependentUpon>ServiceDict.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceDictDetail.svc.cs">
+      <DependentUpon>ServiceDictDetail.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceGeneralWorkflowFunc.svc.cs">
+      <DependentUpon>ServiceGeneralWorkflowFunc.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceGeneralWorkflows.svc.cs">
+      <DependentUpon>ServiceGeneralWorkflows.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceGeneralWorkflowstepdet.svc.cs">
+      <DependentUpon>ServiceGeneralWorkflowstepdet.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceGeneralWorkflowSteps.svc.cs">
+      <DependentUpon>ServiceGeneralWorkflowSteps.svc</DependentUpon>
     </Compile>
     <Compile Include="ServiceLogin.svc.cs">
       <DependentUpon>ServiceLogin.svc</DependentUpon>
     </Compile>
     <Compile Include="IServiceLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceMenu.svc.cs">
+      <DependentUpon>ServiceMenu.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceRole.svc.cs">
+      <DependentUpon>ServiceRole.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceRolesDepts.svc.cs">
+      <DependentUpon>ServiceRolesDepts.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceRolesMenus.svc.cs">
+      <DependentUpon>ServiceRolesMenus.svc</DependentUpon>
+    </Compile>
     <Compile Include="ServiceStatistics.svc.cs">
       <DependentUpon>ServiceStatistics.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceUser.svc.cs">
+      <DependentUpon>ServiceUser.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceUserAvatar.svc.cs">
+      <DependentUpon>ServiceUserAvatar.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceUsersRoles.svc.cs">
+      <DependentUpon>ServiceUsersRoles.svc</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

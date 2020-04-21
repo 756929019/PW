@@ -51,7 +51,7 @@ namespace PW.SystemSet
         {
             ObservableCollection<ItemTreeData> chi = new ObservableCollection<ItemTreeData>();
             chi.Add(new ItemTreeData() { itemId = 1, itemName = "系统管理", itemIcon = "\xe633", itemRegion = RegionNames.SystemSet, itemView = "StyleSetting" });
-            chi.Add(new ItemTreeData() { itemId = 1, itemName = "系统管理", itemIcon = "\xe633" });
+            chi.Add(new ItemTreeData() { itemId = 1, itemName = "用户管理", itemIcon = "\xe633", itemRegion = RegionNames.SystemSet, itemView = "UserView" });
             chi.Add(new ItemTreeData() { itemId = 1, itemName = "系统管理", itemIcon = "\xe633" });
             chi.Add(new ItemTreeData() { itemId = 1, itemName = "系统管理", itemIcon = "\xe633" });
             chi.Add(new ItemTreeData() { itemId = 1, itemName = "系统管理", itemIcon = "\xe633" });

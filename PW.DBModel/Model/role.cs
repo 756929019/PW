@@ -12,14 +12,14 @@ namespace PW.DBCommon.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class answers
+    public partial class role
     {
-        public string answer_id { get; set; }
-        public string answer_no { get; set; }
-        public string answer_content { get; set; }
-        public Nullable<decimal> answer_score { get; set; }
-        public string upuser { get; set; }
-        public Nullable<System.DateTime> uptime { get; set; }
-        public string question_id { get; set; }
+        public long ID { get; set; }
+        public string NAME { get; set; }
+        public string REMARK { get; set; }
+        public string DATA_SCOPE { get; set; }
+        public Nullable<int> LEVEL { get; set; }
+        public Nullable<System.DateTime> CREATE_TIME { get; set; }
+        public string PERMISSION { get; set; }
     }
 }

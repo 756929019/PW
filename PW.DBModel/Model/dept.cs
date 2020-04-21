@@ -12,14 +12,12 @@ namespace PW.DBCommon.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class results
+    public partial class dept
     {
-        public string result_id { get; set; }
-        public string result_content { get; set; }
-        public Nullable<decimal> min_score { get; set; }
-        public Nullable<decimal> max_score { get; set; }
-        public string paper_id { get; set; }
-        public string upuser { get; set; }
-        public Nullable<System.DateTime> uptime { get; set; }
+        public long ID { get; set; }
+        public string NAME { get; set; }
+        public Nullable<long> PID { get; set; }
+        public Nullable<bool> ENABLED { get; set; }
+        public Nullable<System.DateTime> CREATE_TIME { get; set; }
     }
 }

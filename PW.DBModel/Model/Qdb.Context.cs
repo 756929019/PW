@@ -25,10 +25,19 @@ namespace PW.DBCommon.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<answers> answers { get; set; }
-        public virtual DbSet<papers> papers { get; set; }
-        public virtual DbSet<questions> questions { get; set; }
-        public virtual DbSet<results> results { get; set; }
-        public virtual DbSet<users> users { get; set; }
+        public virtual DbSet<dept> dept { get; set; }
+        public virtual DbSet<dict> dict { get; set; }
+        public virtual DbSet<dict_detail> dict_detail { get; set; }
+        public virtual DbSet<general_workflow_func> general_workflow_func { get; set; }
+        public virtual DbSet<general_workflow_steps> general_workflow_steps { get; set; }
+        public virtual DbSet<general_workflows> general_workflows { get; set; }
+        public virtual DbSet<general_workflowstepdet> general_workflowstepdet { get; set; }
+        public virtual DbSet<menu> menu { get; set; }
+        public virtual DbSet<role> role { get; set; }
+        public virtual DbSet<roles_depts> roles_depts { get; set; }
+        public virtual DbSet<roles_menus> roles_menus { get; set; }
+        public virtual DbSet<user> user { get; set; }
+        public virtual DbSet<user_avatar> user_avatar { get; set; }
+        public virtual DbSet<users_roles> users_roles { get; set; }
     }
 }

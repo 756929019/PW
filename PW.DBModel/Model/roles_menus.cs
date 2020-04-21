@@ -12,12 +12,9 @@ namespace PW.DBCommon.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class users
+    public partial class roles_menus
     {
-        public int id { get; set; }
-        public string userno { get; set; }
-        public string username { get; set; }
-        public string userpwd { get; set; }
-        public string group_id { get; set; }
+        public long MENU_ID { get; set; }
+        public long ROLE_ID { get; set; }
     }
 }

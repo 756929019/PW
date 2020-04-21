@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="PW.Service.ServiceGeneralWorkflowFunc" CodeBehind="ServiceGeneralWorkflowFunc.svc.cs" %>

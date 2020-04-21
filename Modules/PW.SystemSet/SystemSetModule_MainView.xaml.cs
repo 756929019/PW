@@ -43,6 +43,7 @@ namespace PW.SystemSet
             this.regionViewRegistry = regionViewRegistry;
             this.eventAggregator = eventAggregator;
             regionViewRegistry.RegisterViewWithRegion(RegionNames.SystemSet, typeof(StyleSetting));
+            regionViewRegistry.RegisterViewWithRegion(RegionNames.SystemSet, typeof(UserView));
             //regionManager.RequestNavigate(RegionNames.SystemSet, "StyleSetting");
         }
     }

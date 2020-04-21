@@ -22,19 +22,22 @@
             using (<xsl:value-of select="TableModel/DbContextName"/> myDb = new <xsl:value-of select="TableModel/DbContextName"/>())
             {
                 IQueryable<xsl:text disable-output-escaping="yes">&lt;</xsl:text><xsl:value-of select="TableModel/TableName"/><xsl:text disable-output-escaping="yes">&gt;</xsl:text> db = myDb.<xsl:value-of select="TableModel/TableName"/>;
+                if (record != null)
+                {
                 <xsl:for-each select="TableModel/Fields/FieldModel">
                   <xsl:choose>
                     <xsl:when test="VarType='string'">
-                if (!String.IsNullOrEmpty(record.<xsl:value-of select="FieldName"/>))
+                    if (!String.IsNullOrEmpty(record.<xsl:value-of select="FieldName"/>))
                     </xsl:when>
                     <xsl:otherwise>
-                if (record.<xsl:value-of select="FieldName"/> != null)
+                    if (record.<xsl:value-of select="FieldName"/> != null)
                     </xsl:otherwise>
                   </xsl:choose>
-                {
-                    db = db.Where<xsl:text disable-output-escaping="yes">&lt;</xsl:text><xsl:copy-of select="$tableName" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>(p =<xsl:text disable-output-escaping="yes">&gt;</xsl:text> p.<xsl:value-of select="FieldName"/>.Equals(record.<xsl:value-of select="FieldName"/>));
-                }
+                    {
+                        db = db.Where<xsl:text disable-output-escaping="yes">&lt;</xsl:text><xsl:copy-of select="$tableName" /><xsl:text disable-output-escaping="yes">&gt;</xsl:text>(p =<xsl:text disable-output-escaping="yes">&gt;</xsl:text> p.<xsl:value-of select="FieldName"/>.Equals(record.<xsl:value-of select="FieldName"/>));
+                    }
                 </xsl:for-each>
+                }
                 return db.ToList();
              }
         }
@@ -46,19 +49,22 @@
         {
             int _total = 0;
             Expression<xsl:text disable-output-escaping="yes">&lt;Func&lt;</xsl:text><xsl:value-of select="TableModel/TableName"/>, bool<xsl:text disable-output-escaping="yes">&gt;&gt;</xsl:text> whereLambda = PredicateExtensions.True<xsl:text disable-output-escaping="yes">&lt;</xsl:text><xsl:value-of select="TableModel/TableName"/><xsl:text disable-output-escaping="yes">&gt;</xsl:text>();
+            if (record != null)
+            {          
             <xsl:for-each select="TableModel/Fields/FieldModel">
               <xsl:choose>
                 <xsl:when test="VarType='string'">
-            if (!String.IsNullOrEmpty(record.<xsl:value-of select="FieldName"/>))
+                if (!String.IsNullOrEmpty(record.<xsl:value-of select="FieldName"/>))
                 </xsl:when>
                 <xsl:otherwise>
-            if (record.<xsl:value-of select="FieldName"/> != null)
+                if (record.<xsl:value-of select="FieldName"/> != null)
                 </xsl:otherwise>
               </xsl:choose>
-            {
-                whereLambda.And(p =<xsl:text disable-output-escaping="yes">&gt;</xsl:text> p.<xsl:value-of select="FieldName"/>.Equals(record.<xsl:value-of select="FieldName"/>));
-            }
+                {
+                    whereLambda.And(p =<xsl:text disable-output-escaping="yes">&gt;</xsl:text> p.<xsl:value-of select="FieldName"/>.Equals(record.<xsl:value-of select="FieldName"/>));
+                }
             </xsl:for-each>
+            }
             <xsl:for-each select="TableModel/Fields/FieldModel">
               <xsl:choose>
                 <xsl:when test="ColumnKey='PRI'">

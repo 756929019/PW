@@ -12,13 +12,11 @@ namespace PW.DBCommon.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class questions
+    public partial class dict
     {
-        public string question_id { get; set; }
-        public Nullable<int> question_no { get; set; }
-        public string question_content { get; set; }
-        public string upuser { get; set; }
-        public Nullable<System.DateTime> uptime { get; set; }
-        public string paper_id { get; set; }
+        public long ID { get; set; }
+        public string NAME { get; set; }
+        public string REMARK { get; set; }
+        public Nullable<System.DateTime> CREATE_TIME { get; set; }
     }
 }

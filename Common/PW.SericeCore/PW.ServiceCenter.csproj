@@ -54,11 +54,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServiceUser\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\Statistics\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ServiceUser.cs" />
     <Compile Include="ServiceComm.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +81,15 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\ServiceUser\PW.ServiceCenter.ServiceUser.user.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceUser\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ServiceUser\configuration.svcinfo" />
+    <None Include="Service References\ServiceUser\configuration91.svcinfo" />
     <None Include="Service References\ServiceCodeGenerator\PW.ServiceCenter.ServiceCodeGenerator.column.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -100,6 +115,16 @@
     </None>
     <None Include="Service References\ServiceLogin\PW.ServiceCenter.ServiceLogin.UserInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceUser\ServiceUser.wsdl" />
+    <None Include="Service References\ServiceUser\ServiceUser.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceUser\ServiceUser1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceUser\ServiceUser2.xsd">
+      <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Statistics\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
@@ -144,6 +169,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceCodeGenerator\" />
     <WCFMetadataStorage Include="Service References\ServiceLogin\" />
+    <WCFMetadataStorage Include="Service References\ServiceUser\" />
     <WCFMetadataStorage Include="Service References\Statistics\" />
   </ItemGroup>
   <ItemGroup>
