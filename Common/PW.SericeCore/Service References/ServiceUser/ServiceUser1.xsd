@@ -24,4 +24,23 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfuser" nillable="true" type="tns:ArrayOfuser" />
+  <xs:complexType name="PageInfoOfuserCLUigIiY">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="PageInfoOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/PW.DBCommon.Model" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="user" Namespace="http://schemas.datacontract.org/2004/07/PW.DBCommon.Model" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="list" nillable="true" type="tns:ArrayOfuser" />
+      <xs:element minOccurs="0" name="orderName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+      <xs:element minOccurs="0" name="queryParams" nillable="true" type="tns:user" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+      <xs:element minOccurs="0" name="totalPage" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PageInfoOfuserCLUigIiY" nillable="true" type="tns:PageInfoOfuserCLUigIiY" />
 </xs:schema>

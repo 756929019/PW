@@ -124,6 +124,7 @@
     <Compile Include="Model\menu.cs">
       <DependentUpon>Qdb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\PageInfo.cs" />
     <Compile Include="Model\Qdb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -105,93 +105,23 @@
         /// <summary>
         /// 分页查询
         /// </summary>
-        public List<user> queryPage(user record)
+        public PageInfo<user> queryPage(PageInfo<user> page)
         {
-            int _total = 0;
-            Expression<Func<user, bool>> whereLambda = PredicateExtensions.True<user>();
-            if (record != null)
+            string where = "1=1";
+            if (page!=null && page.queryParams != null)
             {
-                if (record.ID != null)
-
+                // 生成代码主键不做查询条件
+                if (page.queryParams.AVATAR_ID != null)
                 {
-                    whereLambda.And(p => p.ID.Equals(record.ID));
+                    where += " and AVATAR_ID = " + page.queryParams.AVATAR_ID;
                 }
 
-                if (record.AVATAR_ID != null)
-
+                if (!String.IsNullOrEmpty(page.queryParams.USERNAME))
                 {
-                    whereLambda.And(p => p.AVATAR_ID.Equals(record.AVATAR_ID));
-                }
-
-                if (!String.IsNullOrEmpty(record.EMAIL))
-
-                {
-                    whereLambda.And(p => p.EMAIL.Equals(record.EMAIL));
-                }
-
-                if (record.ENABLED != null)
-
-                {
-                    whereLambda.And(p => p.ENABLED.Equals(record.ENABLED));
-                }
-
-                if (!String.IsNullOrEmpty(record.PASSWORD))
-
-                {
-                    whereLambda.And(p => p.PASSWORD.Equals(record.PASSWORD));
-                }
-
-                if (!String.IsNullOrEmpty(record.USERNAME))
-
-                {
-                    whereLambda.And(p => p.USERNAME.Equals(record.USERNAME));
-                }
-
-                if (record.DEPT_ID != null)
-
-                {
-                    whereLambda.And(p => p.DEPT_ID.Equals(record.DEPT_ID));
-                }
-
-                if (!String.IsNullOrEmpty(record.PHONE))
-
-                {
-                    whereLambda.And(p => p.PHONE.Equals(record.PHONE));
-                }
-
-                if (record.JOB_ID != null)
-
-                {
-                    whereLambda.And(p => p.JOB_ID.Equals(record.JOB_ID));
-                }
-
-                if (record.CREATE_TIME != null)
-
-                {
-                    whereLambda.And(p => p.CREATE_TIME.Equals(record.CREATE_TIME));
-                }
-
-                if (record.LAST_PASSWORD_RESET_TIME != null)
-
-                {
-                    whereLambda.And(p => p.LAST_PASSWORD_RESET_TIME.Equals(record.LAST_PASSWORD_RESET_TIME));
-                }
-
-                if (!String.IsNullOrEmpty(record.NICK_NAME))
-
-                {
-                    whereLambda.And(p => p.NICK_NAME.Equals(record.NICK_NAME));
-                }
-
-                if (!String.IsNullOrEmpty(record.SEX))
-
-                {
-                    whereLambda.And(p => p.SEX.Equals(record.SEX));
+                    where += " and USERNAME = " + page.queryParams.USERNAME;
                 }
             }
-            return LoadPageItems(5, 2, out _total, whereLambda, p => p.ID, true);
-                
-            // return LoadPageItems(5, 2, out _total, whereLambda, p => p.id, true);
+            return DBQueryPage<user>(page, "user", where);
         }
 
         /// <summary>

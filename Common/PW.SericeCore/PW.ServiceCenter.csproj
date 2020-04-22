@@ -81,6 +81,9 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\ServiceUser\PW.ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceUser\PW.ServiceCenter.ServiceUser.user.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

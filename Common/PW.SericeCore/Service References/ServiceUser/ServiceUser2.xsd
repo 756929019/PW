@@ -18,14 +18,14 @@
   <xs:element name="queryPage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PW.DBCommon.Model" minOccurs="0" name="record" nillable="true" type="q3:user" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PW.DBCommon.Model" minOccurs="0" name="page" nillable="true" type="q3:PageInfoOfuserCLUigIiY" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="queryPageResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PW.DBCommon.Model" minOccurs="0" name="queryPageResult" nillable="true" type="q4:ArrayOfuser" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PW.DBCommon.Model" minOccurs="0" name="queryPageResult" nillable="true" type="q4:PageInfoOfuserCLUigIiY" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

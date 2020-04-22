@@ -250,6 +250,147 @@ namespace PW.ServiceCenter.ServiceUser {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PageInfoOfuserCLUigIiY", Namespace="http://schemas.datacontract.org/2004/07/PW.DBCommon.Model")]
+    [System.SerializableAttribute()]
+    public partial class PageInfoOfuserCLUigIiY : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PW.ServiceCenter.ServiceUser.user[] listField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string orderNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int pageIndexField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int pageSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PW.ServiceCenter.ServiceUser.user queryParamsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int totalCountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int totalPageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PW.ServiceCenter.ServiceUser.user[] list {
+            get {
+                return this.listField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.listField, value) != true)) {
+                    this.listField = value;
+                    this.RaisePropertyChanged("list");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string orderName {
+            get {
+                return this.orderNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.orderNameField, value) != true)) {
+                    this.orderNameField = value;
+                    this.RaisePropertyChanged("orderName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int pageIndex {
+            get {
+                return this.pageIndexField;
+            }
+            set {
+                if ((this.pageIndexField.Equals(value) != true)) {
+                    this.pageIndexField = value;
+                    this.RaisePropertyChanged("pageIndex");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int pageSize {
+            get {
+                return this.pageSizeField;
+            }
+            set {
+                if ((this.pageSizeField.Equals(value) != true)) {
+                    this.pageSizeField = value;
+                    this.RaisePropertyChanged("pageSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PW.ServiceCenter.ServiceUser.user queryParams {
+            get {
+                return this.queryParamsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.queryParamsField, value) != true)) {
+                    this.queryParamsField = value;
+                    this.RaisePropertyChanged("queryParams");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int totalCount {
+            get {
+                return this.totalCountField;
+            }
+            set {
+                if ((this.totalCountField.Equals(value) != true)) {
+                    this.totalCountField = value;
+                    this.RaisePropertyChanged("totalCount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int totalPage {
+            get {
+                return this.totalPageField;
+            }
+            set {
+                if ((this.totalPageField.Equals(value) != true)) {
+                    this.totalPageField = value;
+                    this.RaisePropertyChanged("totalPage");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceUser.IServiceUser")]
     public interface IServiceUser {
@@ -263,12 +404,12 @@ namespace PW.ServiceCenter.ServiceUser {
         PW.ServiceCenter.ServiceUser.user[] Endquery(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceUser/queryPage", ReplyAction="http://tempuri.org/IServiceUser/queryPageResponse")]
-        PW.ServiceCenter.ServiceUser.user[] queryPage(PW.ServiceCenter.ServiceUser.user record);
+        PW.ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY queryPage(PW.ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY page);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IServiceUser/queryPage", ReplyAction="http://tempuri.org/IServiceUser/queryPageResponse")]
-        System.IAsyncResult BeginqueryPage(PW.ServiceCenter.ServiceUser.user record, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginqueryPage(PW.ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY page, System.AsyncCallback callback, object asyncState);
         
-        PW.ServiceCenter.ServiceUser.user[] EndqueryPage(System.IAsyncResult result);
+        PW.ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY EndqueryPage(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceUser/deleteById", ReplyAction="http://tempuri.org/IServiceUser/deleteByIdResponse")]
         int deleteById(int id);
@@ -337,10 +478,10 @@ namespace PW.ServiceCenter.ServiceUser {
             this.results = results;
         }
         
-        public PW.ServiceCenter.ServiceUser.user[] Result {
+        public PW.ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((PW.ServiceCenter.ServiceUser.user[])(this.results[0]));
+                return ((PW.ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY)(this.results[0]));
             }
         }
     }
@@ -542,27 +683,27 @@ namespace PW.ServiceCenter.ServiceUser {
                         record}, this.onEndqueryDelegate, this.onqueryCompletedDelegate, userState);
         }
         
-        public PW.ServiceCenter.ServiceUser.user[] queryPage(PW.ServiceCenter.ServiceUser.user record) {
-            return base.Channel.queryPage(record);
+        public PW.ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY queryPage(PW.ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY page) {
+            return base.Channel.queryPage(page);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginqueryPage(PW.ServiceCenter.ServiceUser.user record, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginqueryPage(record, callback, asyncState);
+        public System.IAsyncResult BeginqueryPage(PW.ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY page, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginqueryPage(page, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public PW.ServiceCenter.ServiceUser.user[] EndqueryPage(System.IAsyncResult result) {
+        public PW.ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY EndqueryPage(System.IAsyncResult result) {
             return base.Channel.EndqueryPage(result);
         }
         
         private System.IAsyncResult OnBeginqueryPage(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            PW.ServiceCenter.ServiceUser.user record = ((PW.ServiceCenter.ServiceUser.user)(inValues[0]));
-            return this.BeginqueryPage(record, callback, asyncState);
+            PW.ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY page = ((PW.ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY)(inValues[0]));
+            return this.BeginqueryPage(page, callback, asyncState);
         }
         
         private object[] OnEndqueryPage(System.IAsyncResult result) {
-            PW.ServiceCenter.ServiceUser.user[] retVal = this.EndqueryPage(result);
+            PW.ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY retVal = this.EndqueryPage(result);
             return new object[] {
                     retVal};
         }
@@ -574,11 +715,11 @@ namespace PW.ServiceCenter.ServiceUser {
             }
         }
         
-        public void queryPageAsync(PW.ServiceCenter.ServiceUser.user record) {
-            this.queryPageAsync(record, null);
+        public void queryPageAsync(PW.ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY page) {
+            this.queryPageAsync(page, null);
         }
         
-        public void queryPageAsync(PW.ServiceCenter.ServiceUser.user record, object userState) {
+        public void queryPageAsync(PW.ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY page, object userState) {
             if ((this.onBeginqueryPageDelegate == null)) {
                 this.onBeginqueryPageDelegate = new BeginOperationDelegate(this.OnBeginqueryPage);
             }
@@ -589,7 +730,7 @@ namespace PW.ServiceCenter.ServiceUser {
                 this.onqueryPageCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnqueryPageCompleted);
             }
             base.InvokeAsync(this.onBeginqueryPageDelegate, new object[] {
-                        record}, this.onEndqueryPageDelegate, this.onqueryPageCompletedDelegate, userState);
+                        page}, this.onEndqueryPageDelegate, this.onqueryPageCompletedDelegate, userState);
         }
         
         public int deleteById(int id) {

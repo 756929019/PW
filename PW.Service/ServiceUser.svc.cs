@@ -18,9 +18,9 @@
         /// <summary>
         /// 分页查询
         /// </summary>
-        public List<user> queryPage(user record)
+        public PageInfo<user> queryPage(PageInfo<user> page)
         {
-            return new UserDao().queryPage(record);
+            return new UserDao().queryPage(page);
         }
 
         /// <summary>

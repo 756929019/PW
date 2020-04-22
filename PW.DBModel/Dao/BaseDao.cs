@@ -45,5 +45,31 @@ namespace PW.DBCommon.Dao
                 }
             }
         }
+
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="page"></param>
+        /// <param name="tableName">可以是表格（对应泛型T），也可以是sql</param>
+        /// <returns></returns>
+        public PageInfo<T> DBQueryPage<T>(PageInfo<T> page, string tableName, string where)
+        {
+            if (page == null)
+            {
+                return null;
+            }
+            using (qdbEntities qdb = new qdbEntities())
+            {
+                string totalSql = "select count(*) as recordCount from " + tableName + " T" + (String.IsNullOrEmpty(where) ? "" : " where " + where);
+                int totalCount = qdb.Database.SqlQuery<int>(totalSql).FirstOrDefault();
+                page.totalCount = totalCount;
+                page.totalPage = (totalCount + page.pageSize - 1) / page.pageSize;
+                string querySql = "select * from " + tableName + " T " + (String.IsNullOrEmpty(where) ? "" : " where " + where) + " " + (String.IsNullOrEmpty(page.orderName) ? "" : " order by " + page.orderName) + " limit " + ((page.pageIndex - 1) * page.pageSize) + "," + page.pageSize + "";
+                List<T> list = qdb.Database.SqlQuery<T>(querySql).ToList();
+                page.list = list;
+                return page;
+            }
+        }
     }
 }

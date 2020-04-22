@@ -138,6 +138,10 @@
       <Project>{782C8728-74FC-455C-A159-F37EE2ED76B1}</Project>
       <Name>PW.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Common\PW.Controls\PW.Controls.csproj">
+      <Project>{126959E4-AAD5-41A0-8245-907582364C59}</Project>
+      <Name>PW.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Common\PW.Infrastructure\PW.Infrastructure.csproj">
       <Project>{171D7BC9-44A7-452A-ACAF-DD8ED4EDAC98}</Project>
       <Name>PW.Infrastructure</Name>

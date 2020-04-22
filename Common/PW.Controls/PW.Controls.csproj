@@ -68,6 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorUtils.cs" />
+    <Compile Include="Controls\Pager.xaml.cs">
+      <DependentUpon>Pager.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ALoading.xaml.cs">
       <DependentUpon>ALoading.xaml</DependentUpon>
     </Compile>
@@ -193,6 +196,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\Pager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\ALoading.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

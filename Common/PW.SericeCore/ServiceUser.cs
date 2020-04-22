@@ -33,5 +33,33 @@ namespace PW.ServiceCenter
             client.queryAsync(record);
         }
         #endregion
+
+        #region 分页查询
+        public event System.EventHandler<ServicesEventArgs<PageInfoOfuserCLUigIiY>> queryPageCompleted;
+        public void queryPage(PageInfoOfuserCLUigIiY record)
+        {
+            ServiceUserClient client = new ServiceUserClient();
+            client.queryPageCompleted += (sender, e) =>
+            {
+                ServicesEventArgs<PageInfoOfuserCLUigIiY> arg = new ServicesEventArgs<PageInfoOfuserCLUigIiY>();
+
+                if (e.Error == null)
+                {
+                    arg.Result = e.Result;
+                    arg.Succesed = true;
+                }
+                else
+                {
+                    arg.Succesed = false;
+                    arg.Error = e.Error;
+                }
+                if (queryPageCompleted != null)
+                {
+                    queryPageCompleted.Invoke(this, arg);
+                }
+            };
+            client.queryPageAsync(record);
+        }
+        #endregion
     }
 }
