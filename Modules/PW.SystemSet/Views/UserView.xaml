@@ -9,24 +9,76 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid HorizontalAlignment="Left" VerticalAlignment="Center">
-            <StackPanel Orientation="Horizontal">
-                <TextBox Width="100" Height="30" Text="{Binding Username}"></TextBox>
-                <Button Content="查询" Command="{Binding Path=QueryCommand}"/>
-            </StackPanel>
-        </Grid>
-        <DataGrid Grid.Row="1" AutoGenerateColumns="False" x:Name="dataGrid" ItemsSource="{Binding Path=list,Mode=TwoWay}">
+        <Border>
+            <Grid HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <TextBlock Text="username" VerticalAlignment="Center"></TextBlock>
+                    <TextBox Width="100" Height="30" Text="{Binding Username}"></TextBox>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <TextBlock Text="username" VerticalAlignment="Center"></TextBlock>
+                    <TextBox Width="100" Height="30" Text="{Binding Username}"></TextBox>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <TextBlock Text="username" VerticalAlignment="Center"></TextBlock>
+                    <TextBox Width="100" Height="30" Text="{Binding Username}"></TextBox>
+                </StackPanel>
+                <Button Grid.Row="1" Content="查询" Command="{Binding Path=QueryCommand}"/>
+            </Grid>
+        </Border>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <ToolBar >
+                <Button Content="添加"/>
+                <Separator/>
+                <Button Content="删除"/>
+                <Button Content="修改"/>
+            </ToolBar>
+        </StackPanel>
+        <DataGrid Grid.Row="2" AutoGenerateColumns="False" x:Name="dataGrid" ItemsSource="{Binding Path=list,Mode=TwoWay}">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding ID}" Header="编号"/>
-                <DataGridTextColumn Binding="{Binding USERNAME}" Header="USERNAME" Width="100"/>
-                <DataGridTextColumn Binding="{Binding NICK_NAME}" Header="NICK_NAME"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" 
+             IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}},Path=DataContext.IsCheckedAll}">全选
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction  Command="{Binding Path=DataContext.SelectAllCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <i:InvokeCommandAction  Command="{Binding Path=DataContext.UnSelectAllCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </CheckBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding IsChecked}">
+                            </CheckBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding ObjData.ID}" Header="编号"/>
+                <DataGridTextColumn Binding="{Binding ObjData.USERNAME}" Header="USERNAME" Width="100"/>
+                <DataGridTextColumn Binding="{Binding ObjData.NICK_NAME}" Header="NICK_NAME"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Controls:Pager  Grid.Row="2"  TotalPage="{Binding Path=TotalPage,Mode=TwoWay}" PageSize="{Binding Path=PageSize,Mode=TwoWay}" CurrentPage="{Binding Path=CurrentPage,Mode=TwoWay}">
+        <Controls:Pager  Grid.Row="3"  TotalPage="{Binding Path=TotalPage,Mode=TwoWay}" PageSize="{Binding Path=PageSize,Mode=TwoWay}" CurrentPage="{Binding Path=CurrentPage,Mode=TwoWay}">
             <i:Interaction.Triggers>
                 <i:EventTrigger  EventName="PageChanged">
                     <i:InvokeCommandAction  Command="{Binding Path=NextPageSearchCommand, Mode=TwoWay}" />

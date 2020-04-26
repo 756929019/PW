@@ -18,7 +18,7 @@
         /// 分页查询
         /// </summary>
         [OperationContract]
-        List<menu> queryPage(menu record);
+        PageInfo<menu> queryPage(PageInfo<menu> page);
 
         /// <summary>
         /// 删除

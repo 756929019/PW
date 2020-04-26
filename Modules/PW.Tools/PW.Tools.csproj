@@ -103,7 +103,6 @@
     <Compile Include="Views\MySqlDbHelper.cs" />
     <Compile Include="Views\TableModel.cs" />
     <Compile Include="Views\TreeNodeInfo .cs" />
-    <Compile Include="Views\Util.cs" />
     <Page Include="ToolsModule_MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

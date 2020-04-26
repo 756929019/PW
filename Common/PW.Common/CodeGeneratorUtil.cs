@@ -10,9 +10,9 @@ using System.Xml.Serialization;
 using System.Xml.XPath;
 using System.Xml.Xsl;
 
-namespace PW.Tools.Views
+namespace PW.Common
 {
-    public static class Util
+    public static class CodeGeneratorUtil
     {
         public static string object2xml<T>(this T value)
         {

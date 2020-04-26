@@ -1,6 +1,6 @@
 ﻿using PW.Common;
-using PW.DBCommon.Model;
 using PW.ServiceCenter;
+using PW.ServiceCenter.ServiceUser;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,54 +18,12 @@ namespace PW.SystemSet.ViewModel
         {
             QueryCommand = new RelayCommand(QueryCommandFunc);
             NextPageSearchCommand = new RelayCommand(NextPageSearchCommandFunc);
+            SelectAllCommand = new RelayCommand(SelectAllCommandFunc);
+            UnSelectAllCommand = new RelayCommand(UnSelectAllCommandFunc);
             GetData();
         }
 
-        //数据源
-        ObservableCollection<user> _list = new ObservableCollection<user>();
-        public ObservableCollection<user> list
-        {
-
-            get { return _list; }
-            set
-            {
-                _list = value;
-                RaisePropertyChanged("list");
-            }
-        }
-        private void GetData() {
-            var pageIndex = Convert.ToInt32(CurrentPage);
-            CServiceUser client = new CServiceUser();
-            client.queryPageCompleted += (serice, eve) =>
-            {
-                if (eve.Succesed)
-                {
-                    list.Clear();
-                    ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY result = eve.Result;
-                    this.TotalPage = result.totalPage + "";
-                    this.TotalCount = result.totalCount;
-                    foreach (ServiceCenter.ServiceUser.user item in result.list)
-                    {
-                        list.Add(JSONCom.ConvertObject<user>(item));
-                    }
-                }
-                else
-                {
-                }
-            };
-            PageInfo<user> page = new PageInfo<user>()
-            {
-                pageIndex = pageIndex,
-                pageSize = PageSize,
-                orderName = "ID ASC",
-                queryParams = new user
-                {
-                    USERNAME = Username
-                }
-            };
-            client.queryPage(JSONCom.ConvertObject<ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY>(page));
-        }
-
+        #region 查询相关属性
         private string _Username;
         /// <summary>
         /// Username
@@ -80,25 +38,66 @@ namespace PW.SystemSet.ViewModel
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void RaisePropertyChanged(string propertyName)
-        {
-            if (propertyName != null)
-            {
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
         public RelayCommand QueryCommand { get; set; }
 
         private void QueryCommandFunc()
         {
+            CurrentPage = "1";
             GetData();
         }
 
-        #region 分页相关属性
+        //数据源
+        ObservableCollection<DataGridModel<user>> _list = new ObservableCollection<DataGridModel<user>>();
+        public ObservableCollection<DataGridModel<user>> list
+        {
 
+            get { return _list; }
+            set
+            {
+                _list = value;
+                RaisePropertyChanged("list");
+            }
+        }
+        private void GetData()
+        {
+            var pageIndex = Convert.ToInt32(CurrentPage);
+            CServiceUser client = new CServiceUser();
+            client.queryPageCompleted += (serice, eve) =>
+            {
+                if (eve.Succesed)
+                {
+                    list.Clear();
+                    PageInfoOfuserCLUigIiY result = eve.Result;
+                    this.TotalPage = result.totalPage + "";
+                    this.TotalCount = result.totalCount;
+                    foreach (user item in result.list)
+                    {
+                        list.Add(new DataGridModel<user>() { IsChecked = false, ObjData = item });
+                    }
+                }
+                else
+                {
+                }
+            };
+            PageInfoOfuserCLUigIiY page = new PageInfoOfuserCLUigIiY()
+            {
+                pageIndex = pageIndex,
+                pageSize = PageSize,
+                orderName = "ID ASC",
+                queryParams = new user
+                {
+                    USERNAME = Username
+                }
+            };
+            client.queryPage(JSONCom.ConvertObject<ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY>(page));
+        }
+        #endregion
+
+        #region 分页相关属性
+        /// <summary>
+        /// 分页管理
+        /// </summary>
+        public RelayCommand NextPageSearchCommand { get; set; }
         /// <summary>
         /// 分页查询命令
         /// </summary>
@@ -147,19 +146,18 @@ namespace PW.SystemSet.ViewModel
                 RaisePropertyChanged("PageSize");
             }
         }
-        private int _pageIndex = 1;
+        //private int _pageIndex = 1;
+        //public int PageIndex
+        //{
+        //    get { return _pageIndex; }
+        //    set
+        //    {
+        //        _pageIndex = value;
+
+        //        RaisePropertyChanged("PageIndex");
+        //    }
+        //}
         private int _totalCount;
-        public int PageIndex
-        {
-            get { return _pageIndex; }
-            set
-            {
-                _pageIndex = value;
-
-                RaisePropertyChanged("PageIndex");
-            }
-        }
-
         public int TotalCount
         {
             get { return _totalCount; }
@@ -169,10 +167,49 @@ namespace PW.SystemSet.ViewModel
                 RaisePropertyChanged("TotalCount");
             }
         }
-        /// <summary>
-        /// 分页管理
-        /// </summary>
-        public RelayCommand NextPageSearchCommand { get; set; }
         #endregion
+
+        #region datagrid全选
+        private bool? _IsCheckedAll = false;
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool? IsCheckedAll
+        {
+            get { return _IsCheckedAll; }
+            set
+            {
+                _IsCheckedAll = value;
+                RaisePropertyChanged("IsCheckedAll");
+            }
+        }
+
+        public RelayCommand SelectAllCommand { get; set; }
+        private void SelectAllCommandFunc()
+        {
+            foreach (DataGridModel<user> item in list)
+            {
+                item.IsChecked = true;
+            }
+        }
+        public RelayCommand UnSelectAllCommand { get; set; }
+        private void UnSelectAllCommandFunc()
+        {
+            foreach (DataGridModel<user> item in list)
+            {
+                item.IsChecked = false;
+            }
+        }
+        #endregion
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void RaisePropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
 }

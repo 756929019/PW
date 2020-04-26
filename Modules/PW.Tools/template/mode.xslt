@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:template match="/" name="outputtemplate">
-using System;
-using System.Collections.Generic;
+  using System;
+  using System.Collections.Generic;
 
-namespace <xsl:value-of select="TableModel/NameSpace"/>
-{
-    public class <xsl:value-of select="TableModel/ModelName"/>
+  namespace PW.Common.ViewModel
+  {
+  public class <xsl:value-of select="TableModel/ModelName"/>
     {
         <xsl:for-each select="TableModel/Fields/FieldModel">
         <xsl:choose>

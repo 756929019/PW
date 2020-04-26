@@ -18,9 +18,9 @@
         /// <summary>
         /// 分页查询
         /// </summary>
-        public List<menu> queryPage(menu record)
+        public PageInfo<menu> queryPage(PageInfo<menu> page)
         {
-            return new MenuDao().queryPage(record);
+            return null;
         }
 
         /// <summary>

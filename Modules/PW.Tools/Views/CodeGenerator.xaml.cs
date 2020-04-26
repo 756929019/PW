@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Xml;
 using System.Xml.Xsl;
+using PW.Common;
 
 namespace PW.Tools.Views
 {
@@ -86,32 +87,32 @@ namespace PW.Tools.Views
             {
                 if (item.IsChecked == true)
                 {
-                    string name = Util.toHump(item.Name);
+                    string name = CodeGeneratorUtil.toHump(item.Name);
                     TableModel tm = new TableModel() { DbContextName = "qdbEntities", TableName = item.Name, ModelName = name, NameSpace = "CodeGenerator.Model", Comment = string.IsNullOrEmpty(item.Mark) ? item.Name : name };
 
                     column[] columns = sc.queryColumns(item.Name);
                     foreach (column col in columns)
                     {
-                        string varname = Util.toHump(col.column_name);
-                        string varnamelocal = Util.startLower(varname);
+                        string varname = CodeGeneratorUtil.toHump(col.column_name);
+                        string varnamelocal = CodeGeneratorUtil.startLower(varname);
                         string VarType = DbTypeConvertMethod.GetVarTypeFromSqlDbType(col.data_type);
                         tm.Fields.Add(new FieldModel() { FieldName = col.column_name, DbType = col.data_type, VarType = VarType, ColumnKey = col.column_key, Mark = string.IsNullOrEmpty(col.column_comment) ? col.column_name : col.column_comment, VarName = varname, VarNameLocal = varnamelocal, DefaultValueVar = "" });
                     }
 
                     //Directory.GetCurrentDirectory();
-                    Util.TransferXml(Util.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/mode.xslt", "D:/CodeGenerator/model/" + name + ".cs");
-                    Util.TransferXml(Util.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/iservice.xslt", "D:/CodeGenerator/service/IService" + name + ".cs");
-                    Util.TransferXml(Util.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/service.xslt", "D:/CodeGenerator/service/Service" + name + ".svc.cs");
-                    Util.TransferXml(Util.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/service.svc.xslt", "D:/CodeGenerator/service/Service" + name + ".svc");
-                    Util.TransferXml(Util.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/dao.xslt", "D:/CodeGenerator/dao/" + name + "Dao.cs");
+                    CodeGeneratorUtil.TransferXml(CodeGeneratorUtil.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/mode.xslt", "D:/CodeGenerator/model/" + name + ".cs");
+                    CodeGeneratorUtil.TransferXml(CodeGeneratorUtil.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/iservice.xslt", "D:/CodeGenerator/service/IService" + name + ".cs");
+                    CodeGeneratorUtil.TransferXml(CodeGeneratorUtil.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/service.xslt", "D:/CodeGenerator/service/Service" + name + ".svc.cs");
+                    CodeGeneratorUtil.TransferXml(CodeGeneratorUtil.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/service.svc.xslt", "D:/CodeGenerator/service/Service" + name + ".svc");
+                    CodeGeneratorUtil.TransferXml(CodeGeneratorUtil.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/dao.xslt", "D:/CodeGenerator/dao/" + name + "Dao.cs");
                 }
             }
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(Util.toHump("qqq_ccc_ddd"));
-            MessageBox.Show(Util.toHump("_qqq_ccc_ddd_"));
+            MessageBox.Show(CodeGeneratorUtil.toHump("qqq_ccc_ddd"));
+            MessageBox.Show(CodeGeneratorUtil.toHump("_qqq_ccc_ddd_"));
         }
 
         static String XslTransform(string inputXmlConent, string inuptXslContent)
