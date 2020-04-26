@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
              xmlns:local="clr-namespace:PW.SystemSet.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
@@ -37,16 +37,13 @@
                     <TextBlock Text="username" VerticalAlignment="Center"></TextBlock>
                     <TextBox Width="100" Height="30" Text="{Binding Username}"></TextBox>
                 </StackPanel>
-                <Button Grid.Row="1" Content="查询" Command="{Binding Path=QueryCommand}"/>
+                <Controls:FiconButton Grid.Row="1" Content="查询" FIcon="&#xe628;" Command="{Binding Path=QueryCommand}"/>
             </Grid>
         </Border>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <ToolBar >
-                <Button Content="添加"/>
-                <Separator/>
-                <Button Content="删除"/>
-                <Button Content="修改"/>
-            </ToolBar>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,5,0,5">
+            <Controls:FiconButton Content="添加" FIcon="&#xe62c;" Padding="5,0,5,0" CornerRadius="10,0,0,10" AllowsAnimation="True"/>
+            <Controls:FiconButton Content="删除" FIcon="&#xe60a;" Padding="5,0,5,0" AllowsAnimation="True"/>
+            <Controls:FiconButton Content="修改" FIcon="&#xe63e;" Padding="5,0,5,0" CornerRadius="0,10,10,0"/>
         </StackPanel>
         <DataGrid Grid.Row="2" AutoGenerateColumns="False" x:Name="dataGrid" ItemsSource="{Binding Path=list,Mode=TwoWay}">
             <DataGrid.Columns>

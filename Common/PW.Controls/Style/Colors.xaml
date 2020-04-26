@@ -58,11 +58,11 @@
     <!--Popup,ComboBox-->
     <SolidColorBrush x:Key="PopupBackground" Color="#066EB3"></SolidColorBrush>
     <!--Button-->
-    <SolidColorBrush x:Key="ButtonBackground" Color="#1D4A9A"></SolidColorBrush>
+    <SolidColorBrush x:Key="ButtonBackground" Color="#AA005688"></SolidColorBrush>
     <SolidColorBrush x:Key="ButtonForeground" Color="White"></SolidColorBrush>
-    <SolidColorBrush x:Key="ButtonMouseOverBackground" Color="Orange"></SolidColorBrush>
+    <SolidColorBrush x:Key="ButtonMouseOverBackground" Color="#66008890"></SolidColorBrush>
     <SolidColorBrush x:Key="ButtonMouseOverForeground" Color="White"></SolidColorBrush>
-    <SolidColorBrush x:Key="ButtonPressedBackground" Color="DarkOrange"></SolidColorBrush>
+    <SolidColorBrush x:Key="ButtonPressedBackground" Color="#99008890"></SolidColorBrush>
     <SolidColorBrush x:Key="ButtonPressedForeground" Color="White"></SolidColorBrush>
     <!--Menu-->
     <SolidColorBrush x:Key="MenuForeground" Color="#920892"></SolidColorBrush>

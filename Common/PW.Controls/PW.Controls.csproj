@@ -607,7 +607,9 @@
     <EmbeddedResource Include="Maps\Zimbabwe.xml" />
     <Resource Include="fonts\css\Unicode编码.txt" />
     <Resource Include="fonts\css\UTF-8编码.txt" />
-    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg">
+      <SubType>Designer</SubType>
+    </Content>
     <Resource Include="Resources\logo.ico" />
     <Resource Include="Resources\logo.png" />
     <Resource Include="Resources\windowsLogo.png" />

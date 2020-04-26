@@ -88,11 +88,12 @@
         <Setter Property="PressedBackground" Value="{StaticResource ButtonPressedBackground}" />
         <Setter Property="PressedForeground" Value="{StaticResource ButtonPressedForeground}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="Width" Value="100" />
-        <Setter Property="Height" Value="30" />
-        <Setter Property="FontSize" Value="13" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <!--<Setter Property="Width" Value="100" />
+        <Setter Property="Height" Value="30" />-->
+        <Setter Property="FontSize" Value="14" />
         <Setter Property="CornerRadius" Value="0" />
-        <Setter Property="FIconSize" Value="20" />
+        <Setter Property="FIconSize" Value="15" />
         <Setter Property="Template" Value="{StaticResource FiconButton_Template}"/>
         <Setter Property="Padding" Value="3,1,3,1" />
         <Setter Property="Content" Value="{x:Null}" />

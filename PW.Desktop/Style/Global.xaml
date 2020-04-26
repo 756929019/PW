@@ -7,13 +7,13 @@
         <Setter Property="Foreground" Value="{DynamicResource Sys.Foreground}"/>
         <Setter Property="FontFamily" Value="{DynamicResource Sys.FontFamily}"/>
         <Setter Property="FontSize" Value="{DynamicResource Sys.FontSize}"/>
-        <Setter Property="Padding" Value="0,3,0,0"/>
+        <Setter Property="Padding" Value="0,0,0,0"/>
     </Style>
     <Style x:Key="DefTextBlock" TargetType="{x:Type TextBlock}">
         <Setter Property="Foreground" Value="{DynamicResource Sys.Foreground}"/>
         <Setter Property="FontFamily" Value="{DynamicResource Sys.FontFamily}"/>
         <Setter Property="FontSize" Value="{DynamicResource Sys.FontSize}"/>
-        <Setter Property="Padding" Value="0,3,0,0"/>
+        <Setter Property="Padding" Value="0,0,0,0"/>
     </Style>
     
     <!--文本框-->
