@@ -1,16 +1,27 @@
-﻿<Application x:Class="PW.Desktop.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:PW.Desktop" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
+﻿<Application x:Class="PW.Desktop.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:local="clr-namespace:PW.Desktop" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Controls="clr-namespace:PW.Controls.Controls;assembly=PW.Controls"
+             d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
   <Application.Resources>
     <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="SystemText.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="ModularityStyles.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="pack://application:,,,/PW.Desktop;component/Style/FIcon.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/PW.Controls;component/Style/Colors.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/PW.Controls;component/Style/Themes/FIcon.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/PW.Controls;component/Controls/FiconButton.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/PW.Controls;component/Style/Style.xaml"></ResourceDictionary>
+                
+                <!--<ResourceDictionary Source="pack://application:,,,/PW.Desktop;component/Style/FIcon.xaml"></ResourceDictionary>-->
                 <ResourceDictionary Source="pack://application:,,,/PW.Desktop;component/Style/Global.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="pack://application:,,,/PW.Desktop;component/Style/Themes/ScrollViewer.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="pack://application:,,,/PW.Desktop;component/Style/Themes/ComboBox.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="pack://application:,,,/PW.Desktop;component/Style/Themes/TreeView.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="pack://application:,,,/PW.Desktop;component/Style/Themes/DataGrid.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
+            <!--<Style TargetType="{x:Type Controls:WindowBase}" BasedOn="{StaticResource DefaultWindowStyle}"></Style>-->
+        </ResourceDictionary>
   </Application.Resources>
 </Application>

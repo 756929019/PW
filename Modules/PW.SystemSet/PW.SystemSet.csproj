@@ -96,6 +96,9 @@
     <Compile Include="SystemSetModule_MainView.xaml.cs">
       <DependentUpon>SystemSetModule_MainView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserEdit.xaml.cs">
+      <DependentUpon>UserEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\UserViewModel .cs" />
     <Compile Include="Views\UserView.xaml.cs">
       <DependentUpon>UserView.xaml</DependentUpon>
@@ -123,6 +126,10 @@
     <Page Include="SystemSetModule_MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UserView.xaml">
       <Generator>MSBuild:Compile</Generator>

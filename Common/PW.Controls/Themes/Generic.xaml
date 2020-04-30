@@ -12,7 +12,6 @@
         <ResourceDictionary Source="/PW.Controls;component/Controls/Loading.xaml" />
         <ResourceDictionary Source="/PW.Controls;component/Controls/BusyBox.xaml" />
         <ResourceDictionary Source="/PW.Controls;component/Controls/ProgressRing.xaml" />
-        <ResourceDictionary Source="/PW.Controls;component/Controls/WindowBase.xaml" />
         <ResourceDictionary Source="/PW.Controls;component/Controls/ColorSlider.xaml" />
         <ResourceDictionary Source="/PW.Controls;component/Controls/SpectrumSlider.xaml" />
         <ResourceDictionary Source="/PW.Controls;component/Controls/HsvControl.xaml" />

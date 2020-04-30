@@ -44,6 +44,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PW.Tools", "Modules\PW.Tool
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PW.DBCommon", "PW.DBModel\PW.DBCommon.csproj", "{3C0B6EC2-949C-496B-9C87-5418DEF74A5C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PW.Test", "PW.Test\PW.Test.csproj", "{464DB92B-2750-4125-BCDE-F1D7DBFFAA58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -118,6 +120,10 @@ Global
 		{3C0B6EC2-949C-496B-9C87-5418DEF74A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C0B6EC2-949C-496B-9C87-5418DEF74A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C0B6EC2-949C-496B-9C87-5418DEF74A5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{464DB92B-2750-4125-BCDE-F1D7DBFFAA58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{464DB92B-2750-4125-BCDE-F1D7DBFFAA58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{464DB92B-2750-4125-BCDE-F1D7DBFFAA58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{464DB92B-2750-4125-BCDE-F1D7DBFFAA58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

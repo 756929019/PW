@@ -4,6 +4,7 @@
         <ResourceDictionary Source="/PW.Controls;component/Style/Global.xaml" />
         <ResourceDictionary Source="/PW.Controls;component/Style/Colors.xaml"/>
         <ResourceDictionary Source="/PW.Controls;component/Style/Themes/FIcon.xaml"/>
+        <ResourceDictionary Source="/PW.Controls;component/Controls/FiconButton.xaml" />
         <ResourceDictionary Source="/PW.Controls;component/Style/Themes/ToggleButton.xaml"/>
         <ResourceDictionary Source="/PW.Controls;component/Style/Themes/TextBox.xaml"/>
         <ResourceDictionary Source="/PW.Controls;component/Style/Themes/ListBox.xaml"/>
@@ -11,5 +12,6 @@
         <ResourceDictionary Source="/PW.Controls;component/Style/Themes/LoopProcessBar.xaml"/>
         <ResourceDictionary Source="/PW.Controls;component/Style/Themes/ProgressBar.xaml"/>
         <ResourceDictionary Source="/PW.Controls;component/Style/Themes/Window.xaml"/>
+        <ResourceDictionary Source="/PW.Controls;component/Controls/WindowBase.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

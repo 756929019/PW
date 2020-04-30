@@ -87,6 +87,8 @@
         <Setter Property="MouseOverForeground" Value="{StaticResource ButtonMouseOverForeground}" />
         <Setter Property="PressedBackground" Value="{StaticResource ButtonPressedBackground}" />
         <Setter Property="PressedForeground" Value="{StaticResource ButtonPressedForeground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource ButtonBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{StaticResource ButtonBorderThickness}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <!--<Setter Property="Width" Value="100" />

@@ -1,6 +1,7 @@
 ﻿using PW.Common;
 using PW.ServiceCenter;
 using PW.ServiceCenter.ServiceUser;
+using PW.SystemSet.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,6 +21,7 @@ namespace PW.SystemSet.ViewModel
             NextPageSearchCommand = new RelayCommand(NextPageSearchCommandFunc);
             SelectAllCommand = new RelayCommand(SelectAllCommandFunc);
             UnSelectAllCommand = new RelayCommand(UnSelectAllCommandFunc);
+            AddCommand = new RelayCommand(AddCommandFunc);
             GetData();
         }
 
@@ -201,6 +203,13 @@ namespace PW.SystemSet.ViewModel
             }
         }
         #endregion
+        public RelayCommand AddCommand { get; set; }
+        private void AddCommandFunc()
+        {
+            UserEdit edit = new UserEdit();
+            edit.ShowDialog();
+        }
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
 

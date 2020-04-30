@@ -2,14 +2,29 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <!--Window窗体-->
-    <SolidColorBrush x:Key="WindowBackground" Color="#007ACB"></SolidColorBrush>
+    <SolidColorBrush x:Key="WindowBackground" Color="#85000000"></SolidColorBrush>
     <SolidColorBrush x:Key="WindowInnerBackground" Color="Transparent"></SolidColorBrush>
-    <SolidColorBrush x:Key="WindowBorderBrush" Color="#920892"></SolidColorBrush>
-    <DropShadowEffect x:Key="WindowDropShadow" Color="#F472F4" BlurRadius="8" ShadowDepth="0" Direction="0" Opacity="0.7" />
+    <!--<SolidColorBrush x:Key="WindowBorderBrush" Color="#920892"></SolidColorBrush>-->
+    <LinearGradientBrush x:Key="WindowBorderBrush" EndPoint="0.5,1" StartPoint="0.872,-0.842">
+        <LinearGradientBrush.RelativeTransform>
+            <TransformGroup>
+                <ScaleTransform CenterX="0.5" CenterY="0.5"/>
+                <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                <RotateTransform Angle="657.341" CenterX="0.5" CenterY="0.5"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </LinearGradientBrush.RelativeTransform>
+        <GradientStop Color="#FF1C1C1C" Offset="0.413"/>
+        <GradientStop Color="#FF4F4F4F" Offset="1"/>
+    </LinearGradientBrush>
+    <DropShadowEffect x:Key="WindowDropShadow" Color="#6325418D" BlurRadius="8" ShadowDepth="0" Direction="0" Opacity="0.7" />
     <SolidColorBrush x:Key="CaptionForeground" Color="White"></SolidColorBrush>
-    <LinearGradientBrush x:Key="CaptionBackground" StartPoint="0.5,0" EndPoint="0.5,1">
-        <GradientStop Color="#571457" Offset="0"/>
-        <GradientStop Color="#6A196A" Offset="1"/>
+    <LinearGradientBrush x:Key="CaptionBackground" StartPoint="0.499995,-1.64417" EndPoint="0.499995,2.56027">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#305EB2F8" Offset="0.239394"/>
+            <GradientStop Color="#634179C2" Offset="0.525252"/>
+            <GradientStop Color="#6325418D" Offset="0.691919"/>
+        </LinearGradientBrush.GradientStops>
     </LinearGradientBrush>
     <!--MessageBoxX-->
     <SolidColorBrush x:Key="InfoForeground" Color="White"></SolidColorBrush>
@@ -58,12 +73,15 @@
     <!--Popup,ComboBox-->
     <SolidColorBrush x:Key="PopupBackground" Color="#066EB3"></SolidColorBrush>
     <!--Button-->
-    <SolidColorBrush x:Key="ButtonBackground" Color="#AA005688"></SolidColorBrush>
+    <SolidColorBrush x:Key="ButtonBackground" Color="#EA005688"></SolidColorBrush>
     <SolidColorBrush x:Key="ButtonForeground" Color="White"></SolidColorBrush>
-    <SolidColorBrush x:Key="ButtonMouseOverBackground" Color="#66008890"></SolidColorBrush>
+    <SolidColorBrush x:Key="ButtonMouseOverBackground" Color="#EA10B1E7"></SolidColorBrush>
     <SolidColorBrush x:Key="ButtonMouseOverForeground" Color="White"></SolidColorBrush>
     <SolidColorBrush x:Key="ButtonPressedBackground" Color="#99008890"></SolidColorBrush>
     <SolidColorBrush x:Key="ButtonPressedForeground" Color="White"></SolidColorBrush>
+    <SolidColorBrush x:Key="ButtonBorderBrush" Color="#885794AF"></SolidColorBrush>
+    <Thickness x:Key="ButtonBorderThickness">1</Thickness>
+    
     <!--Menu-->
     <SolidColorBrush x:Key="MenuForeground" Color="#920892"></SolidColorBrush>
     <SolidColorBrush x:Key="MenuBackground" Color="#DDD1D1"></SolidColorBrush>
