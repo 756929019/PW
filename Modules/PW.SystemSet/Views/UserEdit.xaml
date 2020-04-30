@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:PW.SystemSet.Views"
          xmlns:Controls="clr-namespace:PW.Controls.Controls;assembly=PW.Controls"
        mc:Ignorable="d"
-        Title="Window1" Height="300" Width="300">
+        Title="Window1" Height="499.679" Width="685.321">
     <Grid>
-        
+
     </Grid>
 </Controls:WindowBase>
