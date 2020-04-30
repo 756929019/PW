@@ -186,6 +186,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="fonts\doc\demo.css" />
+    <Content Include="fonts\doc\demo_index.html" />
+    <Content Include="fonts\doc\iconfont.css" />
+    <Content Include="fonts\doc\iconfont.js" />
+    <Content Include="fonts\doc\iconfont.svg" />
     <Resource Include="Images\bg\bg001.jpg" />
     <Resource Include="Images\bg\bg002.jpg" />
     <Resource Include="Images\bg\bg003.jpg" />
@@ -207,6 +212,11 @@
     <Content Include="config\MyServer.pfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="fonts\doc\iconfont.eot" />
+    <None Include="fonts\doc\iconfont.json" />
+    <Resource Include="fonts\doc\iconfont.ttf" />
+    <None Include="fonts\doc\iconfont.woff" />
+    <None Include="fonts\doc\iconfont.woff2" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -266,9 +276,7 @@
   <ItemGroup>
     <Resource Include="Resources\windowsLogo.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="fonts\doc\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\bg\bg.jpg" />
     <Resource Include="Images\bg\bg10.jpg" />

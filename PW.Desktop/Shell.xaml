@@ -39,7 +39,7 @@
                     <TextBlock Style="{DynamicResource FIcon}" Text="&#xe62b;" FontSize="14" Margin="1,4,0,0" VerticalAlignment="Center"/>
                 </Button>         
                 <Button Width="25" Height="25" x:Name="minBtn" Click="minBtn_Click">
-                    <TextBlock Style="{DynamicResource FIcon}" Text="&#xe62d;" FontSize="14" Margin="1,4,0,0" VerticalAlignment="Center"/>
+                    <TextBlock Style="{DynamicResource FIcon}" Text="&#xe60d;" FontSize="14" Margin="1,4,0,0" VerticalAlignment="Center"/>
                 </Button>
                 <Button Width="25" Height="25" ToolTip="换肤" x:Name="bgBtn" Click="bgBtn_Click">
                     <TextBlock Style="{DynamicResource FIcon}" Text="&#xe619;" FontSize="14" Margin="1,4,0,0" VerticalAlignment="Center"/>

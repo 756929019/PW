@@ -6,7 +6,7 @@
     <!--FIcon-->
     <Style x:Key="FIcon" TargetType="TextBlock">
         <!-- <Setter Property="FontFamily" Value="pack://application:,,,/PW.Controls;component/Resources/#SF2015"></Setter>-->
-        <Setter Property="FontFamily" Value="/PW.Controls;component/Resources/#SF2015"></Setter>
+        <Setter Property="FontFamily" Value="/PW.Controls;component/Resources/#iconfont"></Setter>
         <Setter Property="Foreground" Value="{StaticResource TextForeground}"/>
         <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
