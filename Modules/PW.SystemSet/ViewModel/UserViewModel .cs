@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace PW.SystemSet.ViewModel
 {
@@ -22,6 +23,9 @@ namespace PW.SystemSet.ViewModel
             SelectAllCommand = new RelayCommand(SelectAllCommandFunc);
             UnSelectAllCommand = new RelayCommand(UnSelectAllCommandFunc);
             AddCommand = new RelayCommand(AddCommandFunc);
+            DeleteCommand = new RelayCommand(DeleteCommandFunc);
+            ModifyCommand = new RelayCommand(ModifyCommandFunc);
+            InfoCommand = new RelayCommand(InfoCommandFunc);
             GetData();
         }
 
@@ -203,13 +207,34 @@ namespace PW.SystemSet.ViewModel
             }
         }
         #endregion
+
+        #region 增删查改命令
         public RelayCommand AddCommand { get; set; }
         private void AddCommandFunc()
         {
             UserEdit edit = new UserEdit();
             edit.ShowDialog();
         }
-        
+        public RelayCommand DeleteCommand { get; set; }
+        private void DeleteCommandFunc()
+        {
+            // 支持多选
+            var res = MessageBoxX.Question("确认删除所选数据？");
+            MessageBoxX.Info(res.ToString());
+        }
+        public RelayCommand ModifyCommand { get; set; }
+        private void ModifyCommandFunc()
+        {
+            UserEdit edit = new UserEdit();
+            edit.ShowDialog();
+        }
+        public RelayCommand InfoCommand { get; set; }
+        private void InfoCommandFunc()
+        {
+            UserEdit edit = new UserEdit();
+            edit.ShowDialog();
+        }
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
 

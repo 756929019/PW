@@ -42,8 +42,9 @@
         </Border>
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,5,0,5">
             <Controls:FiconButton Content="添加" FIcon="&#xe62c;" Padding="5,0,5,0" CornerRadius="10,0,0,10" AllowsAnimation="True" Command="{Binding Path=AddCommand}"/>
-            <Controls:FiconButton Content="删除" FIcon="&#xe60a;" Padding="5,0,5,0" AllowsAnimation="True" BorderThickness="0,1"/>
-            <Controls:FiconButton Content="修改" FIcon="&#xe63e;" Padding="5,0,5,0" CornerRadius="0,10,10,0"/>
+            <Controls:FiconButton Content="删除" FIcon="&#xe60a;" Padding="5,0,5,0" AllowsAnimation="True" BorderThickness="0,1" Command="{Binding Path=DeleteCommand}"/>
+            <Controls:FiconButton Content="修改" FIcon="&#xe60a;" Padding="5,0,5,0" AllowsAnimation="True" BorderThickness="1,1,0,1" Command="{Binding Path=ModifyCommand}"/>
+            <Controls:FiconButton Content="详情" FIcon="&#xe63e;" Padding="5,0,5,0" CornerRadius="0,10,10,0" Command="{Binding Path=InfoCommand}"/>
         </StackPanel>
         <DataGrid Grid.Row="2" AutoGenerateColumns="False" x:Name="dataGrid" ItemsSource="{Binding Path=list,Mode=TwoWay}">
             <DataGrid.Columns>
