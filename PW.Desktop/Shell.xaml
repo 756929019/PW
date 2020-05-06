@@ -42,7 +42,7 @@
                     <TextBlock Style="{DynamicResource FIcon}" Text="&#xe60d;" FontSize="14" Margin="1,4,0,0" VerticalAlignment="Center"/>
                 </Button>
                 <Button Width="25" Height="25" ToolTip="换肤" x:Name="bgBtn" Click="bgBtn_Click">
-                    <TextBlock Style="{DynamicResource FIcon}" Text="&#xe619;" FontSize="14" Margin="1,4,0,0" VerticalAlignment="Center"/>
+                    <TextBlock Style="{DynamicResource FIcon}" Text="&#xe743;" FontSize="14" Margin="1,4,0,0" VerticalAlignment="Center"/>
                 </Button>
             </StackPanel>
             <Popup x:Name="pop" PopupAnimation="Fade" PlacementTarget="{Binding ElementName=bgBtn}" Placement="Bottom" VerticalOffset="3" HorizontalOffset="-135" AllowsTransparency="True" StaysOpen="False" IsOpen="{Binding Bg_Popup}">

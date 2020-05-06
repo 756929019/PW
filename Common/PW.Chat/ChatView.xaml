@@ -623,7 +623,7 @@ Storyboard.TargetName="Ellipse"/>
                                             <BeginStoryboard Storyboard="{StaticResource OnLoaded}"></BeginStoryboard>
                                         </EventTrigger>
                                     </Grid.Triggers>
-                                    <TextBlock x:Name="Ellipse" Text="&#xe603;" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{DynamicResource FIcon}" Foreground="{TemplateBinding Foreground}" FontSize="{TemplateBinding FontSize}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                                    <TextBlock x:Name="Ellipse" Text="&#xe6d7;" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{DynamicResource FIcon}" Foreground="{TemplateBinding Foreground}" FontSize="{TemplateBinding FontSize}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
                                         <TextBlock.Effect>
                                             <DropShadowEffect Opacity="1" ShadowDepth="0" Color="{TemplateBinding Foreground}" BlurRadius="0" Direction="10"></DropShadowEffect>
                                         </TextBlock.Effect>

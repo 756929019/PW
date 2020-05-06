@@ -6,6 +6,55 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "4275809",
+      "name": "对话",
+      "font_class": "duihua1",
+      "unicode": "e6d7",
+      "unicode_decimal": 59095
+    },
+    {
+      "icon_id": "4933365",
+      "name": "皮肤",
+      "font_class": "pifu",
+      "unicode": "e743",
+      "unicode_decimal": 59203
+    },
+    {
+      "icon_id": "544538",
+      "name": "information",
+      "font_class": "information",
+      "unicode": "e75a",
+      "unicode_decimal": 59226
+    },
+    {
+      "icon_id": "10156394",
+      "name": "详情",
+      "font_class": "xiangqing",
+      "unicode": "e6bf",
+      "unicode_decimal": 59071
+    },
+    {
+      "icon_id": "4159789",
+      "name": "搜索",
+      "font_class": "search",
+      "unicode": "e658",
+      "unicode_decimal": 58968
+    },
+    {
+      "icon_id": "1254726",
+      "name": "17错误",
+      "font_class": "17cuowu",
+      "unicode": "e677",
+      "unicode_decimal": 58999
+    },
+    {
+      "icon_id": "1254727",
+      "name": "18确定",
+      "font_class": "18queding",
+      "unicode": "e690",
+      "unicode_decimal": 59024
+    },
+    {
       "icon_id": "6160677",
       "name": "最大化",
       "font_class": "zuidahua1",

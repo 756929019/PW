@@ -37,17 +37,20 @@ namespace System.Windows
             this.SetForeground(type);
             switch (type)
             {
+                case EnumNotifyType.Success:
+                    this.ficon.Text = "\xe66a";
+                    break;
                 case EnumNotifyType.Error:
-                    this.ficon.Text = "\ue644";
+                    this.ficon.Text = "\xe669";
                     break;
                 case EnumNotifyType.Warning:
-                    this.ficon.Text = "\ue60b";
+                    this.ficon.Text = "\xe603";
                     break;
                 case EnumNotifyType.Info:
-                    this.ficon.Text = "\ue659";
+                    this.ficon.Text = "\xe605";
                     break;
                 case EnumNotifyType.Question:
-                    this.ficon.Text = "\ue60e";
+                    this.ficon.Text = "\xe606";
                     this.btnCancel.Visibility = Visibility.Visible;
                     break;
             }
@@ -79,6 +82,13 @@ namespace System.Windows
         }
 
         /********************* public static method **************************/
+        /// <summary>
+        /// 提示成功消息
+        /// </summary>
+        public static void Success(string mes, Window owner = null)
+        {
+            Show(EnumNotifyType.Success, mes, owner);
+        }
 
         /// <summary>
         /// 提示错误消息
@@ -134,6 +144,8 @@ namespace System.Windows
         /// </summary>
         public enum EnumNotifyType
         {
+            [Description("成功")]
+            Success,
             [Description("错误")]
             Error,
             [Description("警告")]

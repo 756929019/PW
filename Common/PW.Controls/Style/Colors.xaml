@@ -27,6 +27,7 @@
         </LinearGradientBrush.GradientStops>
     </LinearGradientBrush>
     <!--MessageBoxX-->
+    <SolidColorBrush x:Key="SuccessForeground" Color="#FF00B600"></SolidColorBrush>
     <SolidColorBrush x:Key="InfoForeground" Color="White"></SolidColorBrush>
     <SolidColorBrush x:Key="QuestionForeground" Color="#74B80C"></SolidColorBrush>
     <SolidColorBrush x:Key="WarningForeground" Color="DarkOrange"></SolidColorBrush>

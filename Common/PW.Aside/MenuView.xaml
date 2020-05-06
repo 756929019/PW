@@ -52,7 +52,7 @@
                                             </ControlTemplate>
                                         </ToggleButton.Template>
                                         <ToggleButton.Content>
-                                            <TextBlock x:Name="ExpanderIcon"  Foreground="{TemplateBinding Foreground}" FontSize="13" Margin="4" Height="15" VerticalAlignment="Center" Text="&#xe625;" Style="{DynamicResource FIcon}"/>
+                                            <TextBlock x:Name="ExpanderIcon"  Foreground="{TemplateBinding Foreground}" FontSize="13" Margin="4" Height="15" VerticalAlignment="Center" Text="&#xe6b4;" Style="{DynamicResource FIcon}"/>
                                         </ToggleButton.Content>
                                     </ToggleButton>
                                     <!--内容-->
@@ -69,7 +69,7 @@
                                 <Setter TargetName="ItemsHost" Property="Visibility" Value="Collapsed" />
                             </Trigger>
                             <Trigger Property="IsExpanded" Value="True">
-                                <Setter TargetName="ExpanderIcon" Property="Text" Value="&#xe624;" />
+                                <Setter TargetName="ExpanderIcon" Property="Text" Value="&#xe6b5;" />
                             </Trigger>
                             <Trigger Property="HasItems" Value="False">
                                 <Setter TargetName="ExpanderIcon" Property="Visibility" Value="Hidden" />

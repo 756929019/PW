@@ -30,17 +30,17 @@ namespace PW.SystemSet.ViewModel
         }
 
         #region 查询相关属性
-        private string _Username;
+        private user _queryObj = new user();
         /// <summary>
         /// Username
         /// </summary>
-        public string Username
+        public user QueryObj
         {
-            get { return _Username; }
+            get { return _queryObj; }
             set
             {
-                _Username = value;
-                RaisePropertyChanged("Username");
+                _queryObj = value;
+                RaisePropertyChanged("QueryObj");
             }
         }
 
@@ -90,10 +90,7 @@ namespace PW.SystemSet.ViewModel
                 pageIndex = pageIndex,
                 pageSize = PageSize,
                 orderName = "ID ASC",
-                queryParams = new user
-                {
-                    USERNAME = Username
-                }
+                queryParams = _queryObj
             };
             client.queryPage(JSONCom.ConvertObject<ServiceCenter.ServiceUser.PageInfoOfuserCLUigIiY>(page));
         }
