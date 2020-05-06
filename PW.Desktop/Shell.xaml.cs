@@ -283,6 +283,7 @@ namespace PW.Desktop
         {
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.WindowState = this.WindowState == WindowState.Maximized? WindowState.Normal: WindowState.Maximized;
+            this.maxMinIcon.Text = this.WindowState == WindowState.Maximized ? "\xe62b" : "\xe65b";
         }
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

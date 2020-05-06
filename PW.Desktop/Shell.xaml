@@ -36,7 +36,7 @@
                     <TextBlock Style="{DynamicResource FIcon}" Text="&#xe60a;" FontSize="14" Margin="1,4,0,0" VerticalAlignment="Center"/>
                 </Button>
                 <Button Width="25" Height="25" x:Name="maxBtn" Click="maxBtn_Click">
-                    <TextBlock Style="{DynamicResource FIcon}" Text="&#xe62b;" FontSize="14" Margin="1,4,0,0" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="maxMinIcon" Style="{DynamicResource FIcon}" Text="&#xe62b;" FontSize="14" Margin="1,4,0,0" VerticalAlignment="Center"/>
                 </Button>         
                 <Button Width="25" Height="25" x:Name="minBtn" Click="minBtn_Click">
                     <TextBlock Style="{DynamicResource FIcon}" Text="&#xe60d;" FontSize="14" Margin="1,4,0,0" VerticalAlignment="Center"/>
