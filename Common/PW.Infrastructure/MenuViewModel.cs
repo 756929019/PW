@@ -35,7 +35,8 @@ namespace PW.Infrastructure
         public string itemName { get; set; } // 名称
         public string itemView { get; set; }
         public string itemRegion { get; set; }
-        public string itemIcon { get; set; } // 
+        public string itemIcon { get; set; } //
+        public Type viewType { get; set; } //
 
         private ObservableCollection<ItemTreeData> _children = new ObservableCollection<ItemTreeData>();
         public ObservableCollection<ItemTreeData> Children

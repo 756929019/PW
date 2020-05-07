@@ -103,7 +103,20 @@ namespace PW.Aside
             ItemTreeData treeData = (ItemTreeData)treeView.SelectedItem;
             if (treeData!=null && !string.IsNullOrEmpty(treeData.itemRegion) && !string.IsNullOrEmpty(treeData.itemView))
             {
-                regionManager.RequestNavigate(treeData.itemRegion, treeData.itemView);
+                var list = regionManager.Regions[treeData.itemRegion].Views.GetEnumerator();
+                bool find = false;
+                while (list.MoveNext()) {
+                    UserControl ctrl = (UserControl)list.Current;
+                    if (ctrl.GetType() == treeData.viewType) {
+                        regionManager.RequestNavigate(treeData.itemRegion, treeData.itemView);
+                        find = true;
+                        break;
+                    }
+                }
+                if (!find) {
+                    regionManager.RegisterViewWithRegion(treeData.itemRegion, treeData.viewType);
+                    regionManager.RequestNavigate(treeData.itemRegion, treeData.itemView);
+                }
             }
         }
 

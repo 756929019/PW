@@ -158,6 +158,21 @@ namespace PW.Desktop
             }
 
             ctrlsProgressRing.IsActive = false;
+
+            CommandEvent cmdEvent = GlobalData.EventAggregator.GetEvent<CommandEvent>();
+            cmdEvent.Subscribe(OnCommandEvent);
+        }
+        
+        private void OnCommandEvent(CommandEventArgs e)
+        {
+            // Log.info("MapModule OnCommandEvent");
+            if (e.Type == CommandType.showLoading)
+            {
+                ctrlsProgressRing.IsActive = true;
+            } else if (e.Type == CommandType.hideLoading)
+            {
+                ctrlsProgressRing.IsActive = false;
+            }
         }
 
         private void Btn_Click(object sender, RoutedEventArgs e)

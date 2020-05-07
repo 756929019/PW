@@ -335,6 +335,9 @@ namespace PW.LogIn
                 
                 this.gcLogin.Visibility = Visibility.Collapsed;
                 this.loadingInfo.Visibility = Visibility.Visible;
+                CommandEventArgs cmd = new CommandEventArgs();
+                cmd.Type = CommandType.showLoading;
+                GlobalData.EventAggregator.GetEvent<CommandEvent>().Publish(cmd);
                 ServiceComm sc = new ServiceComm();
                 sc.LoginCompleted += (serice, eve) =>
                 {
@@ -374,13 +377,18 @@ namespace PW.LogIn
                         socketClient = SocketClient.GetInstance();
                         //socketClient.ReceivedMsg = new SocketClient.ReceivedMsgHandler(socketClient_ReceivedMsg);
                         socketClient.BeginConnect();
+
+                        cmd.Type = CommandType.hideLoading;
+                        GlobalData.EventAggregator.GetEvent<CommandEvent>().Publish(cmd);
                     }
                     else
                     {
                         this.btnLogin.IsEnabled = true;
                         this.gcLogin.Visibility = Visibility.Visible;
                         this.loadingInfo.Visibility = Visibility.Collapsed;
-                        MessageBox.Show("登陆失败！");
+                        cmd.Type = CommandType.hideLoading;
+                        GlobalData.EventAggregator.GetEvent<CommandEvent>().Publish(cmd);
+                        MessageBoxX.Info("登陆失败！");
                     }
                 };
                 Log.info("开始登录");

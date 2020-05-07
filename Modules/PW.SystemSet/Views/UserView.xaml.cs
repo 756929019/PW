@@ -27,6 +27,10 @@ namespace PW.SystemSet.Views
         public UserView()
         {
             InitializeComponent();
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
             this.DataContext = new UserViewModel();
         }
     }
