@@ -24,6 +24,13 @@ MySql.Data 6.10.9
 
 数据库暂无
 
+#### 预览
+[https://blog.csdn.net/shishuwei111/article/details/82933075](https://blog.csdn.net/shishuwei111/article/details/82933075)
+![登录](https://images.gitee.com/uploads/images/2020/0727/135659_41bccf8d_545745.png "20181003180923780.png")
+![主导航](https://images.gitee.com/uploads/images/2020/0727/135737_75a7071c_545745.png "20181003181111256.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0727/135759_559ad54e_545745.png "20181003181145876.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0727/135809_0e59e5a4_545745.png "20181003181214849.png")
+
 #### 使用说明
 
 1.  xxxx
