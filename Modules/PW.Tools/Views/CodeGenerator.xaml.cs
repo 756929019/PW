@@ -105,6 +105,10 @@ namespace PW.Tools.Views
                     CodeGeneratorUtil.TransferXml(CodeGeneratorUtil.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/service.xslt", "D:/CodeGenerator/service/Service" + name + ".svc.cs");
                     CodeGeneratorUtil.TransferXml(CodeGeneratorUtil.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/service.svc.xslt", "D:/CodeGenerator/service/Service" + name + ".svc");
                     CodeGeneratorUtil.TransferXml(CodeGeneratorUtil.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/dao.xslt", "D:/CodeGenerator/dao/" + name + "Dao.cs");
+
+                    CodeGeneratorUtil.TransferXml(CodeGeneratorUtil.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/view.xslt", "D:/CodeGenerator/Views/" + name + "View.xaml.cs");
+                    CodeGeneratorUtil.TransferXml(CodeGeneratorUtil.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/view.xaml.xslt", "D:/CodeGenerator/Views/" + name + "View.xaml");
+                    CodeGeneratorUtil.TransferXml(CodeGeneratorUtil.object2xml<TableModel>(tm), AppDomain.CurrentDomain.BaseDirectory + "template/view.model.xslt", "D:/CodeGenerator/ViewModel/" + name + "ViewModel.cs");
                 }
             }
         }
